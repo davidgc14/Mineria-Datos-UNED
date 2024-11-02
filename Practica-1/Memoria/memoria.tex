@@ -1,8 +1,11 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[spanish]{babel}
-
-
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{cite}
+\usepackage{graphicx}
+\usepackage{wrapfig}
 
 
 \title{Memoria Práctica 1}
@@ -16,21 +19,76 @@
 
 \section{Introducción}
 
-Resumen teórico. Qué técnicas se han propuesto en la bibliografía y sus limitaciones.
+La creciente disponibilidad de datos y el avance de las técnicas computacionales han permitido el desarrollo de una amplia variedad de algoritmos de aprendizaje supervisado: desde algoritmos clásicos como los árboles de decisión hasta estructuras mucho más complejas tales como las redes neuronales. Cada uno de ellos presenta sus ventajas y desventajas, variando incluso su efectividad en función del contexto en el que se aplique. Es por ello que la selección del modelo adecuado para un problema a estudiar se convierte en una tarea crítica y de gran relevancia, especialmente en aplicaciones donde su correcta selección puede tener un impacto significativo en la toma de decisiones posterior. Sin embargo, el proceso de seleccionar el mejor entre varios algoritmos no es una tarea trivial; involucra la evaluación precisa de su rendimiento, así como una comprensión profunda de los datos y del comportamiento de los modelos en diversos escenarios.
+
+En respuesta a estos desafíos, se han desarrollado diversas metodologías para evaluar y seleccionar modelos de manera robusta. Ya a mediados del siglo XX McNemar propone una comparación directa entre dos modelos  que se necesiten estudiar en un mismo conjunto de datos, permitiendo evaluar si las diferencias en las tasas de error son estadísticamente significativas \cite{mcnemar1947note}. Este enfoque es particularmente útil en contextos donde los datos de prueba están emparejados y la comparación simple de la medida de evaluación no es suficiente. La simplicidad y precisión de este test lo ha convertido en un recurso fundamental para validar mejoras en clasificadores, al proporcionar un método sólido para evaluar la diferencia de rendimiento en un mismo contexto experimental.
+
+Sin embargo, la evaluación sobre un único conjunto de datos puede proporcionarnos una visión sesgada sobre la decisión del modelo seleccionado. Lo ideal sería que los modelos pudieran desempeñar su rendimiento de igual manera en los distintos entornos en los que se evalúe. Ante este paradigma, Bouckaert hace énfasis en la necesidad de asegurar que los resultados obtenidos en un conjunto de datos puedan ser reproducibles en experimentos futuros. Su enfoque destaca la importancia de emplear técnicas de validación como la validación cruzada para obtener estimaciones confiables del rendimiento esperado de los clasificadores \cite{bouckaert2004estimating}. La replicabilidad, en este sentido, se convierte en un criterio crucial: no es suficiente que un modelo ofrezca un rendimiento superior en un único conjunto de prueba; debe ser capaz de mantener este rendimiento de manera consistente en distintos conjuntos de datos. Esto plantea un cambio de paradigma que reconoce el papel de la estabilidad estadística en la selección de modelos, apuntando a mejorar la confiabilidad de los experimentos de aprendizaje automático.
+
+Por otro lado, esta problemática de la selección de modelos, junto con la perspectiva anterior en la minimización del error de generalización, también puede ser abordado desde una perspectiva estadística. Dietterich propone la introducción de ciertas pruebas que mitiguen el riesgo de obtener resultados falsamente significativos \cite{dietterich1998approximate}. Su propuesta del \textit{5x2 cross-validation t-test} (que abordaremos en el siguiente punto) responde a la necesidad de un método que controle tanto la varianza como el sesgo en los resultados experimentales. Al implementar múltiples particiones y combinarlas con pruebas \textit{t} de diferencia de medias, se proporciona así una metodología que reduce el riesgo de errores tipo I (falsos positivos) en la comparación de algoritmos. Sin embargo, este alto nivel de particiones y de cálculos requiere consecuentemente una alta demanda computacional, que dependiendo de el tamaño de los datos disponibles puede suponer un impedimento sustancial. Además, ante situaciones donde la distribución del error no es normal los resultados pueden perder fiabilidad y por tanto un decaimiento del rendimiento real.
+
+En situaciones donde los datos no cumplen las suposiciones de normalidad, otra línea de abordaje incluye el uso de pruebas no paramétricas, como el test de Friedman y el test de Wilcoxon \cite{demvsar2006statistical}, que no asumen normalidad en la distribución de los errores de los clasificadores. Estas pruebas ofrecen una robustez mayor frente a distribuciones complejas y datos dependientes, siendo útiles cuando se necesita comparar múltiples modelos de forma simultánea o cuando los datos presentan sesgos estructurales. Pero, a pesar de su robustez, es necesario aplicar técnicas de corrección de significancia, tales como Bonferroni y Holm, para evitar el riesgo de errores tipo I, especialmente en comparaciones múltiples, que pueden llevar a la selección de un modelo aparentemente superior, pero en realidad insustancial. El problema que presentan estas correcciones es que puede reducir la sensibilidad de las pruebas, dificultando la detección de diferencias reales entre modelos.
+
+En conjunto, estas metodologías han contribuido significativamente a establecer un marco de trabajo para la selección de modelos, ofreciendo herramientas más robustas y adaptativas frente a la variabilidad y la incertidumbre de los datos. Sin embargo, los retos permanecen y el campo sigue evolucionando, buscando constantemente métodos que mejoren la replicabilidad y la capacidad de generalización de los modelos, a la vez que optimizan el proceso de selección en aplicaciones de alta demanda computacional y de datos.
 
 \newpage
 \section{Técnicas}
 
-Técnicas propuestas, puntos fuertes y debilidades. Comparación con otras alternativas.
+Se propone la aplicación de dos técnicas de selección de algoritmos al conjunto de datos \textit{iris} para la evaluación de dos modelos de clasificación: \textit{Näive Bayes} y \textit{K Nearest Neighbors} para $k=3$. Se aplicarán los test de McNemar y el \textit{5x2 cross-validation t-test} para comparar ambos modelos. Debido a que los datos etiquetados sobre la clase \textit{Setosa} son claramente
+\begin{wrapfigure}{r}{0.5\textwidth} % 'r' para la derecha, el ancho de la figura
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/Distribuciones.png}
+    \caption{Distribuciones de los datos seleccionados. En naranja Versicolor y en verde Virginica para las cuatro características.}
+\end{wrapfigure}
+separables, realizaremos el estudio sobre las dos etiquetas restantes, que sí presentan solapamiento de distribuciones y resultará más interesante para este estudio.
+
+El test de McNemar nos proporciona para nuestro caso de uso una alta simplicidad de implementación, en el que con escasos cálculos podemos tomar una decisión fundamentada. Sin embargo, presenta ciertas limitaciones (que en este estudio se verán reflejadas) para afrontar problemas de evaluación con pocos datos, como es nuestro caso actual. Al necesitar un conjunto de testeo,se realizará una división arbitraria, lo que sesgará el resultado posterior del test. Dependiendo de cómo dividamos estos conjuntos, puede provocar que para dos situaciones similares, aceptemos o rechacemos la hipótesis nula, lo que hace inestable el test para casos con tan pocos datos.
+
+Por otro lado, el test \textit{5x2 cross-validation t-test} es un test que hace uso de todos los datos para la evaluación, lo que lo hace a priori más robusto que otros enfoques más simples. Además, conseguimos reducir la varianza de la estimación realizada, lo que nos proporciona una mayor precisión de la estimación. Sin embargo, la división arbitraria sigue manteniendo el problema de dividir conjuntos que no tienen por qué ser completamente independientes, sumado a la suposición de normalidad que asume este test. Además, este test presenta un requerimiento de recursos computacionales muy alto en comparación con el test de McNemar, que puede llegar a ser (no necesariamente en nuestro caso) un inconveniente a la hora de decidir cómo afrontar el presente problema.
+
 
 \newpage
 \section{Resultados}
 
-Resultados obtenidos. Medida de rendimiento elegida. Cálculo del valor del estadístico y de los umbrales seleccionados a priori como limites de significatividad.
+% Resultados obtenidos. Medida de rendimiento elegida. Cálculo del valor del estadístico y de los umbrales seleccionados a priori como limites de significatividad.
+
+Para la comparación de los modelos entrenados se ha seleccionado como medida de rendimiento la precisión (accuracy), Esta medida es adecuada para este conjunto de datos, dado que las clases están equilibradas, permitiendo una interpretación directa de la capacidad de cada modelo para clasificar correctamente las especies de Iris. Además, para ambos test vamos a establecer un nivel de significancia $\alpha = 0.05$.
+
+Para la aplicación del test de McNemar se ha construido una matriz de confusión para los resultados de predicción de ambos modelos, donde se identifican los casos de falsos positivos y falsos negativos. Con ello, calculamos el estadístico de McNemar $\chi^2$ para su tabla de contingencia:
+
+\vspace{1em}
+
+\begin{minipage}[c]{0.45\textwidth}
+    \centering
+    \begin{tabular}{c|c|c|}
+                    & $Acierto_1$ & $Error_1$ \\
+        \hline
+        $Acierto_2$ & 25          & 2         \\
+        \hline
+        $Error_2$   & 1           & 2         \\
+        \hline
+    \end{tabular}
+\end{minipage}%
+\hfill
+\begin{minipage}[c]{0.45\textwidth}
+    \centering
+    \begin{equation}
+        \chi^2 = \frac{(b-c)^2}{b+c} = \frac{1}{3}
+    \end{equation}
+\end{minipage}
+
+\vspace{1em}
+
+\noindent
+donde $b$ son los errores de KNN que Naive Bayes clasificó correctamente, y $c$ son los errores de Naive Bayes que KNN clasificó correctamente. Tomando este valor para un grado de libertad, obtenemos un valor de $p>0.5>\alpha$, por lo que no podemos rechazar la hipótesis nula de que las tasas de error de ambos modelos son estadísticamente iguales mediante el uso de este test.
+
+
 
 \newpage
 \section{Conclusiones}
 
-
+\newpage
+\bibliographystyle{plain}
+\bibliography{bibliography}
 
 \end{document}
