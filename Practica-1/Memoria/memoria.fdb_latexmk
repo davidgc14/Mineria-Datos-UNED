@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex memoria"] 1732915059.9402 "memoria.aux" "memoria.bbl" "memoria" 1732915060.50692 0
+["bibtex memoria"] 1732915574.06709 "memoria.aux" "memoria.bbl" "memoria" 1732915841.34431 0
   "./library.bib" 1732905899.89593 1798 a2d1ba9a99dddb5f949bfc712c449d3b ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "memoria.aux" 1732915060.41654 1406 6eff50b27e538a330ff48c409c04b7c8 "pdflatex"
+  "memoria.aux" 1732915841.248 1406 6eff50b27e538a330ff48c409c04b7c8 "pdflatex"
   (generated)
   "memoria.bbl"
   "memoria.blg"
   (rewritten before read)
-["pdflatex"] 1732915059.96618 "/home/david/Documents/Master/MineriaDatos/Practica-1/Memoria/memoria.tex" "memoria.pdf" "memoria" 1732915060.50712 0
+["pdflatex"] 1732915840.76526 "/home/david/Documents/Master/MineriaDatos/Practica-1/Memoria/memoria.tex" "memoria.pdf" "memoria" 1732915841.34451 0
   "/etc/texmf/web2c/texmf.cnf" 1730049747.72736 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/david/Documents/Master/MineriaDatos/Practica-1/Memoria/memoria.tex" 1732915058.50352 27678 3c6e303e4deea9b95d3f23b7286ff682 ""
+  "/home/david/Documents/Master/MineriaDatos/Practica-1/Memoria/memoria.tex" 1732915840.42499 27696 700e00c787fffcda37a7cd838394654a ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -77,10 +77,10 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1730050020.65447 128028 f533b797fba58d231669ea19e894e23e ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1730142013 6822836 85cebf1abe9f452230372d2d34b760f6 ""
   "images/Distribuciones.png" 1730373691.45934 217087 6d4ccc8663c1b8704220f87185a8aaf6 ""
-  "memoria.aux" 1732915060.41654 1406 6eff50b27e538a330ff48c409c04b7c8 "pdflatex"
-  "memoria.bbl" 1732915059.96253 1095 d44e6e28ca4d3a6144c2b1de48f54eb1 "bibtex memoria"
-  "memoria.tex" 1732915058.50352 27678 3c6e303e4deea9b95d3f23b7286ff682 ""
-  "memoria.toc" 1732915060.41854 399 1db8aaa4661b24ad761e688a15113bf0 "pdflatex"
+  "memoria.aux" 1732915841.248 1406 6eff50b27e538a330ff48c409c04b7c8 "pdflatex"
+  "memoria.bbl" 1732915574.08704 1095 d44e6e28ca4d3a6144c2b1de48f54eb1 "bibtex memoria"
+  "memoria.tex" 1732915840.42499 27696 700e00c787fffcda37a7cd838394654a ""
+  "memoria.toc" 1732915841.251 399 1db8aaa4661b24ad761e688a15113bf0 "pdflatex"
   (generated)
   "memoria.aux"
   "memoria.log"
