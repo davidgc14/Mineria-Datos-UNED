@@ -1,5 +1,7 @@
 \babel@toc {spanish}{}\relax 
 \contentsline {section}{\numberline {1}Introducción}{2}{}%
 \contentsline {section}{\numberline {2}Técnicas}{5}{}%
-\contentsline {section}{\numberline {3}Resultados}{6}{}%
-\contentsline {section}{\numberline {4}Conclusiones}{7}{}%
+\contentsline {subsection}{\numberline {2.1}Test de McNemar}{5}{}%
+\contentsline {subsection}{\numberline {2.2}5x2-fold CV t-test}{6}{}%
+\contentsline {section}{\numberline {3}Resultados}{7}{}%
+\contentsline {section}{\numberline {4}Conclusiones}{9}{}%
