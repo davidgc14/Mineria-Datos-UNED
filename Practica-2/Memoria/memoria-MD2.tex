@@ -80,21 +80,23 @@ El diseño de este conjunto de datos permite evaluar con precisión las técnica
 
 
 \newpage
-\section{Técnicas}
+\section{Técnicas de selección de características}
 
 Las técnicas de selección de características permiten identificar un subconjunto óptimo de variables que contribuyan de manera significativa a la predicción de la variable objetivo, eliminando aquellas redundantes o irrelevantes. Para el conjunto de datos sintetizado, se aplicarán cinco técnicas de selección de características, incluyendo tres métodos de filtrado, el análisis de componentes principales (PCA) y un método de envoltura basado en un clasificador supervisado.
 
 \subsection{Métodos de filtrado}
 
+Los métodos de filtrado evalúan la relevancia de las características de manera independiente del modelo de clasificación, aplicando criterios estadísticos o teóricos para determinar su importancia. Su principal ventaja radica en su eficiencia computacional, ya que no requieren entrenar un modelo de aprendizaje supervisado, sino que utilizan métricas predefinidas para estimar la relación entre cada variable predictora y la variable objetivo.
+
 \subsubsection{Información mutua}
 
-Los métodos de filtrado evalúan la relevancia de las características de manera independiente del modelo de clasificación, aplicando criterios estadísticos o teóricos para determinar su importancia. Uno de los enfoques más comunes dentro de este grupo es la selección basada en la información mutua, donde se mide la dependencia estadística entre cada variable predictora y la variable objetivo. Formalmente, la información mutua entre dos variables aleatorias \( X \) e \( Y \) se define como:
+Uno de los enfoques más comunes dentro de este grupo es la selección basada en la información mutua, donde se mide la dependencia estadística entre cada variable predictora y la variable objetivo. Este método se basa en la teoría de la información y cuantifica cuánta información sobre \( Y \) se obtiene al observar \( X_i \). Formalmente, la información mutua entre dos variables aleatorias \( X_i \) e \( Y \) se define como:
 
 \[
-    I(X, Y) = \sum_{x \in X} \sum_{y \in Y} p(x,y) \log \frac{p(x,y)}{p(x)p(y)}
+    I(X_i, Y) = \sum_{x \in X_i} \sum_{y \in Y} p(x,y) \log \frac{p(x,y)}{p(x)p(y)}
 \]
 
-\noindent donde \( p(x,y) \) representa la distribución conjunta de \( X \) e \( Y \), y donde \( p(x) \) y \( p(y) \) son las distribuciones marginales. Un valor alto de información mutua indica que el conocimiento de \( X \) reduce significativamente la incertidumbre sobre \( Y \), sugiriendo su utilidad en la clasificación.
+\noindent donde \( p(x,y) \) representa la distribución conjunta de \( X_i \) e \( Y \), y donde \( p(x) \) y \( p(y) \) son las distribuciones marginales. Un valor alto de información mutua indica que el conocimiento de \( X_i \) reduce significativamente la incertidumbre sobre \( Y \), sugiriendo su utilidad en la clasificación.
 
 \subsubsection{Test de independencia \(\chi^2\)}
 
@@ -108,7 +110,14 @@ Otro método dentro de los filtros es el test de independencia de \(\chi^2\), em
 
 \subsubsection{Relief}
 
-El tercer método de filtrado a emplear es Relief, un algoritmo basado en la evaluación de la capacidad discriminativa de cada variable en relación con las instancias más cercanas en el espacio de características. Relief asigna un peso a cada variable en función de su capacidad para diferenciar correctamente ejemplos de diferentes clases, ajustándolo iterativamente a partir de comparaciones con los vecinos más próximos de la misma clase (``near-hit") y de clases opuestas (``near-miss"). Este método resulta especialmente útil en problemas donde las interacciones entre características juegan un papel clave, ya que captura dependencias locales entre variables.
+El tercer método de filtrado a emplear es Relief, un algoritmo basado en la evaluación de la capacidad discriminativa de cada variable en relación con las instancias más cercanas en el espacio de características. Relief asigna un peso a cada variable en función de su capacidad para diferenciar correctamente ejemplos de diferentes clases, ajustándolo iterativamente a partir de comparaciones con los vecinos más próximos de la misma clase (``near-hit") y de clases opuestas (``near-miss"). Para cada instancia \(x_k\), el peso de una variable \( X_i \) se actualiza en cada iteración con la siguiente formula:
+
+\[
+    W[i] = W[i] + \frac{1}{m} \left( \frac{|x_{k,i} - x_{m,i}|}{\max(X_i) - \min(X_i)} - \frac{|x_{k,i} - x_{h,i}|}{\max(X_i) - \min(X_i)} \right),
+\]
+
+\noindent
+donde \( x_{m,i} \) y \( x_{h,i} \) representan las instancias más cercanas de la misma clase y de clases opuestas, respectivamente. Este método resulta especialmente útil en problemas donde las interacciones entre características juegan un papel clave, ya que captura dependencias locales entre variables.
 
 \subsection{PCA}
 
@@ -122,7 +131,9 @@ El análisis de componentes principales constituye una técnica ampliamente util
 
 \subsection{Método de envoltura}
 
-Finalmente, el método de selección basado en envoltura se fundamenta en la evaluación iterativa de subconjuntos de características mediante la optimización del rendimiento de un clasificador. En este caso, se empleará un enfoque de búsqueda heurística combinada con validación cruzada para identificar el subconjunto de variables que maximiza la precisión del modelo. Este método presenta la ventaja de adaptarse específicamente a la naturaleza del clasificador utilizado, evitando posibles incompatibilidades entre la selección de características y la fase de modelado. Sin embargo, su principal inconveniente radica en el coste computacional, ya que requiere entrenar múltiples modelos para evaluar diferentes subconjuntos de variables.
+Para la selección de características mediante envoltura se empleará el método de Eliminación Recursiva de Características con Máquinas de Vectores de Soporte (RFE-SVM), propuesto por Guyon y Elisseeff \cite{guyon2003introduction}. Este enfoque itera sobre el conjunto de variables eliminando progresivamente aquellas con menor impacto en la función de decisión de un clasificador SVM. La relevancia de cada variable se evalúa en función de la magnitud de los coeficientes del hiperplano separador, entrenando en cada iteración un nuevo modelo tras descartar la característica menos significativa.
+
+En este caso particular, seleccionaremos para la eliminación de características unn kernel polinomial, con el objetivo de capturar las relaciones no lineales presentes en el conjunto de datos.
 
 
 \newpage

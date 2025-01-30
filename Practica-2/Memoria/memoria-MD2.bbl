@@ -1,5 +1,10 @@
 \begin{thebibliography}{1}
 
+\bibitem{guyon2003introduction}
+Isabelle Guyon and Andr{\'e} Elisseeff.
+\newblock An introduction to variable and feature selection.
+\newblock {\em Journal of machine learning research}, 3(Mar):1157--1182, 2003.
+
 \bibitem{kohavi1997wrappers}
 Ron Kohavi and George~H John.
 \newblock Wrappers for feature subset selection.
