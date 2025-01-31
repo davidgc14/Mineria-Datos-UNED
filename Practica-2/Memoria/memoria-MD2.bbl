@@ -1,13 +1,43 @@
 \begin{thebibliography}{1}
 
-\bibitem{guyon2003introduction}
+\bibitem{battiti1994}
+Roberto Battiti.
+\newblock Using mutual information for selecting features in supervised neural net learning.
+\newblock {\em IEEE Transactions on neural networks}, 5(4):537--550, 1994.
+
+\bibitem{guyon2003}
 Isabelle Guyon and Andr{\'e} Elisseeff.
 \newblock An introduction to variable and feature selection.
-\newblock {\em Journal of machine learning research}, 3(Mar):1157--1182, 2003.
+\newblock {\em Journal of Machine Learning Research}, 3:1157--1182, 2003.
 
-\bibitem{kohavi1997wrappers}
+\bibitem{jolliffe2002}
+Ian~T Jolliffe.
+\newblock {\em Principal Component Analysis}.
+\newblock Springer, 2nd edition, 2002.
+
+\bibitem{kira1992}
+Kenji Kira and Larry~A Rendell.
+\newblock A practical approach to feature selection.
+\newblock In {\em Machine learning proceedings 1992}, pages 249--256. Elsevier, 1992.
+
+\bibitem{kohavi1997}
 Ron Kohavi and George~H John.
 \newblock Wrappers for feature subset selection.
 \newblock {\em Artificial intelligence}, 97(1-2):273--324, 1997.
+
+\bibitem{kononenko1994}
+Igor Kononenko.
+\newblock Estimating attributes: Analysis and extensions of relief.
+\newblock In {\em European Conference on Machine Learning}, pages 171--182, 1994.
+
+\bibitem{liu2011}
+Huan Liu and Hiroshi Motoda.
+\newblock {\em Feature selection for knowledge discovery and data mining}.
+\newblock Springer Science \& Business Media, 2011.
+
+\bibitem{shannon1948}
+Claude~E Shannon.
+\newblock A mathematical theory of communication.
+\newblock {\em Bell System Technical Journal}, 27(3):379--423, 1948.
 
 \end{thebibliography}

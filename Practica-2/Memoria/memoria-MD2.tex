@@ -75,7 +75,7 @@ La variable objetivo, denotada como \( Y \), se define como una función XOR ext
 
 Desde el punto de vista de la relevancia de las variables, \(X_1\) se considera relevante en sentido fuerte, ya que su exclusión modificaría la probabilidad de predecir correctamente la variable objetivo. Las variables \(X_2\) y \(X_3\) son relevantes en sentido débil, pues aunque su contribución a la predicción de \(Y\) es importante, su información puede ser parcialmente recuperada a través de \(X_4\), que depende exclusivamente de ellas. La variable \(X_4\), a pesar de derivarse de \(X_2\) y \(X_3\), sigue siendo relevante en sentido débil dado que introduce redundancia estructurada en el conjunto de datos y puede influir en los métodos de selección de características. Finalmente, \(X_5\) es una variable completamente irrelevante, ya que su valor es generado de manera completamente aleatoria e independiente del resto de las variables.
 
-El diseño de este conjunto de datos permite evaluar con precisión las técnicas de selección de características, al contar con una relevancia conocida de antemano para cada variable. Además, la inclusión de una variable irrelevante y otra redundante permite analizar la robustez de los algoritmos ante el ruido y situaciones de selección de características complejas. Este marco sintético proporcionado en \cite{kohavi1997wrappers} nos genera un entorno controlado para comparar distintas estrategias de selección de características en algoritmos de aprendizaje supervisado, garantizando una evaluación rigurosa de su desempeño y de sus posibles limitaciones.
+El diseño de este conjunto de datos permite evaluar con precisión las técnicas de selección de características, al contar con una relevancia conocida de antemano para cada variable. Además, la inclusión de una variable irrelevante y otra redundante permite analizar la robustez de los algoritmos ante el ruido y situaciones de selección de características complejas. Este marco sintético proporcionado en \cite{kohavi1997} nos genera un entorno controlado para comparar distintas estrategias de selección de características en algoritmos de aprendizaje supervisado, garantizando una evaluación rigurosa de su desempeño y de sus posibles limitaciones.
 
 
 
@@ -90,7 +90,7 @@ Los métodos de filtrado evalúan la relevancia de las características de maner
 
 \subsubsection{Información mutua}
 
-Uno de los enfoques más comunes dentro de este grupo es la selección basada en la información mutua, donde se mide la dependencia estadística entre cada variable predictora y la variable objetivo. Este método se basa en la teoría de la información y cuantifica cuánta información sobre \( Y \) se obtiene al observar \( X_i \). Formalmente, la información mutua entre dos variables aleatorias \( X_i \) e \( Y \) se define como:
+Uno de los enfoques más comunes dentro de este grupo es la selección basada en la información mutua, donde se mide la dependencia estadística entre cada variable predictora y la variable objetivo. Este método, basado en la teoría de la información de Shannon \cite{shannon1948}\footnote{A pesar de ser propuesto por Shannon en su artículo de 1948, no se popularizó para el problema de selección de características hasta muchos años después, con el artículo de R.Battiti \cite{battiti1994}.}, cuantifica cuánta información sobre \( Y \) se obtiene al observar \( X_i \). Formalmente, la información mutua entre dos variables aleatorias \( X_i \) e \( Y \) se define como:
 
 \[
     I(X_i, Y) = \sum_{x \in X_i} \sum_{y \in Y} p(x,y) \log \frac{p(x,y)}{p(x)p(y)}
@@ -100,7 +100,7 @@ Uno de los enfoques más comunes dentro de este grupo es la selección basada en
 
 \subsubsection{Test de independencia \(\chi^2\)}
 
-Otro método dentro de los filtros es el test de independencia de \(\chi^2\), empleado para evaluar si una variable predictora y la variable objetivo son independientes. Se basa en la comparación entre las frecuencias observadas y las frecuencias esperadas bajo la hipótesis de independencia, calculando el estadístico:
+Otro método dentro de los filtros es el test de independencia de \(\chi^2\), empleado para evaluar si una variable predictora y la variable objetivo son independientes \cite{liu2011}. Se basa en la comparación entre las frecuencias observadas y las frecuencias esperadas bajo la hipótesis de independencia, calculando el estadístico:
 
 \[
     \chi^2 = \sum_{i} \sum_{j} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}
@@ -110,7 +110,7 @@ Otro método dentro de los filtros es el test de independencia de \(\chi^2\), em
 
 \subsubsection{Relief}
 
-El tercer método de filtrado a emplear es Relief, un algoritmo basado en la evaluación de la capacidad discriminativa de cada variable en relación con las instancias más cercanas en el espacio de características. Relief asigna un peso a cada variable en función de su capacidad para diferenciar correctamente ejemplos de diferentes clases, ajustándolo iterativamente a partir de comparaciones con los vecinos más próximos de la misma clase (``near-hit") y de clases opuestas (``near-miss"). Para cada instancia \(x_k\), el peso de una variable \( X_i \) se actualiza en cada iteración con la siguiente formula:
+El tercer método de filtrado a emplear es Relief, un algoritmo basado en la evaluación de la capacidad discriminativa de cada variable en relación con las instancias más cercanas en el espacio de características. Desarrollado por \cite{kira1992} y extendido en \cite{kononenko1994}, Relief asigna un peso a cada variable en función de su capacidad para diferenciar correctamente ejemplos de diferentes clases, ajustándolo iterativamente a partir de comparaciones con los vecinos más próximos de la misma clase (``near-hit") y de clases opuestas (``near-miss"). Para cada instancia \(x_k\), el peso de una variable \( X_i \) se actualiza en cada iteración con la siguiente formula:
 
 \[
     W[i] = W[i] + \frac{1}{m} \left( \frac{|x_{k,i} - x_{m,i}|}{\max(X_i) - \min(X_i)} - \frac{|x_{k,i} - x_{h,i}|}{\max(X_i) - \min(X_i)} \right),
@@ -121,7 +121,7 @@ donde \( x_{m,i} \) y \( x_{h,i} \) representan las instancias más cercanas de 
 
 \subsection{PCA}
 
-El análisis de componentes principales constituye una técnica ampliamente utilizada para la reducción de dimensionalidad y la selección de características, aunque no por ello óptima en la mayoría de situaciones. Su aplicación difiere de los métodos anteriores, ya que transforma las variables originales en nuevas combinaciones lineales denominadas componentes principales. Estos componentes se obtienen mediante la descomposición en valores singulares de la matriz de covarianza de los datos, generando una base ortogonal donde las nuevas variables son ordenadas según la varianza explicada. Dado un conjunto de características \( X \), se busca una transformación lineal \( W \) tal que:
+El análisis de componentes principales constituye una técnica ampliamente utilizada para la reducción de dimensionalidad y la selección de características, aunque no por ello óptima en la mayoría de situaciones. Su aplicación difiere de los métodos anteriores, ya que transforma las variables originales en nuevas combinaciones lineales denominadas componentes principales \cite{jolliffe2002}. Estos componentes se obtienen mediante la descomposición en valores singulares de la matriz de covarianza de los datos, generando una base ortogonal donde las nuevas variables son ordenadas según la varianza explicada. Dado un conjunto de características \( X \), se busca una transformación lineal \( W \) tal que:
 
 \[
     Z = WX
@@ -131,9 +131,16 @@ El análisis de componentes principales constituye una técnica ampliamente util
 
 \subsection{Método de envoltura}
 
-Para la selección de características mediante envoltura se empleará el método de Eliminación Recursiva de Características con Máquinas de Vectores de Soporte (RFE-SVM), propuesto por Guyon y Elisseeff \cite{guyon2003introduction}. Este enfoque itera sobre el conjunto de variables eliminando progresivamente aquellas con menor impacto en la función de decisión de un clasificador SVM. La relevancia de cada variable se evalúa en función de la magnitud de los coeficientes del hiperplano separador, entrenando en cada iteración un nuevo modelo tras descartar la característica menos significativa.
+Para la selección de características mediante envoltura se empleará el método de Eliminación Recursiva de Características con Máquinas de Vectores de Soporte (RFE-SVM), propuesto por Guyon y Elisseeff \cite{guyon2003}.  Este enfoque combina la capacidad de las SVM para construir hiperplanos de separación óptimos con un proceso iterativo de eliminación de variables basado en su relevancia.
 
-En este caso particular, seleccionaremos para la eliminación de características unn kernel polinomial, con el objetivo de capturar las relaciones no lineales presentes en el conjunto de datos.
+El RFE-SVM se basa en la idea de que las variables más relevantes son aquellas que contribuyen significativamente a la construcción del hiperplano de separación en un SVM. Para un problema de clasificación binaria, el hiperplano se define como:
+
+\[
+    f(\mathbf{x}) = \mathbf{w} \cdot \mathbf{x} + b
+\]
+
+\noindent
+donde \( \mathbf{w} \) es el vector de pesos asociado a cada variable y \(b\) es el término de sesgo de la ecuación. La magnitud de cada peso \(|w_i|\) indica la importancia de la variable \(X_i\) en la función de decisión.
 
 
 \newpage
