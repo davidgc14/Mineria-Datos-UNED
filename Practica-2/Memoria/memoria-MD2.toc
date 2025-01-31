@@ -8,6 +8,6 @@
 \contentsline {subsection}{\numberline {2.2}PCA}{4}{}%
 \contentsline {subsection}{\numberline {2.3}Método de envoltura}{5}{}%
 \contentsline {section}{\numberline {3}Justificación de técnicas seleccionadas}{6}{}%
-\contentsline {section}{\numberline {4}Resultados}{8}{}%
-\contentsline {section}{\numberline {5}Conclusiones}{9}{}%
-\contentsline {section}{Referencias}{10}{}%
+\contentsline {section}{\numberline {4}Resultados}{7}{}%
+\contentsline {section}{\numberline {5}Conclusiones}{8}{}%
+\contentsline {section}{Referencias}{9}{}%

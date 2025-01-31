@@ -1,15 +1,15 @@
 # Fdb version 4
-["bibtex memoria-MD2"] 0 "memoria-MD2.aux" "memoria-MD2.bbl" "memoria-MD2" 1738326789.65864 -1
+["bibtex memoria-MD2"] 1738326971.69405 "memoria-MD2.aux" "memoria-MD2.bbl" "memoria-MD2" 1738326972.27377 0
   "./library.bib" 1738321394.09468 4154 fd61e2978c1d1bce90f2ed40810f9d55 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "memoria-MD2.aux" 1738326789.55165 1977 26c1f42c13fbffe1bcd92743892c7bb3 "pdflatex"
+  "memoria-MD2.aux" 1738326972.16875 1976 170c2b73439b4d9610d24307eb2ad170 "pdflatex"
   (generated)
   "memoria-MD2.bbl"
   "memoria-MD2.blg"
   (rewritten before read)
-["pdflatex"] 1738326789.06334 "/home/david/Documents/Master/MineriaDatos/Practica-2/Memoria/memoria-MD2.tex" "memoria-MD2.pdf" "memoria-MD2" 1738326789.65886 0
+["pdflatex"] 1738326971.71804 "/home/david/Documents/Master/MineriaDatos/Practica-2/Memoria/memoria-MD2.tex" "memoria-MD2.pdf" "memoria-MD2" 1738326972.27396 0
   "/etc/texmf/web2c/texmf.cnf" 1730049747.72736 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/david/Documents/Master/MineriaDatos/Practica-2/Memoria/memoria-MD2.tex" 1738326788.73065 14431 69c42dc36442dca91603d1eb9f8281c9 ""
+  "/home/david/Documents/Master/MineriaDatos/Practica-2/Memoria/memoria-MD2.tex" 1738326970.78778 14394 ecc7d7e99c72bb9296446148e32e6382 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -146,10 +146,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1730050020.65447 128028 f533b797fba58d231669ea19e894e23e ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1730142013 6822836 85cebf1abe9f452230372d2d34b760f6 ""
-  "memoria-MD2.aux" 1738326789.55165 1977 26c1f42c13fbffe1bcd92743892c7bb3 "pdflatex"
-  "memoria-MD2.bbl" 1738325498.39141 1462 bd4cf55cb92fa071996dc530577fc8a6 "bibtex memoria-MD2"
-  "memoria-MD2.tex" 1738326788.73065 14431 69c42dc36442dca91603d1eb9f8281c9 ""
-  "memoria-MD2.toc" 1738326789.55265 862 31d72e56b0387f3261f326ef0501fe79 "pdflatex"
+  "memoria-MD2.aux" 1738326972.16875 1976 170c2b73439b4d9610d24307eb2ad170 "pdflatex"
+  "memoria-MD2.bbl" 1738326971.71276 1462 bd4cf55cb92fa071996dc530577fc8a6 "bibtex memoria-MD2"
+  "memoria-MD2.tex" 1738326970.78778 14394 ecc7d7e99c72bb9296446148e32e6382 ""
+  "memoria-MD2.toc" 1738326972.17075 861 584c250759c907c56f7eff88b51a5191 "pdflatex"
   (generated)
   "memoria-MD2.aux"
   "memoria-MD2.log"
