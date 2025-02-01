@@ -175,6 +175,55 @@ Por útlimo, la eliminación recursiva de características acoplada a un algorit
 \newpage
 \section{Resultados}
 
+\subsection{Métodos univariados}
+
+Para calcular la información mutua entre cada variable predictora y la variable objetivo \( Y \), se ha utilizado la función \texttt{mutual\_info\_classif} de la librería scikit-learn, con el hiperparámetro \texttt{n\_neighbors=3}\footnote{Se trata de un estimador de la información mutua basado en el algoritmo k-NN.}. Éste ha sido dejado en su valor por defecto, ya que un uso bajo de vecinos para muestras de tamaño moderado se ha estudiado que consigue un buen equilibrio entre sesgo y varianza en la estimación, volviéndolo óptimo para nuestro caso \cite{kraskov2004}.
+
+% hacer una tabla horizontal de mutual information de tamano 2 x 5
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        \textbf{Variable}    & \textbf{X4}         & \textbf{X2}         & \textbf{X3}         & \textbf{X1}         & \textbf{X5}         \\
+        \hline
+        \textbf{MI with $Y$} & \(6 \cdot 10^{-3}\) & \(7 \cdot 10^{-4}\) & \(1 \cdot 10^{-4}\) & \(7 \cdot 10^{-5}\) & \(4 \cdot 10^{-5}\) \\
+        \hline
+    \end{tabular}
+    % \caption{Información mutua entre cada variable predictora y la variable objetivo}
+    \label{tab:mutual_information}
+\end{table}
+
+Podemos observar en la tabla anterior que los valores obtenidos por este algoritmo son muy bajos, lo que relfleja la limitación de los métodos univariados para capturar relaciones no lineales. Además, junto con el hecho de que las diferencias entre variables no son significativas, vuelve difícil la decisión de un valor frontera para catalogar la relevancia de cada una de las variables.
+
+
+Continuando con el test de \(\chi^2\), se ha obtenido la función \texttt{chi2} de la librería scikit-learn para su cálculo. La siguiente tabla muestra las puntuaciones y sus respectivos p-valores obtenidos:
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        \textbf{Variable}         & \textbf{X4} & \textbf{X2} & \textbf{X3} & \textbf{X1} & \textbf{X5} \\
+        \hline
+        \textbf{\(\chi^2\) Score} & 0.62        & 0.08        & 0.012       & 0.006       & 0.003       \\
+        \hline
+        \textbf{p-Value}          & 0.43        & 0.78        & 0.91        & 0.94        & 0.96        \\
+        \hline
+    \end{tabular}
+    \label{tab:chi2}
+\end{table}
+
+Vemos cómo todos los valores del estadístico son bastante bajos, lo que nos indica que ninguna variable presenta desviaciones significativas respecto a la hipótesis de independencia, lo cual se corrobora con los valores tan altos de $p$-valor. Por tanto, se observa que para nuestro caso este método no es válido para la resolución del problema de selección de características.
+
+
+\subsection{Métodos multivariados}
+
+
+
+
+
+
+
 
 \newpage
 \section{Conclusiones}
