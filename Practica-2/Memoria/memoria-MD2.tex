@@ -90,10 +90,10 @@ Los métodos de filtrado evalúan la relevancia de las características de maner
 
 \subsubsection{Información mutua}
 
-Uno de los enfoques más comunes dentro de este grupo es la selección basada en la información mutua, donde se mide la dependencia estadística entre cada variable predictora y la variable objetivo. Este método, basado en la teoría de la información de Shannon \cite{shannon1948}\footnote{A pesar de ser propuesto por Shannon en su artículo de 1948, no se popularizó para el problema de selección de características hasta muchos años después, con el artículo de R.Battiti \cite{battiti1994}.}, cuantifica cuánta información sobre \( Y \) se obtiene al observar \( X_i \). Formalmente, la información mutua entre dos variables aleatorias \( X_i \) e \( Y \) se define como:
+Uno de los enfoques más comunes dentro de este grupo es la selección basada en la información mutua (MI por sus siglas en inglés), donde se mide la dependencia estadística entre cada variable predictora y la variable objetivo. Este método, basado en la teoría de la información de Shannon \cite{shannon1948}\footnote{A pesar de ser propuesto por Shannon en su artículo de 1948, no se popularizó para el problema de selección de características hasta muchos años después, con el artículo de R.Battiti \cite{battiti1994}.}, cuantifica cuánta información sobre \( Y \) se obtiene al observar \( X_i \). Formalmente, la información mutua entre dos variables aleatorias \( X_i \) e \( Y \) se define como:
 
 \[
-    I(X_i, Y) = \sum_{x \in X_i} \sum_{y \in Y} p(x,y) \log \frac{p(x,y)}{p(x)p(y)}
+    I(X_i, Y) = \sum_{x \in X_i} \sum_{y \in Y} p(x,y) \log \left( \frac{p(x,y)}{p(x)p(y)} \right)
 \]
 
 \noindent donde \( p(x,y) \) representa la distribución conjunta de \( X_i \) e \( Y \), y donde \( p(x) \) y \( p(y) \) son las distribuciones marginales. Un valor alto de información mutua indica que el conocimiento de \( X_i \) reduce significativamente la incertidumbre sobre \( Y \), sugiriendo su utilidad en la clasificación.
@@ -108,16 +108,29 @@ Otro método dentro de los filtros es el test de independencia de \(\chi^2\), em
 
 \noindent donde \( O_{ij} \) y \( E_{ij} \) representan, respectivamente, la frecuencia observada y la esperada para la combinación de valores \( i, j \). Un valor alto de este estadístico sugiere que la variable en cuestión está fuertemente asociada con la clase.
 
-\subsubsection{Relief}
+% \subsubsection{Relief}
 
-El tercer método de filtrado a emplear es Relief, un algoritmo basado en la evaluación de la capacidad discriminativa de cada variable en relación con las instancias más cercanas en el espacio de características. Desarrollado por \cite{kira1992} y extendido en \cite{kononenko1994}, Relief asigna un peso a cada variable en función de su capacidad para diferenciar correctamente ejemplos de diferentes clases, ajustándolo iterativamente a partir de comparaciones con los vecinos más próximos de la misma clase (``near-hit") y de clases opuestas (``near-miss"). Para cada instancia \(x_k\), el peso de una variable \( X_i \) se actualiza en cada iteración con la siguiente formula:
+% El tercer método de filtrado a emplear es Relief, un algoritmo basado en la evaluación de la capacidad discriminativa de cada variable en relación con las instancias más cercanas en el espacio de características. Desarrollado por \cite{kira1992} y extendido en \cite{kononenko1994}, Relief asigna un peso a cada variable en función de su capacidad para diferenciar correctamente ejemplos de diferentes clases, ajustándolo iterativamente a partir de comparaciones con los vecinos más próximos de la misma clase (``near-hit") y de clases opuestas (``near-miss"). Para cada instancia \(x_k\), el peso de una variable \( X_i \) se actualiza en cada iteración con la siguiente formula:
+
+% \[
+%     W[i] = W[i] + \frac{1}{m} \left( \frac{|x_{k,i} - x_{m,i}|}{\max(X_i) - \min(X_i)} - \frac{|x_{k,i} - x_{h,i}|}{\max(X_i) - \min(X_i)} \right),
+% \]
+
+% \noindent
+% donde \( x_{m,i} \) y \( x_{h,i} \) representan las instancias más cercanas de la misma clase y de clases opuestas, respectivamente. Este método resulta especialmente útil en problemas donde las interacciones entre características juegan un papel clave, ya que captura dependencias locales entre variables.
+
+\subsubsection{ReliefF}
+
+El tercer método de filtrado a emplear es ReliefF, una variante del algoritmo Relief que mejora la robustez ante el ruido. Desarrollado por \cite{kononenko1996} como extensión del algoritmo original presentado en \cite{kira1992}, ReliefF asigna un peso a cada variable en función de su capacidad para diferenciar correctamente ejemplos de ambas clases, ajustándolo iterativamente mediante la comparación de la instancia actual con múltiples vecinos: aquellos pertenecientes a la misma clase (``near-hit") y aquellos de la clase opuesta (``near-miss").
+
+Para cada instancia \(x_k\) en un conjunto de $m$ instancias, considerando los $n$ vecinos de dicha instancia, el peso de una variable \(X_i\) se actualiza en cada iteración con la siguiente fórmula:
 
 \[
-    W[i] = W[i] + \frac{1}{m} \left( \frac{|x_{k,i} - x_{m,i}|}{\max(X_i) - \min(X_i)} - \frac{|x_{k,i} - x_{h,i}|}{\max(X_i) - \min(X_i)} \right),
+    W[i] = W[i] + \frac{1}{m \cdot k} \left( \sum_{j=1}^{n} \frac{|x_{k,i} - x_{j,i}^{(miss)}|}{\max(X_i) - \min(X_i)} -  \sum_{j=1}^{n} \frac{|x_{k,i} - x_{j,i}^{(hit)}|}{\max(X_i) - \min(X_i)} \right)
 \]
 
 \noindent
-donde \( x_{m,i} \) y \( x_{h,i} \) representan las instancias más cercanas de la misma clase y de clases opuestas, respectivamente. Este método resulta especialmente útil en problemas donde las interacciones entre características juegan un papel clave, ya que captura dependencias locales entre variables.
+donde \(x_{j,i}^{(hit)}\) denota el \(j\)-ésimo vecino más cercano de la misma clase que \(x_k\) y \(x_{j,i}^{(miss)}\) representa el \(j\)-ésimo vecino más cercano de la clase opuesta a \(x_k\). Este método resulta especialmente útil en problemas donde las interacciones entre características y la presencia de ruido pueden afectar la capacidad discriminativa de las variables, ya que es capaz de capturar las posibles dependencias locales entre las mismas.
 
 \subsection{PCA}
 
