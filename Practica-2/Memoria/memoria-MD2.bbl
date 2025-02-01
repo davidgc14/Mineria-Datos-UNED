@@ -25,10 +25,15 @@ Ron Kohavi and George~H John.
 \newblock Wrappers for feature subset selection.
 \newblock {\em Artificial intelligence}, 97(1-2):273--324, 1997.
 
-\bibitem{kononenko1994}
-Igor Kononenko.
-\newblock Estimating attributes: Analysis and extensions of relief.
-\newblock In {\em European Conference on Machine Learning}, pages 171--182, 1994.
+\bibitem{kononenko1996}
+Igor Kononenko, Marko Robnik-Sikonja, and Uros Pompe.
+\newblock {\em ReliefF for estimation and discretization of attributes in classification, regression, and ILP problems}, volume~35.
+\newblock Citeseer, 1996.
+
+\bibitem{kraskov2004}
+Alexander Kraskov, Harald St{\"o}gbauer, and Peter Grassberger.
+\newblock Estimating mutual information.
+\newblock {\em Physical Review E—Statistical, Nonlinear, and Soft Matter Physics}, 69(6):066138, 2004.
 
 \bibitem{liu2011}
 Huan Liu and Hiroshi Motoda.
