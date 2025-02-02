@@ -234,11 +234,29 @@ Para el caso de ReliefF, se ha utilizado la implementación \texttt{ReliefF} del
 
 Vemos como en este caso, donde los valores de este método oscilan entre $-1$ y 1, hemos obtenido valores con un rango mejor ajustado y más significativo que en los dos casos anteriores. Obtenemos en este caso una variable con un alto impacto en la determinación de la variable objetivo, dos con impacto leve, una irrelevante y otra que produce un impacto negativo en la categorización de la variable objetivo.
 
-Continuando con \texttt{PCA} de la librería \texttt{scikit-learn}, se han considerado los parámetros
+Continuando con \texttt{PCA} de la librería \texttt{scikit-learn}, se han considerado los siguientes parametros: \texttt{n\_components=5} (para conservar las 5 variables y estudiar su varianza) y \texttt{svd\_solver="full"} (para realizar la descomposición completa de la matriz de covarianza\footnote{Se utiliza una descomposición completa para no perder precisión en el cálculo, al ser un dataset de tamaño pequeño. Así se recomienda en la propia documentación de la librería \cite{scikitlearnDoc}.}).
 
+\begin{wrapfigure}{r}{0.5\textwidth} % 'r' para la derecha, el ancho de la figura
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/loadings.png}
+    \caption{Loadings de cada variable en cada componente principal.}
+\end{wrapfigure}
 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        \textbf{Variable}       & \textbf{X1} & \textbf{X2} & \textbf{X3} & \textbf{X4} & \textbf{X5} \\
+        \hline
+        \textbf{Expl. Variance} & 0.27        & 0.21        & 0.19        & 0.18        & 0.14        \\
+        \hline
+    \end{tabular}
+    \label{tab:pca}
+\end{table}
 
+Se observa cómo la varianza explicada de la variable X1 es ligeramente superior al resto, al igual que se observa cómo la de X5 es ligeramente menor. Se puede ver de igual manera en la Figura 1 su relación con cada una de las componentes principales, donde se observa una mayor relevancia de las primeras variables. Sin embargo, al tratarse de un método no supervisado, esto no implica necesariamente una mayor relevancia con la variable objetivo y por tanto con su categorización.
 
+Por último,
 
 \newpage
 \section{Conclusiones}

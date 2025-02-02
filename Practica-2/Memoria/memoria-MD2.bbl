@@ -40,6 +40,10 @@ Huan Liu and Hiroshi Motoda.
 \newblock {\em Feature selection for knowledge discovery and data mining}.
 \newblock Springer Science \& Business Media, 2012.
 
+\bibitem{scikitlearnDoc}
+Fabian Pedregosa, Gael Varoquaux, Alexandre Gramfort, and Vincent Michel.
+\newblock {D}ocumentation scikit-learn: machine learning in {P}ython.
+
 \bibitem{shannon1948}
 Claude~E Shannon.
 \newblock A mathematical theory of communication.
