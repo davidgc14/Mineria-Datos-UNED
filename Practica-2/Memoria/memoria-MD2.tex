@@ -100,7 +100,7 @@ Uno de los enfoques más comunes dentro de este grupo es la selección basada en
 
 \subsubsection{Test de independencia \(\chi^2\)}
 
-Otro método dentro de los filtros es el test de independencia de \(\chi^2\), empleado para evaluar si una variable predictora y la variable objetivo son independientes \cite{liu2011}. Se basa en la comparación entre las frecuencias observadas y las frecuencias esperadas bajo la hipótesis de independencia, calculando el estadístico:
+Otro método dentro de los filtros es el test de independencia de \(\chi^2\), empleado para evaluar si una variable predictora y la variable objetivo son independientes \cite{liu2012}. Se basa en la comparación entre las frecuencias observadas y las frecuencias esperadas bajo la hipótesis de independencia, calculando el estadístico:
 
 \[
     \chi^2 = \sum_{i} \sum_{j} \frac{(O_{ij} - E_{ij})^2}{E_{ij}}
@@ -177,7 +177,7 @@ Por útlimo, la eliminación recursiva de características acoplada a un algorit
 
 \subsection{Métodos univariados}
 
-Para calcular la información mutua entre cada variable predictora y la variable objetivo \( Y \), se ha utilizado la función \texttt{mutual\_info\_classif} de la librería scikit-learn, con el hiperparámetro \texttt{n\_neighbors=3}\footnote{Se trata de un estimador de la información mutua basado en el algoritmo k-NN.}. Éste ha sido dejado en su valor por defecto, ya que un uso bajo de vecinos para muestras de tamaño moderado se ha estudiado que consigue un buen equilibrio entre sesgo y varianza en la estimación, volviéndolo óptimo para nuestro caso \cite{kraskov2004}.
+Para calcular la información mutua entre cada variable predictora y la variable objetivo \( Y \), se ha utilizado la función \texttt{mutual\_info\_classif} de la librería \texttt{scikit-learn}, con el hiperparámetro \texttt{n\_neighbors=3}\footnote{Se trata de un estimador de la información mutua basado en el algoritmo k-NN.}. Éste ha sido dejado en su valor por defecto, ya que un uso bajo de vecinos para muestras de tamaño moderado se ha estudiado que consigue un buen equilibrio entre sesgo y varianza en la estimación, volviéndolo óptimo para nuestro caso \cite{kraskov2004}.
 
 % hacer una tabla horizontal de mutual information de tamano 2 x 5
 
@@ -197,7 +197,7 @@ Para calcular la información mutua entre cada variable predictora y la variable
 Podemos observar en la tabla anterior que los valores obtenidos por este algoritmo son muy bajos, lo que relfleja la limitación de los métodos univariados para capturar relaciones no lineales. Además, junto con el hecho de que las diferencias entre variables no son significativas, vuelve difícil la decisión de un valor frontera para catalogar la relevancia de cada una de las variables.
 
 
-Continuando con el test de \(\chi^2\), se ha obtenido la función \texttt{chi2} de la librería scikit-learn para su cálculo. La siguiente tabla muestra las puntuaciones y sus respectivos p-valores obtenidos:
+Continuando con el test de \(\chi^2\), se ha obtenido la función \texttt{chi2} de la librería \texttt{scikit-learn} para su cálculo. La siguiente tabla muestra las puntuaciones y sus respectivos p-valores obtenidos:
 
 \begin{table}[h]
     \centering
@@ -218,8 +218,23 @@ Vemos cómo todos los valores del estadístico son bastante bajos, lo que nos in
 
 \subsection{Métodos multivariados}
 
+Para el caso de ReliefF, se ha utilizado la implementación \texttt{ReliefF} del paquete \texttt{skrebate}. Se ha tomado como número de vecinos $k=10$, con la intención de evitar sesgos en la estimación de relevancia\footnote{Siguiendo las recomendaciones citadas en \cite{liu2012,urbanowicz2018}.}.
 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        \textbf{Variable} & \textbf{X1} & \textbf{X4} & \textbf{X3} & \textbf{X2} & \textbf{X5} \\
+        \hline
+        \textbf{ReliefF}  & 0.688       & 0.306       & 0.123       & 0.085       & -0.217      \\
+        \hline
+    \end{tabular}
+    \label{tab:relief}
+\end{table}
 
+Vemos como en este caso, donde los valores de este método oscilan entre $-1$ y 1, hemos obtenido valores con un rango mejor ajustado y más significativo que en los dos casos anteriores. Obtenemos en este caso una variable con un alto impacto en la determinación de la variable objetivo, dos con impacto leve, una irrelevante y otra que produce un impacto negativo en la categorización de la variable objetivo.
+
+Continuando con \texttt{PCA} de la librería \texttt{scikit-learn}, se han considerado los parámetros
 
 
 

@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{battiti1994}
 Roberto Battiti.
@@ -35,14 +35,19 @@ Alexander Kraskov, Harald St{\"o}gbauer, and Peter Grassberger.
 \newblock Estimating mutual information.
 \newblock {\em Physical Review E—Statistical, Nonlinear, and Soft Matter Physics}, 69(6):066138, 2004.
 
-\bibitem{liu2011}
+\bibitem{liu2012}
 Huan Liu and Hiroshi Motoda.
 \newblock {\em Feature selection for knowledge discovery and data mining}.
-\newblock Springer Science \& Business Media, 2011.
+\newblock Springer Science \& Business Media, 2012.
 
 \bibitem{shannon1948}
 Claude~E Shannon.
 \newblock A mathematical theory of communication.
 \newblock {\em Bell System Technical Journal}, 27(3):379--423, 1948.
+
+\bibitem{urbanowicz2018}
+Ryan~J Urbanowicz, Melissa Meeker, William La~Cava, Randal~S Olson, and Jason~H Moore.
+\newblock Relief-based feature selection: Introduction and review.
+\newblock {\em Journal of biomedical informatics}, 85:189--203, 2018.
 
 \end{thebibliography}
