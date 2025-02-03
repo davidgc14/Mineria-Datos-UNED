@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.28)  2 FEB 2025 16:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.28)  3 FEB 2025 12:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -448,7 +448,7 @@ Overfull \hbox (19.50119pt too wide) in paragraph at lines 253--254
  [][] 
  []
 
-[8 <./images/loadings.png>] [9] [10] (./memoria-MD2.bbl) [11] (./memoria-MD2.aux
+[8 <./images/loadings.png>] [9] [10] [11] (./memoria-MD2.bbl) [12] (./memoria-MD2.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 )
@@ -458,18 +458,18 @@ L3 programming layer <2024-01-22>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 15899 strings out of 476120
- 309995 string characters out of 5793656
+ 15901 strings out of 476120
+ 310022 string characters out of 5793656
  1935975 words of memory out of 5000000
- 37659 multiletter control sequences out of 15000+600000
+ 37661 multiletter control sequences out of 15000+600000
  568601 words of font info for 76 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 83i,10n,93p,1001b,365s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 83i,10n,93p,1278b,365s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on memoria-MD2.pdf (12 pages, 215141 bytes).
+Output written on memoria-MD2.pdf (13 pages, 219890 bytes).
 PDF statistics:
- 119 PDF objects out of 1000 (max. 8388607)
- 74 compressed objects within 1 object stream
+ 123 PDF objects out of 1000 (max. 8388607)
+ 77 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
