@@ -153,42 +153,40 @@ donde \( \mathbf{w} \) es el vector de pesos asociado a cada variable y \(b\) es
 \newpage
 \section{Justificación de técnicas seleccionadas} \label{sec:justificacion}
 
-La elección de las técnicas de selección de características aplicadas a nuestro caso de uso se fundamenta en las propiedades intrínsecas del conjunto de datos generado y en las definiciones teóricas de relevancia establecidas en \cite{kohavi1997, guyon2003}. Dentro de las técnicas univariadas, el método de información mutua ha sido elegida por su capacidad de capturar dependencias estadísticas no lineales entre cada variable predictora y la variable objetivo, permitiendo que identifique patrones en las distribución conjuntas. En particular, se espera que este método detecte la relevancia fuerte de \( X_1 \), cuya exclusión alteraría la distribución de \( Y \), así como la redundancia parcial de \( X_4 \), derivada de su dependencia determinista de \( X_2 \) y \( X_3 \).
+La elección de las técnicas de selección de características aplicadas a nuestro caso de uso se fundamenta en las propiedades intrínsecas del conjunto de datos generado y en las definiciones teóricas de relevancia establecidas en \cite{kohavi1997, guyon2003}. Dentro de las técnicas univariadas, el método de información mutua ha sido elegido por su capacidad teórica de capturar dependencias estadísticas no lineales entre cada variable predictora y la variable objetivo, permitiendo la identificación de patrones en la distribución conjunta. Sin embargo, debido a que la propia definición de la variable objetivo contempla relaciones multivariadas, no se espera que este método sea capaz de identificar adecuadamente la relevancia de cada variable por separado.
 
-Por su parte, el test \(\chi^2\) al ser también un método univariado, su capacidad para detectar variables relevantes en sentido débil en nuestro caso de uso es limitada, ya que su contribución a \( Y \) solo se manifiesta en combinación con otras variables. Este método servirá como contraste para evaluar cómo las técnicas univariadas infravaloran las variables que requieren interacciones para ser informativas, destacando la necesidad de enfoques multivariados.
+De igual manera, el test \(\chi^2\) al ser también un método univariado, su capacidad para detectar variables relevantes en nuestro caso de uso es limitada, ya que su contribución a \( Y \) solo se manifiesta en combinación con otras variables. Este método también servirá como contraste para evaluar cómo las técnicas univariadas infravaloran las variables que requieren interacciones para ser informativas, destacando la necesidad de enfoques multivariados.
 
-Entrando en técnicas multivariadas, el algoritmo ReliefF se selecciona por su capacidad para evaluar la relevancia en función de su entorno en el espacio de características. En problemas como el que nos concierne, se espera que este algoritmo se comporte mejor que los métodos univariados, ya que pondera las características según su utilidad en contextos locales. En concreto,se espera que considere la redundancia entre \( X_2 \), \( X_3 \) y \( X_4 \), asignando pesos similares a estas variables y reflejando así su interdependencia.
+Entrando en las técnicas multivariadas, el algoritmo ReliefF se selecciona por su capacidad para evaluar la relevancia en función de su entorno en el espacio de características. En problemas como el que nos concierne, se espera que este algoritmo se comporte mejor que los métodos univariados, ya que pondera las características según su utilidad en contextos locales. En concreto, se espera que considere la redundancia entre \( X_2 \), \( X_3 \) y \( X_4 \), asignando pesos similares a estas variables y reflejando así su interdependencia.
 
-El análisis de componentes principales se incluye como técnica de referencia para contrastar su desempeño en un problema donde la relevancia de las variables está ligada a interacciones no lineales. PCA, al ser un método no supervisado y lineal, prioriza la varianza explicada en los datos, lo que puede no correlacionarse con la relevancia para la clasificación. En este caso, se espera que PCA asigne importancia a \( X_4 \), ya que su dependencia determinista de \( X_2 \) y \( X_3 \) introduce varianza estructurada. Sin embargo, no se espera lo mismo de \( X_1 \), cuya varianza individual es idéntica a la de \( X_5 \). % Esta limitación subraya la insuficiencia de los métodos no supervisados en problemas donde la relevancia está definida por relaciones condicionales con la clase.
+El análisis de componentes principales se incluye como técnica de referencia para contrastar su desempeño en un problema donde la relevancia de las variables está ligada a interacciones no lineales. PCA, al ser un método no supervisado y lineal, centra su estudio en la varianza explicada de los datos, lo que puede no correlacionarse con la relevancia para la clasificación. En este caso, debido a que la única relación (que además es no lineal) entre las variables es la de \( X_4 \) con \( X_2 \) y \( X_3 \), se espera que PCA asigne una varianza con ponderación similar entre las 5 variables predictoras.
 
-Por útlimo, la eliminación recursiva de características acoplada a un algoritmo SVM proporciona una evaluación de la relevancia en función de la contribución de cada variable a un modelo predictivo. Al emplear RFE con SVM lineal (como se sugiere en \cite{guyon2003}), se fuerza al modelo a operar en un espacio donde las variables deben ser relevantes de forma individual o lineal. Esto genera un escenario ideal para evaluar cómo los métodos de envoltura pueden fallar ante relaciones no lineales si el modelo base no está adaptado, contrastando con los resultados de técnicas como ReliefF.
+% Por útlimo, la eliminación recursiva de características acoplada a un algoritmo SVM proporciona una evaluación de la relevancia en función de la contribución de cada variable a un modelo predictivo. Al emplear RFE con SVM lineal (como se sugiere en \cite{guyon2003}), se fuerza al modelo a operar en un espacio donde las variables deben ser relevantes de forma individual o lineal. Esto genera un escenario ideal para evaluar cómo los métodos de envoltura pueden fallar ante relaciones no lineales si el modelo base no está adaptado, contrastando con los resultados de técnicas como ReliefF.
 
-% Las técnicas seleccionadas abarcan tres paradigmas complementarios: filtros univariados (\(\chi^2\), información mutua) que permiten detectar relevancia fuerte (\( X_1 \)) y redundancia (\( X_4 \)) pero son ciegos a interacciones; filtros multivariados (Relief) que capturan relevancia débil ligada a contextos locales (\( X_2, X_3 \)); envoltorios (RFE-SVM) que evalúan la relevancia en función de un modelo, exponiendo la necesidad de alinear la complejidad del modelo con la naturaleza del problema; y PCA, que sirve como referencia para demostrar que la varianza no siempre coincide con la relevancia predictiva. Esta diversidad metodológica permite analizar cómo cada técnica interpreta la relevancia en un problema con dependencias no lineales, redundancia y ruido, cumpliendo con el objetivo de contrastar definiciones teóricas \cite{kohavi1997} con mecanismos de estimación prácticos \cite{guyon2003}.
-
+Por último, la eliminación recursiva de características acoplada a un algoritmo SVM proporciona una evaluación de la relevancia en función de la contribución de cada variable a un modelo predictivo. Para ello, se seleccionan iterativamente las variables que más influyen en la separación de clases, lo que puede resultar beneficioso en la eliminación de características con menor relevancia. Aunque la naturaleza no lineal del problema podría suponer una limitación para un modelo lineal, el proceso iterativo de RFE se espera que proporcione una jerarquización útil de las características.
 
 \newpage
 \section{Resultados}
 
 \subsection{Métodos univariados}
 
-Para calcular la información mutua entre cada variable predictora y la variable objetivo \( Y \), se ha utilizado la función \texttt{mutual\_info\_classif} de la librería \texttt{scikit-learn}, con el hiperparámetro \texttt{n\_neighbors=3}\footnote{Se trata de un estimador de la información mutua basado en el algoritmo k-NN.}. Éste ha sido dejado en su valor por defecto, ya que un uso bajo de vecinos para muestras de tamaño moderado se ha estudiado que consigue un buen equilibrio entre sesgo y varianza en la estimación, volviéndolo óptimo para nuestro caso \cite{kraskov2004}.
+Para calcular la información mutua entre cada variable predictora y la variable objetivo \( Y \), se ha utilizado la función \texttt{mutual\_info\_classif}\footnote{Se trata de un estimador de la información mutua basado en el algoritmo k-NN.} de la librería \texttt{scikit-learn}, con el hiperparámetro \texttt{n\_neighbors=3}. Éste ha sido dejado en su valor por defecto, ya que un uso bajo de vecinos para muestras de tamaño pequeño se ha estudiado en \cite{kraskov2004} que consigue un buen equilibrio entre sesgo y varianza en la estimación, ajustándose a las características de nuestro problema.
 
-% hacer una tabla horizontal de mutual information de tamano 2 x 5
 
 \begin{table}[h]
     \centering
     \begin{tabular}{|c|c|c|c|c|c|}
         \hline
-        \textbf{Variable}    & \textbf{X4}         & \textbf{X2}         & \textbf{X3}         & \textbf{X1}         & \textbf{X5}         \\
+        \textbf{Variable}            & \textbf{X4}         & \textbf{X2}         & \textbf{X3}         & \textbf{X1}         & \textbf{X5}         \\
         \hline
-        \textbf{MI with $Y$} & \(6 \cdot 10^{-3}\) & \(7 \cdot 10^{-4}\) & \(1 \cdot 10^{-4}\) & \(7 \cdot 10^{-5}\) & \(4 \cdot 10^{-5}\) \\
+        \textbf{Info. mutua con $Y$} & \(6 \cdot 10^{-3}\) & \(7 \cdot 10^{-4}\) & \(1 \cdot 10^{-4}\) & \(7 \cdot 10^{-5}\) & \(4 \cdot 10^{-5}\) \\
         \hline
     \end{tabular}
     % \caption{Información mutua entre cada variable predictora y la variable objetivo}
     \label{tab:mutual_information}
 \end{table}
 
-Podemos observar en la tabla anterior que los valores obtenidos por este algoritmo son muy bajos, lo que relfleja la limitación de los métodos univariados para capturar relaciones no lineales. Además, junto con el hecho de que las diferencias entre variables no son significativas, vuelve difícil la decisión de un valor frontera para catalogar la relevancia de cada una de las variables.
+Podemos observar en la tabla anterior que los valores obtenidos por este algoritmo son muy próximos a 0, indicando que no existe contribución significativa por parte de las variables predictoras a la variable objetivo. %Según este método, no hay ninguna variable relevante para la resolución del problema de clasificación, haciendo ver la limitación que tienen este tipo de métodos a la hora de capturar relaciones complejas entre variables.
 
 
 Continuando con el test de \(\chi^2\), se ha obtenido la función \texttt{chi2} de la librería \texttt{scikit-learn} para su cálculo. La siguiente tabla muestra las puntuaciones y sus respectivos p-valores obtenidos:
@@ -197,17 +195,17 @@ Continuando con el test de \(\chi^2\), se ha obtenido la función \texttt{chi2} 
     \centering
     \begin{tabular}{|c|c|c|c|c|c|}
         \hline
-        \textbf{Variable}         & \textbf{X4} & \textbf{X2} & \textbf{X3} & \textbf{X1} & \textbf{X5} \\
+        \textbf{Variable}   & \textbf{X4} & \textbf{X2} & \textbf{X3} & \textbf{X1} & \textbf{X5} \\
         \hline
-        \textbf{\(\chi^2\) Score} & 0.62        & 0.08        & 0.012       & 0.006       & 0.003       \\
+        \textbf{\(\chi^2\)} & 0.62        & 0.08        & 0.012       & 0.006       & 0.003       \\
         \hline
-        \textbf{p-Value}          & 0.43        & 0.78        & 0.91        & 0.94        & 0.96        \\
+        \textbf{p-Valor}    & 0.43        & 0.78        & 0.91        & 0.94        & 0.96        \\
         \hline
     \end{tabular}
     \label{tab:chi2}
 \end{table}
 
-Vemos cómo todos los valores del estadístico son bastante bajos, lo que nos indica que ninguna variable presenta desviaciones significativas respecto a la hipótesis de independencia, lo cual se corrobora con los valores tan altos de $p$-valor. % Por tanto, se observa que para nuestro caso este método no es válido para la resolución del problema de selección de características.
+Vemos cómo todos los valores del estadístico son bastante bajos en general\footnote{La única variable que destaca sobre el resto es la variable \(X_4\) y aun así con un p-valor demasiado alto como para asumir dependencia con la variable objetivo.}, lo que nos indica que ninguna variable presenta desviaciones significativas respecto a la hipótesis de independencia, lo cual se corrobora con los valores tan altos de $p$-valor. % Por tanto, se observa que para nuestro caso este método no es válido para la resolución del problema de selección de características.
 
 
 \subsection{Métodos multivariados}
@@ -228,29 +226,29 @@ Para el caso de ReliefF, se ha utilizado la implementación \texttt{ReliefF} del
 
 Vemos como en este caso, donde los valores de este método oscilan entre $-1$ y 1, hemos obtenido valores con un rango mejor ajustado y más significativo que en los dos casos anteriores. Obtenemos en este caso una variable con un alto impacto en la determinación de la variable objetivo, dos con impacto leve, una irrelevante y otra que produce un impacto negativo en la categorización de la variable objetivo.
 
-Continuando con \texttt{PCA} de la librería \texttt{scikit-learn}, se han considerado los siguientes parametros: \texttt{n\_components=5} (para conservar las 5 variables y estudiar su varianza) y \texttt{svd\_solver="full"} (para realizar la descomposición completa de la matriz de covarianza\footnote{Se utiliza una descomposición completa para no perder precisión en el cálculo, al ser un dataset de tamaño pequeño. Así se recomienda en la propia documentación de la librería \cite{scikitlearnDoc}.}).
+\begin{wrapfigure}{r}{0.38\textwidth} % 'r' para la derecha, el ancho de la figura
+    \centering
+    \includegraphics[width=0.37\textwidth]{images/loadings.png}
+    \caption{\small{Loadings de cada variable en cada componente principal.}}
+\end{wrapfigure}
+
+Continuando con \texttt{PCA} de la librería \texttt{scikit-learn}, se han considerado los siguientes parametros: \texttt{n\_components=5} (para conservar las 5 variables y estudiar su varianza) y \texttt{svd\_solver="full"} (para realizar la descomposición completa de la matriz de covarianza\footnote{Se utiliza una descomposición completa para no perder precisión en el cálculo al tratarse de un dataset de tamaño pequeño. Así se recomienda en la propia documentación de la librería \cite{scikitlearnDoc}.}).
+
+Se observa cómo la varianza explicada de la variable \(X_1\) es ligeramente superior al resto, al igual que se observa cómo la de \(X_5\) es ligeramente menor. Se puede ver de igual manera en la Figura 1 su relación con cada una de las componentes principales, donde se observa una mayor relevancia de las primeras variables. %Sin embargo, al tratarse de un método no supervisado, esto no implica necesariamente una mayor relevancia con la variable objetivo y por tanto con su categorización.
 
 \begin{table}[h]
     \centering
     \begin{tabular}{|c|c|c|c|c|c|}
         \hline
-        \textbf{Variable}    & \textbf{X1} & \textbf{X2} & \textbf{X3} & \textbf{X4} & \textbf{X5} \\
+        \textbf{Variable}           & \textbf{X1} & \textbf{X2} & \textbf{X3} & \textbf{X4} & \textbf{X5} \\
         \hline
-        \textbf{E. Variance} & 0.27        & 0.21        & 0.19        & 0.18        & 0.14        \\
+        \textbf{Varianza explicada} & 0.27        & 0.21        & 0.19        & 0.18        & 0.14        \\
         \hline
     \end{tabular}
     \label{tab:pca}
 \end{table}
 
-\begin{wrapfigure}{r}{0.4\textwidth} % 'r' para la derecha, el ancho de la figura
-    \centering
-    \includegraphics[width=0.45\textwidth]{images/loadings.png}
-    \caption{Loadings de cada variable en cada componente principal.}
-\end{wrapfigure}
-
-Se observa cómo la varianza explicada de la variable X1 es ligeramente superior al resto, al igual que se observa cómo la de X5 es ligeramente menor. Se puede ver de igual manera en la Figura 1 su relación con cada una de las componentes principales, donde se observa una mayor relevancia de las primeras variables. Sin embargo, al tratarse de un método no supervisado, esto no implica necesariamente una mayor relevancia con la variable objetivo y por tanto con su categorización.
-
-Por último, para el método de RFE-SVM, se ha utilizado la implementación \texttt{RFE} de \texttt{scikit-learn} con un modelo base SVM de kernel lineal (\texttt{SVC(kernel=`linear')}). Los hiperparámetros seleccionados incluyen \texttt{n\_features\_to\_select=1} (para obtener un ranking completo) y \texttt{step=1} (eliminar una variable por iteración), siguiendo las recomendaciones de \cite{guyon2002} para garantizar un proceso conservador que minimice la pérdida prematura de variables relevantes.
+Para el método de RFE-SVM, se ha utilizado la implementación \texttt{RFE} de \texttt{scikit-learn} con un modelo base \texttt{SVC(kernel=`linear')}. Los hiperparámetros seleccionados incluyen \texttt{n\_features\_to\_select=1} (para obtener un ranking completo) y \texttt{step=1} (eliminar una variable por iteración), siguiendo las recomendaciones citadas en \cite{guyon2002} para garantizar un proceso conservador que minimice la pérdida prematura de variables relevantes.
 
 \begin{table}[h]
     \centering
@@ -264,26 +262,26 @@ Por último, para el método de RFE-SVM, se ha utilizado la implementación \tex
     \label{tab:rfe_svm }
 \end{table}
 
-Se puede observar cómo con este método, las variables que tienen información relevante o redundante son eliminadas las últimas, mientras que las que proporcionan ruido son eliminadas las primeras.
+Se puede observar cómo con este método, las variables que contienen mayor información son eliminadas las últimas, mientras que las que proporcionan ruido o menor relevancia son eliminadas las primeras.
 
 \newpage
 \section{Conclusiones}
 
-Los resultados obtenidos en este estudio sintético revelan patrones fundamentales sobre el comportamiento de las técnicas de selección de características en contextos con dependencias no lineales y redundancia estructurada. Como adelantamos en la Sección \ref{sec:justificacion}, hemos podido observar en la sección de resultados una clara discrepancia de comportamiento entre los métodos univariados y multivariados, que a continuación discutiremos más en detalle.
+Los resultados obtenidos en este estudio sintético revelan patrones fundamentales sobre el comportamiento de las técnicas de selección de características en contextos con dependencias no lineales y redundancia estructurada. Como adelantamos en la Sección \ref{sec:justificacion}, hemos podido observar en los resultados anteriores una clara discrepancia de comportamiento entre los métodos univariados y multivariados, que a continuación discutiremos más en detalle.
 
-Centrándonos primeramente en los métodos univariados, ambos han presentado resultados que los hacen poco vaĺidos para la toma de decisiones en nuestro problema. Por un lado, el método de información mutua, debido a su falta de correlación directa entre las variables predictoras y la variable objetivo (debido a que estas relaciones son no lineales) ha hecho que la figura de mérito no se encuentre en rangos válidos para su correcta evaluación. Del mismo modo, el test \(\chi^2\), siguiendo las supocisiones hechas en apartados anteriores, ha demostrado no ser capaz de romper con la hipótesis de independencia para ninguna de las variables, asumiendo incluso p-valores excesivamente altos para variables a priori correlacionadas con la variable objetivo.
+Centrándonos primeramente en los métodos univariados, ambos han presentado resultados que los hacen poco vaĺidos para la toma de decisiones en nuestro problema. Por un lado, el método de información mutua, debido a su falta de correlación directa entre las variables predictoras y la variable objetivo (debido a que estas relaciones son no lineales) ha hecho que la figura de mérito nos muestre la carencia de variables determinantes en su contribución a la clasificación. Del mismo modo, el test \(\chi^2\), siguiendo las supocisiones hechas en apartados anteriores, ha demostrado no ser capaz de refutar la hipótesis de independencia para ninguna de las variables, obteniendo incluso p-valores excesivamente altos para variables a priori correlacionadas con la variable objetivo.
 
-Además, cabe mencionar que ambos métodos univariados se han visto altamente influidos por la aleatorización de los datos. Cambios en la semilla de creación de las variables predictoras ha producido no sólo variaciones en las medidas de mérito de las variables por parte de los métodos anteriores, sino que también ha producido variaciones significativas en los rankings aportados. Partiendo de que las variables predictoras se han generado de la misma forma y con la misma distribución de probabilidad, hace ver que los métodos univariados para pequeños conjuntos de muestras y con relaciones no lineales con la variable objetivo los vuelven poco estables para la toma de decisiones en el problema que nos concierne.
+Además, cabe mencionar que ambos métodos univariados se han visto altamente influidos por la aleatorización de los datos. Cambios en la semilla de creación de las variables predictoras ha producido no sólo variaciones en las medidas de mérito de las variables por parte de los métodos anteriores, sino que también ha producido variaciones significativas en los rankings aportados. Partiendo de que las variables predictoras se han generado de la misma forma y con la misma distribución de probabilidad, hace ver que los métodos univariados para pequeños conjuntos de muestras y con relaciones no lineales con la variable objetivo se comportan de manera poco estable de cara a la toma de decisiones en el problema que nos concierne.
 
 Los métodos multivariados, sin embargo, han ofrecido una mayor estabilidad en este punto. Todos ellos han mantenido el ranking de forma estable y con escasas variaciones en sus figuras de mérito, manteniendo invariante su evaluación a pesar de las modificaciones en la naturaleza del dataset.
 
-El método ReliefF se ha mostrado como la única técnica de filtrado capaz de mostrar unas métricas evaluables para la toma de decisiones. Su propuesta de ranking coincide con la información teórica que contienen las variables de cara a la categorización de la variable objetivo, además de realizar una mejor separación de las que se podrían considerar como variables con relevancia fuerte, relevancia débil e irrelevancia. Esta capacidad de distinción se debe a su enfoque basado en vecinos locales, permitiendo identificar dependencias contextuales en el espacio de características.
+Volviendo a la evaluación de los resultados obtenidos, el método ReliefF se ha mostrado como la única técnica de filtrado capaz de mostrar unas métricas evaluables para la toma de decisiones. Su propuesta de ranking coincide con la información teórica que contienen las variables de cara a la categorización de la variable objetivo, además de realizar una mejor separación de las que se podrían considerar como variables con relevancia fuerte, relevancia débil e irrelevancia. Esta capacidad de distinción se debe a su enfoque basado en vecinos locales, permitiendo identificar dependencias contextuales en el espacio de características.
 
-El análisis de componentes principales, aunque útil para cuantificar la varianza explicada, confirmó su naturaleza agnóstica con la variable objetivo al tratarse de una técnica no supervisada. Las variaciones leves entre las varianzas explicadas por cada una de las variables predictoras refleja diferencias en la estructura de los datos, pero no informa acerca de su relevancia predictiva. Este distinción entre varianza y utilidad clasificatoria subraya la necesidad de complementar técnicas no supervisadas como ésta con enfoques que aporten información sobre las clases en problemas de selección de características.
+El análisis de componentes principales, aunque útil para cuantificar la varianza explicada, confirmó su naturaleza agnóstica con la variable objetivo al tratarse de una técnica no supervisada. Las variaciones leves entre las varianzas explicadas por cada una de las variables predictoras refleja ligeras diferencias en la estructura de los datos, pero no informa nada acerca de su relevancia predictiva. Esta distinción entre varianza y utilidad clasificatoria subraya la necesidad de complementar técnicas no supervisadas como ésta con enfoques que aporten información sobre las clases en problemas de selección de características.
 
 Finalmente, el método de eliminación recursiva de características con SVM ha demostrado un desempeño alineado con la estructura de relevancia del conjunto de datos. La eliminación progresiva de variables ha seguido un orden coherente, descartando primero aquellas irrelevantes y reteniendo hasta el final las que tienen una mayor contribución a la separación de clases. Este resultado pone en evidencia la ventaja de los métodos de envoltura cuando el modelo subyacente es capaz de capturar las relaciones presentes en los datos. No obstante, en escenarios donde las interacciones no son lineales, como el problema XOR considerado, el uso de un clasificador lineal puede suponer una limitación, ya que la selección de variables dependerá de la capacidad del modelo para representar adecuadamente la relación entre las características y la variable objetivo.
 
-Los resultados obtenidos refuerzan la idea de que la selección de características debe ser abordada desde una perspectiva adaptada a la estructura del problema. Mientras que los métodos univariados pueden ser adecuados cuando las variables individuales presentan una fuerte correlación con la clase, en problemas donde la información relevante se distribuye de manera conjunta a través de múltiples variables, los métodos multivariados ofrecen una mejor aproximación. A su vez, se ha demostrado que los métodos no supervisados como PCA no son adecuados para este tipo de tareas, ya que no optimizan la selección en función de la capacidad predictiva. Los métodos de envoltura, aunque efectivos, dependen de la elección del modelo base, lo que puede introducir sesgos si la hipótesis del clasificador no está alineada con la complejidad del problema. En última instancia, la selección de características no es un problema trivial y requiere un análisis cuidadoso tanto de la naturaleza de los datos como de las herramientas utilizadas, asegurando que la técnica aplicada sea coherente con las dependencias estructurales presentes en la información disponible.
+Los resultados obtenidos refuerzan la idea de que la selección de características debe ser abordada desde una perspectiva adaptada a la estructura del problema. Mientras que los métodos univariados pueden ser adecuados cuando las variables individuales presentan una fuerte correlación con la clase, en problemas donde la información relevante se distribuye de manera conjunta a través de múltiples variables, los métodos multivariados ofrecen una mejor aproximación. A su vez, se ha demostrado que los métodos no supervisados como PCA no son adecuados para este tipo de tareas, ya que no optimizan la selección en función de la capacidad predictiva (sin por ello menospreciar la información que aportan sobre la naturaleza de los datos). Los métodos de envoltura, aunque efectivos, dependen de la elección del modelo base, lo que puede introducir sesgos si la hipótesis del clasificador no está alineada con la complejidad del problema. En última instancia, la selección de características no es un problema trivial y requiere un análisis cuidadoso tanto de la naturaleza de los datos como de las herramientas utilizadas, asegurando que la técnica aplicada sea coherente con las dependencias estructurales presentes en la información disponible.
 
 
 \newpage
