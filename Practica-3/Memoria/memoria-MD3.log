@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.28)  24 MAR 2025 18:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.28)  24 MAR 2025 19:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -433,15 +433,18 @@ LaTeX Info: Redefining \% on input line 1.
 \tf@toc=\write4
 \openout4 = `memoria-MD3.toc'.
 
- [1]
-
-LaTeX Warning: Citation `exampleReference' on page 2 undefined on input line 123.
-
-[2] [3] (./memoria-MD3.bbl
-
-LaTeX Warning: Empty `thebibliography' environment on input line 3.
-
-) [4] (./memoria-MD3.aux
+ [1] [2]
+<images/net1-CM.png, id=21, 388.0899pt x 336.0555pt>
+File: images/net1-CM.png Graphic file (type png)
+<use images/net1-CM.png>
+Package pdftex.def Info: images/net1-CM.png  used on input line 90.
+(pdftex.def)             Requested size: 120.89905pt x 104.6889pt.
+<images/net1-train.png, id=23, 721.9773pt x 325.9377pt>
+File: images/net1-train.png Graphic file (type png)
+<use images/net1-train.png>
+Package pdftex.def Info: images/net1-train.png  used on input line 92.
+(pdftex.def)             Requested size: 234.00238pt x 105.64003pt.
+ [3 <./images/net1-CM.png> <./images/net1-train.png>] [4] [5] [6] (./memoria-MD3.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 )
@@ -449,24 +452,20 @@ LaTeX Info: Redefining \% on input line 8.
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 15829 strings out of 476120
- 308913 string characters out of 5793656
+ 15839 strings out of 476120
+ 309175 string characters out of 5793656
  1930975 words of memory out of 5000000
- 37597 multiletter control sequences out of 15000+600000
- 565556 words of font info for 63 fonts, out of 8000000 for 9000
+ 37610 multiletter control sequences out of 15000+600000
+ 565856 words of font info for 64 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 83i,5n,93p,1195b,371s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on memoria-MD3.pdf (5 pages, 74370 bytes).
+ 83i,6n,93p,1202b,371s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on memoria-MD3.pdf (7 pages, 151036 bytes).
 PDF statistics:
- 53 PDF objects out of 1000 (max. 8388607)
- 33 compressed objects within 1 object stream
+ 71 PDF objects out of 1000 (max. 8388607)
+ 43 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 23 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -61,21 +61,38 @@
 \section{Técnicas de \textit{Data Augmentation}. Impacto en el modelado}
 
 
-En el contexto de la clasificación de granos de polen, cuya variabilidad visual es mínima y las diferencias entre especies se concentran en detalles sutiles de forma y tamaño, se ha explorado en esta práctica la aplicación de técnicas de data augmentation para evaluar su impacto en la capacidad de generalización de los modelos. Dado el tamaño del conjunto de datos y la alta similitud entre clases, se priorizaron transformaciones que replicaran posibles variaciones naturales en la captura de imágenes microscópicas, realizando una generación de 5 muestras mediante modificaciones aleatorias a partir de cada instancia en el conjunto de entrenamiento. Estas transformaciones se basaron en operaciones geométricas, compuestas por rotaciones de hasta 10 grados en ambas direcciones, zoom entre $0.9\times$ y $1.1\times$ y un desplazamiento en ambos ejes de hasta 5 pixeles. %Estas operaciones buscan emular ligeros cambios que puedan verse como factores comunes en entornos reales, sin por ello provocar transformaciones que puedan distorsionar las características discriminativas.
+En el contexto de la clasificación de granos de polen, cuya variabilidad visual es mínima y las diferencias entre especies se concentran en detalles sutiles de forma y tamaño, se ha explorado en esta práctica la aplicación de técnicas de data augmentation para evaluar su impacto en la capacidad de generalización de los modelos. Dado el tamaño del conjunto de datos y la alta similitud entre clases, se han realizado estudios sobre transformaciones que replicaran posibles variaciones naturales en la captura de imágenes microscópicas, realizando una generación de 5 muestras mediante modificaciones aleatorias a partir de cada instancia en el conjunto de entrenamiento. Estas transformaciones se basaron en operaciones geométricas, como rotaciones de hasta 10 grados en ambas direcciones, zoom entre $0.9\times$ y $1.1\times$ y un desplazamiento en ambos ejes de hasta 5 pixeles. %Estas operaciones buscan emular ligeros cambios que puedan verse como factores comunes en entornos reales, sin por ello provocar transformaciones que puedan distorsionar las características discriminativas.
+
+Para una correcta evaluación de la validez de esta técnica para nuestro caso de uso, se ha realizado un estudio para cada una de las arquitecturas propuestas en el enunciado, proporcionando una entrenada exclusivamente con los datos originales y otra con datos aumentados junto con los originales.
 
 Para cuantificar el efecto de dicha técnica, se han realizado comparaciones para cada una de las arquitecturas propuestas en el enunciado, proporcionando una entrenada exclusivamente con los datos originales y otra con datos aumentados junto con los originales. %En el primer caso, se observó un sobreajuste temprano, con una precisión de entrenamiento cercana al 98\% frente a un 72\% en validación, indicando que el modelo memorizaba artefactos específicos de las imágenes de entrenamiento. Al incorporar data augmentation, la brecha se redujo significativamente (92\% en entrenamiento vs. 85\% en validación), demostrando una mayor capacidad para generalizar. Además, las curvas de pérdida mostraron una convergencia más estable, sin fluctuaciones abruptas. Un análisis cualitativo de los mapas de activación reveló que, con aumentación, los filtros en capas profundas se especializaron en características morfológicas robustas, como bordes suavizados y patrones triangulares, en lugar de enfocarse en ruido o detalles marginales.
 
 No obstante, se identificaron límites: incrementar la intensidad de las transformaciones (como rotaciones superiores a 30 grados) degradó el rendimiento, ya que alteró la geometría básica de los granos, clave para su identificación. Esto subraya la importancia de ajustar los parámetros de data augmentation al dominio del problema. La estrategia implementada permitió mitigar el sobreajuste y mejorar la generalización, pero su eficacia dependió de una calibración cuidadosa para preservar los atributos discriminativos esenciales. Los resultados respaldan su inclusión como parte integral del pipeline, siempre que las transformaciones reflejen variaciones plausibles en el contexto específico.
 
+
+
+\newpage
 \section{Resultados}
 
-
+Se presentan a continuación los resultados obtenidos para cada una de las arquitecturas. Cabe denotar que todas las redes que aquí se presentan se han entrenado y evaluado bajo el mismo pipeline, con la intención de que la comparación sea fiable y robusta. Se ha definido un valor máximo de etapas de entrenamiento a 100, incluyendo una parada temprana en función del decrecimiento de la función de pérdida para el conjunto de validación. El entrenamiento se ha realizado con un batch de tamaño 128 y una tasa de aprendizaje de 0.0001 para el optimizador Adam. Estos valores permanecerán inmutables a lo largo de este análisis.
 
 \subsection{Redes densas estándar}
 
 
 \subsubsection{Modelo 1: NET-1}
 
+El modelo NET-1 consiste en un modelo sin capas ocultas, disponiendo únicamente de una capa de aplanamiento de la imagen y una neurona discriminativa con función sigmoide, haciendo que la red actúe como una regresión logística binomial. Esta red ha sido implementada para establecer un punto de comparación frente a arquitecturas más complejas.
+
+A pesar de carecer de capas ocultas, este modelo ha demostrado un rendimiento aceptable, obteniendo un acierto en el conjunto de testeo del 84.17\%. Este valor fue extraído del modelo en la etapa 86 de entrenamiento, donde se puede empezar a ver en la Figura \ref{fig:net1} un ligero sobreajuste. La matriz de confusión denota una ligera desponderación del error, predominando la clasificación de la clase Kunzea.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.31\textwidth]{images/net1-CM.png}
+    \hspace{0.05\textwidth}
+    \includegraphics[width=0.6\textwidth]{images/net1-train.png}
+    \caption{\small{Matriz de confusión de NET-1 para el conjunto de testeo y la evolución de la función de pérdida en los conjuntos de entrenamiento y validación.}}
+    \label{fig:net1}
+\end{figure}
 
 
 \subsubsection{Modelo 2: Red densa con capas ocultas}
@@ -98,6 +115,8 @@ No obstante, se identificaron límites: incrementar la intensidad de las transfo
 
 
 
+
+\newpage
 \section{Análisis crítico de los resultados}
 
 
@@ -114,17 +133,19 @@ No obstante, se identificaron límites: incrementar la intensidad de las transfo
 
 
 
-\subsection{Cualquier otro analisis}
+\subsection{Cualquier otro análisis}
 
 
 
-\section{Conclusiones}
-
-\cite{exampleReference}
 
 \newpage
-\addcontentsline{toc}{section}{Referencias}
-\bibliographystyle{plain}
-\bibliography{library}
+\section{Conclusiones}
+
+% \cite{exampleReference}
+
+% \newpage
+% \addcontentsline{toc}{section}{Referencias}
+% \bibliographystyle{plain}
+% \bibliography{library}
 
 \end{document}

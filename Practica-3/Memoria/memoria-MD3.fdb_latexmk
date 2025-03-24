@@ -1,15 +1,7 @@
 # Fdb version 4
-["bibtex memoria-MD3"] 1742840419.47592 "memoria-MD3.aux" "memoria-MD3.bbl" "memoria-MD3" 1742840420.04997 0
-  "./library.bib" 1742379131.9007 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "/usr/share/texlive/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "memoria-MD3.aux" 1742840419.95181 2110 474083fd381a3981bb82ca1fe1c71903 "pdflatex"
-  (generated)
-  "memoria-MD3.bbl"
-  "memoria-MD3.blg"
-  (rewritten before read)
-["pdflatex"] 1742840419.50592 "/home/david/Documents/Master/MineriaDatos/Practica-3/Memoria/memoria-MD3.tex" "memoria-MD3.pdf" "memoria-MD3" 1742840420.05032 0
+["pdflatex"] 1742845589.27722 "/home/david/Documents/Master/MineriaDatos/Practica-3/Memoria/memoria-MD3.tex" "memoria-MD3.pdf" "memoria-MD3" 1742845590.05105 0
   "/etc/texmf/web2c/texmf.cnf" 1730049747.72736 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/david/Documents/Master/MineriaDatos/Practica-3/Memoria/memoria-MD3.tex" 1742840418.58879 5348 afcd7376d0d108ddab487a0354504c3e ""
+  "/home/david/Documents/Master/MineriaDatos/Practica-3/Memoria/memoria-MD3.tex" 1742845588.79873 7503 0de67c5fc3bcf83634b99a6143c381ea ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -23,6 +15,7 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi8.tfm" 1136768653 1520 eccf95517727cb11801f4f1aee3a21b4 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr10.tfm" 1136768653 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr12.tfm" 1136768653 1288 655e228510b4c2a1abe905c368440826 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr17.tfm" 1136768653 1292 296a67155bdbfc32aa9c636f21e91433 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr6.tfm" 1136768653 1300 b62933e007d01cfd073f79b963c01526 ""
@@ -33,6 +26,7 @@
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1248133631 32080 340ef9bf63678554ee606688e7b5339d ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb" 1248133631 36554 b67dc2cfa451409e100b3fcf5f506509 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb" 1248133631 36741 fa121aac0049305630cf160b86157ee4 ""
+  "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1248133631 35752 024fb6c41858982481f6968b5fc26508 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb" 1248133631 32722 d7379af29a190c3f453aba36302ff5a9 ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1248133631 32362 179c33bbf43f19adbb3825bb4e36e57a ""
   "/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1248133631 32569 5e5ddc8df908dea60932f3c484a54c0d ""
@@ -135,10 +129,11 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1730050020.65447 128028 f533b797fba58d231669ea19e894e23e ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1730142013 6822836 85cebf1abe9f452230372d2d34b760f6 ""
-  "memoria-MD3.aux" 1742840419.95181 2110 474083fd381a3981bb82ca1fe1c71903 "pdflatex"
-  "memoria-MD3.bbl" 1742840419.49981 49 0eba253fc001332e731e8aba3f23127b "bibtex memoria-MD3"
-  "memoria-MD3.tex" 1742840418.58879 5348 afcd7376d0d108ddab487a0354504c3e ""
-  "memoria-MD3.toc" 1742840419.95381 1226 5eb8759b09ebcd78c82c4958665ea8a8 "pdflatex"
+  "images/net1-CM.png" 1742842433.5763 26810 ab6316139b52308edc7a19a091e9b695 ""
+  "images/net1-train.png" 1742842396.37061 47229 0d68c32b0c1fd30c162b3b3576a26e7f ""
+  "memoria-MD3.aux" 1742845589.96072 2259 ae22118302fa256e2c3904464f46cac5 "pdflatex"
+  "memoria-MD3.tex" 1742845588.79873 7503 0de67c5fc3bcf83634b99a6143c381ea ""
+  "memoria-MD3.toc" 1742845589.96372 1184 711c60513fcdb2e7f69c537f70d2feba "pdflatex"
   (generated)
   "memoria-MD3.aux"
   "memoria-MD3.log"
