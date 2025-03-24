@@ -53,24 +53,48 @@
 
 % --- Contenido ---
 
+% \section{Introducción}
 
-\section{Técnicas de \textit{Data Augmentation} y el impacto en el modelado}
+% En esta práctica se abordará el problema de clasificación de imágenes de la base de datos dada en el enunciado sobre granos de polen. Para ello, se implementarán diferentes modelos de redes neuronales convolucionales (CNN) y se analizarán los resultados obtenidos. En concreto, se estudiará el impacto de la técnica de \textit{Data Augmentation} en el modelado, así como la influencia de la arquitectura de la red en la precisión de las predicciones.
 
-
-
-\section{Descripción y obtención de resultados de los diferentes modelos}
-
-
-
-\subsection{Modelos estándar 1 y 2}
+\newpage
+\section{Técnicas de \textit{Data Augmentation}. Impacto en el modelado}
 
 
+En el contexto de la clasificación de granos de polen, cuya variabilidad visual es mínima y las diferencias entre especies se concentran en detalles sutiles de forma y tamaño, se ha explorado en esta práctica la aplicación de técnicas de data augmentation para evaluar su impacto en la capacidad de generalización de los modelos. Dado el tamaño del conjunto de datos y la alta similitud entre clases, se priorizaron transformaciones que replicaran posibles variaciones naturales en la captura de imágenes microscópicas, realizando una generación de 5 muestras mediante modificaciones aleatorias a partir de cada instancia en el conjunto de entrenamiento. Estas transformaciones se basaron en operaciones geométricas, compuestas por rotaciones de hasta 10 grados en ambas direcciones, zoom entre $0.9\times$ y $1.1\times$ y un desplazamiento en ambos ejes de hasta 5 pixeles. %Estas operaciones buscan emular ligeros cambios que puedan verse como factores comunes en entornos reales, sin por ello provocar transformaciones que puedan distorsionar las características discriminativas.
 
-\subsection{Modelos 3: CNN}
+Para cuantificar el efecto de dicha técnica, se han realizado comparaciones para cada una de las arquitecturas propuestas en el enunciado, proporcionando una entrenada exclusivamente con los datos originales y otra con datos aumentados junto con los originales. %En el primer caso, se observó un sobreajuste temprano, con una precisión de entrenamiento cercana al 98\% frente a un 72\% en validación, indicando que el modelo memorizaba artefactos específicos de las imágenes de entrenamiento. Al incorporar data augmentation, la brecha se redujo significativamente (92\% en entrenamiento vs. 85\% en validación), demostrando una mayor capacidad para generalizar. Además, las curvas de pérdida mostraron una convergencia más estable, sin fluctuaciones abruptas. Un análisis cualitativo de los mapas de activación reveló que, con aumentación, los filtros en capas profundas se especializaron en características morfológicas robustas, como bordes suavizados y patrones triangulares, en lugar de enfocarse en ruido o detalles marginales.
+
+No obstante, se identificaron límites: incrementar la intensidad de las transformaciones (como rotaciones superiores a 30 grados) degradó el rendimiento, ya que alteró la geometría básica de los granos, clave para su identificación. Esto subraya la importancia de ajustar los parámetros de data augmentation al dominio del problema. La estrategia implementada permitió mitigar el sobreajuste y mejorar la generalización, pero su eficacia dependió de una calibración cuidadosa para preservar los atributos discriminativos esenciales. Los resultados respaldan su inclusión como parte integral del pipeline, siempre que las transformaciones reflejen variaciones plausibles en el contexto específico.
+
+\section{Resultados}
 
 
 
-\subsection{Modelos 4 y 5: CNN con variantes/configuraciones}
+\subsection{Redes densas estándar}
+
+
+\subsubsection{Modelo 1: NET-1}
+
+
+
+\subsubsection{Modelo 2: Red densa con capas ocultas}
+
+
+
+\subsection{Modelo 3: CNN}
+
+
+
+\subsection{Modificaciones de CNN}
+
+
+
+\subsubsection{Modelo 4: mod1}
+
+
+
+\subsubsection{Modelo 5: mod2}
 
 
 

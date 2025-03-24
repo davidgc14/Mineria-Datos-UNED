@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.28)  19 MAR 2025 11:36
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.28)  24 MAR 2025 18:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -435,13 +435,13 @@ LaTeX Info: Redefining \% on input line 1.
 
  [1]
 
-LaTeX Warning: Citation `exampleReference' on page 2 undefined on input line 99.
+LaTeX Warning: Citation `exampleReference' on page 2 undefined on input line 123.
 
-[2] (./memoria-MD3.bbl
+[2] [3] (./memoria-MD3.bbl
 
 LaTeX Warning: Empty `thebibliography' environment on input line 3.
 
-) [3] (./memoria-MD3.aux
+) [4] (./memoria-MD3.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 )
@@ -455,18 +455,18 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 15825 strings out of 476120
- 308869 string characters out of 5793656
- 1927975 words of memory out of 5000000
- 37593 multiletter control sequences out of 15000+600000
+ 15829 strings out of 476120
+ 308913 string characters out of 5793656
+ 1930975 words of memory out of 5000000
+ 37597 multiletter control sequences out of 15000+600000
  565556 words of font info for 63 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
- 83i,5n,93p,507b,371s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on memoria-MD3.pdf (4 pages, 54594 bytes).
+ 83i,5n,93p,1195b,371s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on memoria-MD3.pdf (5 pages, 74370 bytes).
 PDF statistics:
- 40 PDF objects out of 1000 (max. 8388607)
- 25 compressed objects within 1 object stream
+ 53 PDF objects out of 1000 (max. 8388607)
+ 33 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
