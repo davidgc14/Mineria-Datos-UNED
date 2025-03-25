@@ -61,13 +61,49 @@
 \section{Técnicas de \textit{Data Augmentation}. Impacto en el modelado}
 
 
-En el contexto de la clasificación de granos de polen, cuya variabilidad visual es mínima y las diferencias entre especies se concentran en detalles sutiles de forma y tamaño, se ha explorado en esta práctica la aplicación de técnicas de data augmentation para evaluar su impacto en la capacidad de generalización de los modelos. Dado el tamaño del conjunto de datos y la alta similitud entre clases, se han realizado estudios sobre transformaciones que replicaran posibles variaciones naturales en la captura de imágenes microscópicas, realizando una generación de 5 muestras mediante modificaciones aleatorias a partir de cada instancia en el conjunto de entrenamiento. Estas transformaciones se basaron en operaciones geométricas, como rotaciones de hasta 10 grados en ambas direcciones, zoom entre $0.9\times$ y $1.1\times$ y un desplazamiento en ambos ejes de hasta 5 pixeles. %Estas operaciones buscan emular ligeros cambios que puedan verse como factores comunes en entornos reales, sin por ello provocar transformaciones que puedan distorsionar las características discriminativas.
+En el contexto de la clasificación de granos de polen, cuya variabilidad visual es mínima y las diferencias entre especies se concentran en detalles sutiles de forma y tamaño, se ha explorado en esta práctica la aplicación de técnicas de data augmentation para evaluar su impacto en la capacidad de generalización de los modelos. Dado el tamaño del conjunto de datos y la alta similitud entre clases, se ha realizado el estudio basado en transformaciones que replicaran posibles variaciones naturales en la captura de imágenes microscópicas, realizando una generación de 5 muestras mediante modificaciones aleatorias a partir de cada instancia en el conjunto de entrenamiento. Estas transformaciones se basaron en operaciones geométricas, como rotaciones de hasta 10 grados en ambas direcciones, zoom entre $\times 0.9$ y $\times 1.1$ y un desplazamiento en ambos ejes de hasta 5 píxeles.
 
-Para una correcta evaluación de la validez de esta técnica para nuestro caso de uso, se ha realizado un estudio para cada una de las arquitecturas propuestas en el enunciado, proporcionando una entrenada exclusivamente con los datos originales y otra con datos aumentados junto con los originales.
+Para evaluar la validez de esta técnica, se han realizado varios entrenamientos para cada una de las arquitecturas. Tras la aplicación de data augmentation al conjunto de entrenamiento, este se ha adherido al conjunto original para constituir así el nuevo conjunto de entrenamiento aumentado. Estos son los resultados tras la evaluación con el conjunto de testeo:
 
-Para cuantificar el efecto de dicha técnica, se han realizado comparaciones para cada una de las arquitecturas propuestas en el enunciado, proporcionando una entrenada exclusivamente con los datos originales y otra con datos aumentados junto con los originales. %En el primer caso, se observó un sobreajuste temprano, con una precisión de entrenamiento cercana al 98\% frente a un 72\% en validación, indicando que el modelo memorizaba artefactos específicos de las imágenes de entrenamiento. Al incorporar data augmentation, la brecha se redujo significativamente (92\% en entrenamiento vs. 85\% en validación), demostrando una mayor capacidad para generalizar. Además, las curvas de pérdida mostraron una convergencia más estable, sin fluctuaciones abruptas. Un análisis cualitativo de los mapas de activación reveló que, con aumentación, los filtros en capas profundas se especializaron en características morfológicas robustas, como bordes suavizados y patrones triangulares, en lugar de enfocarse en ruido o detalles marginales.
 
-No obstante, se identificaron límites: incrementar la intensidad de las transformaciones (como rotaciones superiores a 30 grados) degradó el rendimiento, ya que alteró la geometría básica de los granos, clave para su identificación. Esto subraya la importancia de ajustar los parámetros de data augmentation al dominio del problema. La estrategia implementada permitió mitigar el sobreajuste y mejorar la generalización, pero su eficacia dependió de una calibración cuidadosa para preservar los atributos discriminativos esenciales. Los resultados respaldan su inclusión como parte integral del pipeline, siempre que las transformaciones reflejen variaciones plausibles en el contexto específico.
+\begin{table}[ht]
+    \centering
+    \scriptsize
+    \begin{tabular}{|c|c|c|c|c|c|}
+        \hline
+        \textbf{Arquitectura} & \textbf{Desplazamiento} & \textbf{Rotación} & \textbf{Zoom} & \textbf{Acierto (\%)} & \textbf{Ratio de error} \\
+        \hline
+        \hline
+        NET-1                 &                         &                   &               & \textbf{84.2}         & \textbf{67/33}          \\
+        \hline
+        NET-1                 & \checkmark              &                   &               & 79.2                  & 85/15                   \\
+        \hline
+        NET-1                 & \checkmark              & \checkmark        &               & 79.4                  & 86/14                   \\
+        \hline
+        NET-1                 & \checkmark              & \checkmark        & \checkmark    & 76.4                  & 88/12                   \\
+        \hline
+        \hline
+        Red densa             &                         &                   &               & 90.8                  & 27/73                   \\
+        \hline
+        Red densa             & \checkmark              &                   &               & 93.1                  & 36/64                   \\
+        \hline
+        Red densa             & \checkmark              & \checkmark        &               & \textbf{94.2}         & 43/57                   \\
+        \hline
+        Red densa             & \checkmark              & \checkmark        & \checkmark    & 93.3                  & \textbf{50/50}          \\
+        \hline
+        \hline
+        CNN                   &                         &                   &               & 85.3                  & 70/30                   \\
+        \hline
+        CNN                   & \checkmark              &                   &               & 88.6                  & 73/27                   \\
+        \hline
+        CNN                   & \checkmark              & \checkmark        &               & 89.2                  & 74/26                   \\
+        \hline
+        CNN                   & \checkmark              & \checkmark        & \checkmark    & \textbf{90.3}         & \textbf{50/50}          \\
+        \hline
+    \end{tabular}
+\end{table}
+
+Observamos cómo, salvo para NET-1, la aplicación de data augmentation ha mejorado el rendimiento de los modelos. Y no sólo el rendimiento es importante en este caso, sino que también se ha visto influenciada la ponderación entre clases, aproximándonos gracias a estas técnicas a un ratio del error equitativo para ambas categorías. Es por ello que para el análisis de las arquitecturas presentes y las modificaciones faltantes, se ha decidido emplear la técnica de data augmentation en el entrenamiento de los modelos con todas las transformaciones anteriores, con la intención de maximizar la capacidad de generalización de los modelos y obtener resultados más robustos y fiables.
 
 
 
