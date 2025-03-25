@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1742926170.73168 "/home/david/Documents/Master/MineriaDatos/Practica-3/Memoria/memoria-MD3.tex" "memoria-MD3.pdf" "memoria-MD3" 1742926171.41656 0
+["pdflatex"] 1742927130.03193 "/home/david/Documents/Master/MineriaDatos/Practica-3/Memoria/memoria-MD3.tex" "memoria-MD3.pdf" "memoria-MD3" 1742927130.75898 0
   "/etc/texmf/web2c/texmf.cnf" 1730049747.72736 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/david/Documents/Master/MineriaDatos/Practica-3/Memoria/memoria-MD3.tex" 1742926169.70174 10082 4f7633bc96b2247794ad31d009700a6b ""
+  "/home/david/Documents/Master/MineriaDatos/Practica-3/Memoria/memoria-MD3.tex" 1742927129.65457 9872 8b4099c61169d5e1929d4432c6277fbb ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -137,11 +137,11 @@
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1730142013 6822836 85cebf1abe9f452230372d2d34b760f6 ""
   "images/net1-CM.png" 1742925551.29093 26803 ec832de09372d4e56802d037840520d8 ""
   "images/net1-train.png" 1742925534.57777 43458 4305239b5dc3427b9a297a661836efb6 ""
-  "images/net2-CM.png" 1742906727.36118 26652 60177280d9acc0b73520493002ee20da ""
-  "images/net2-train.png" 1742906714.32016 41661 5f5287b59c6bb99a698613405dce5af5 ""
-  "memoria-MD3.aux" 1742926171.34776 2580 fc073d21af091fc119a50addf2c95c2c "pdflatex"
-  "memoria-MD3.tex" 1742926169.70174 10082 4f7633bc96b2247794ad31d009700a6b ""
-  "memoria-MD3.toc" 1742926171.34976 1184 711c60513fcdb2e7f69c537f70d2feba "pdflatex"
+  "images/net2-CM.png" 1742927002.84569 27105 088811deb10e8dad5cebfd87097eadde ""
+  "images/net2-train.png" 1742926995.53265 49175 d6d04ae98fd03ce8236efa6df3f7c550 ""
+  "memoria-MD3.aux" 1742927130.69358 2580 fc073d21af091fc119a50addf2c95c2c "pdflatex"
+  "memoria-MD3.tex" 1742927129.65457 9872 8b4099c61169d5e1929d4432c6277fbb ""
+  "memoria-MD3.toc" 1742927130.69558 1184 711c60513fcdb2e7f69c537f70d2feba "pdflatex"
   (generated)
   "memoria-MD3.aux"
   "memoria-MD3.log"
