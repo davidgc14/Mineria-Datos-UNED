@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.28)  25 MAR 2025 18:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.28)  26 MAR 2025 11:15
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -455,7 +455,38 @@ File: images/net2-train.png Graphic file (type png)
 <use images/net2-train.png>
 Package pdftex.def Info: images/net2-train.png  used on input line 144.
 (pdftex.def)             Requested size: 234.00238pt x 105.64003pt.
- [4 <./images/net2-CM.png> <./images/net2-train.png>] [5] [6] (./memoria-MD3.aux
+<images/net3-CM.png, id=35, 388.0899pt x 336.0555pt>
+File: images/net3-CM.png Graphic file (type png)
+<use images/net3-CM.png>
+Package pdftex.def Info: images/net3-CM.png  used on input line 158.
+(pdftex.def)             Requested size: 120.89905pt x 104.6889pt.
+<images/net3-train.png, id=36, 729.2043pt x 325.9377pt>
+File: images/net3-train.png Graphic file (type png)
+<use images/net3-train.png>
+Package pdftex.def Info: images/net3-train.png  used on input line 160.
+(pdftex.def)             Requested size: 234.00238pt x 104.59561pt.
+ [4 <./images/net2-CM.png> <./images/net2-train.png>]
+<images/net4-CM.png, id=42, 388.0899pt x 336.0555pt>
+File: images/net4-CM.png Graphic file (type png)
+<use images/net4-CM.png>
+Package pdftex.def Info: images/net4-CM.png  used on input line 177.
+(pdftex.def)             Requested size: 120.89905pt x 104.6889pt.
+<images/net4-train.png, id=43, 721.9773pt x 325.9377pt>
+File: images/net4-train.png Graphic file (type png)
+<use images/net4-train.png>
+Package pdftex.def Info: images/net4-train.png  used on input line 179.
+(pdftex.def)             Requested size: 234.00238pt x 105.64003pt.
+<images/net5-CM.png, id=44, 388.0899pt x 336.0555pt>
+File: images/net5-CM.png Graphic file (type png)
+<use images/net5-CM.png>
+Package pdftex.def Info: images/net5-CM.png  used on input line 191.
+(pdftex.def)             Requested size: 120.89905pt x 104.6889pt.
+<images/net5-train.png, id=45, 721.9773pt x 325.9377pt>
+File: images/net5-train.png Graphic file (type png)
+<use images/net5-train.png>
+Package pdftex.def Info: images/net5-train.png  used on input line 193.
+(pdftex.def)             Requested size: 234.00238pt x 105.64003pt.
+ [5 <./images/net3-CM.png> <./images/net3-train.png> <./images/net4-CM.png> <./images/net4-train.png>] [6 <./images/net5-CM.png> <./images/net5-train.png>] [7] (./memoria-MD3.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 )
@@ -465,18 +496,18 @@ L3 programming layer <2024-01-22>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 15865 strings out of 476120
- 309731 string characters out of 5793656
+ 15910 strings out of 476120
+ 310868 string characters out of 5793656
  1939975 words of memory out of 5000000
- 37633 multiletter control sequences out of 15000+600000
+ 37678 multiletter control sequences out of 15000+600000
  566810 words of font info for 68 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
  83i,10n,93p,1001b,371s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on memoria-MD3.pdf (7 pages, 244280 bytes).
+Output written on memoria-MD3.pdf (8 pages, 419062 bytes).
 PDF statistics:
- 90 PDF objects out of 1000 (max. 8388607)
- 52 compressed objects within 1 object stream
+ 105 PDF objects out of 1000 (max. 8388607)
+ 54 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 33 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 63 words of extra memory for PDF output out of 10000 (max. 10000000)
 

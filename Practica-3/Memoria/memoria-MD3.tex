@@ -121,7 +121,7 @@ El modelo NET-1 consiste en un modelo sin capas ocultas, disponiendo únicamente
 
 Debido a la carencia de capas ocultas, este modelo ha demostrado un rendimiento bastante mejorable, obteniendo un acierto en el conjunto de testeo del 76.4\%. Este valor fue extraído del modelo en la etapa 7 de entrenamiento, donde se puede empezar a ver en la Figura \ref{fig:net1} un mínimo de la función de pérdida. La matriz de confusión denota una marcada desponderación del error, predominando la clasificación de la clase Kunzea.
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.31\textwidth]{images/net1-CM.png}
     \hspace{0.05\textwidth}
@@ -137,7 +137,7 @@ Para este caso se han añadido dos capas ocultas a la arquitectura anterior, la 
 
 En este caso, la incorporación de capas ocultas ha producido un aumento de la comprensión de patrones que la red anterior no era capaz de capturar, aumentando el acierto a un 93.3\% en el conjunto de testeo. Además, en la Figura \ref{fig:net2} se justifica la parada temprana en la etapa 15, consiguiendo mitigar por completo el problema de desponderación de errores.
 
-\begin{figure}[h]
+\begin{figure}[ht]
     \centering
     \includegraphics[width=0.31\textwidth]{images/net2-CM.png}
     \hspace{0.05\textwidth}
@@ -149,8 +149,18 @@ En este caso, la incorporación de capas ocultas ha producido un aumento de la c
 
 \subsection{Modelo 3: CNN}
 
-Comenzando con las redes convolucionales, se ha definido una red con dos capas convolucionales con filtro $3 \times 3$ seguidas de una capa de MaxPooling cada una con filtro $2 \times 2$. Las capas convolucionales disponen de 32 y 64 filtros, respectivamente.
+Comenzando con las redes convolucionales, se ha definido una red con dos capas convolucionales con kernel $3 \times 3$ seguidas de una capa de MaxPooling cada una con kernel $2 \times 2$. Las capas convolucionales disponen de 32 y 64 filtros, respectivamente.
 
+En la Figura \ref{fig:net3} se puede observar cómo la red ha sido capaz de generalizar correctamente ambas clases, obteniendo un acierto del 90.3\% en el conjunto de testeo. La parada temprana se ha realizado en la etapa 81, donde se observa un decrecimiento en el acierto del conjunto de validación. Al igual que en la red anterior, se ha conseguido una ponderación equitativa de errores.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.31\textwidth]{images/net3-CM.png}
+    \hspace{0.05\textwidth}
+    \includegraphics[width=0.6\textwidth]{images/net3-train.png}
+    \caption{\small{Matriz de confusión de una red con dos capas convolucionales para el conjunto de testeo y la evolución de la función de pérdida en los conjuntos de entrenamiento y validación.}}
+    \label{fig:net3}
+\end{figure}
 
 
 
@@ -158,12 +168,32 @@ Comenzando con las redes convolucionales, se ha definido una red con dos capas c
 
 
 
-\subsubsection{Modelo 4: mod1}
+\subsubsection{Modelo 4: tercera capa convolucional}
+
+Se ha tratado de mejorar la capacidad de generalización de la red añadiendo una tercera capa convolucional con 128 filtros, además de aumentar el tamaño del kernel a $5 \times 5$ en todas las capas. Se ha mejorado ligeramente el acierto al 91.1\%, a expensas de una sobreetiquetación en la clase Kunzea. La parada temprana se ha realizado en la etapa 27, donde se observa en la Figura \ref{fig:net4} un máximo local en el acierto del conjunto de validación.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.31\textwidth]{images/net4-CM.png}
+    \hspace{0.05\textwidth}
+    \includegraphics[width=0.6\textwidth]{images/net4-train.png}
+    \caption{\small{Matriz de confusión de la red \ref{fig:net3} con una tercera capa convolucional para el conjunto de testeo y la evolución de la función de pérdida en los conjuntos de entrenamiento y validación.}}
+    \label{fig:net4}
+\end{figure}
 
 
+\subsubsection{Modelo 5: regularización L2}
 
-\subsubsection{Modelo 5: mod2}
+En este caso, se ha añadido regularización L2 a las dos capas convolucionales de la red original, con un factor de regularización de 0.001. El acierto ha disminuido ligeramente al 88.3\%, además de haber perdido la ponderación de errores. Esto se puede observar en la Figura \ref{fig:net5}, donde la parada temprana se ha realizado en la etapa 56.
 
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.31\textwidth]{images/net5-CM.png}
+    \hspace{0.05\textwidth}
+    \includegraphics[width=0.6\textwidth]{images/net5-train.png}
+    \caption{\small{Matriz de confusión de la red \ref{fig:net3} con regulación L2 para el conjunto de testeo y la evolución de la función de pérdida en los conjuntos de entrenamiento y validación.}}
+    \label{fig:net5}
+\end{figure}
 
 
 
