@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1742987700.47724 "/home/david/Documents/Master/MineriaDatos/Practica-3/Memoria/memoria-MD3.tex" "memoria-MD3.pdf" "memoria-MD3" 1742987701.48785 0
+["pdflatex"] 1742991525.43405 "/home/david/Documents/Master/MineriaDatos/Practica-3/Memoria/memoria-MD3.tex" "memoria-MD3.pdf" "memoria-MD3" 1742991526.46922 0
   "/etc/texmf/web2c/texmf.cnf" 1730049747.72736 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/david/Documents/Master/MineriaDatos/Practica-3/Memoria/memoria-MD3.tex" 1742987699.07356 12427 3e1411ffed0ce859b70a2915ae89c455 ""
+  "/home/david/Documents/Master/MineriaDatos/Practica-3/Memoria/memoria-MD3.tex" 1742991490.50301 12431 5dd1078b3296a4d8566eb66fc0e39ee0 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -141,13 +141,13 @@
   "images/net2-train.png" 1742985645.67525 49175 d6d04ae98fd03ce8236efa6df3f7c550 ""
   "images/net3-CM.png" 1742986123.22414 26918 64f23124f0487f594ad9afeeaadb46f6 ""
   "images/net3-train.png" 1742986101.45495 46386 93e7e74a6e106ff0361d78be0b38a3f7 ""
-  "images/net4-CM.png" 1742987524.54641 26834 8e191fbff4fbc888f8aaf6f5792e643e ""
-  "images/net4-train.png" 1742987513.96828 43974 17abed9ffce18a36160b31d1b622183e ""
-  "images/net5-CM.png" 1742987562.35989 27135 c9b214c89e12c54e531d99363d00f2ed ""
-  "images/net5-train.png" 1742987548.86172 47732 e6b8a80f45856a9e3d8e063d088316e3 ""
-  "memoria-MD3.aux" 1742987701.41659 3621 3c242917108dfd57f12f67394ca02ae4 "pdflatex"
-  "memoria-MD3.tex" 1742987699.07356 12427 3e1411ffed0ce859b70a2915ae89c455 ""
-  "memoria-MD3.toc" 1742987701.41859 1220 cfe245be068ab4886dadf2139ee68ccf "pdflatex"
+  "images/net4-CM.png" 1742991332.65082 26659 978365d8be93bec63d3040c91a5e4c79 ""
+  "images/net4-train.png" 1742991325.97467 43070 d06451c001bafdf2fbb95edd5884a11d ""
+  "images/net5-CM.png" 1742991524.85064 27070 0054c8211788436a1c26a7b65883f3f7 ""
+  "images/net5-train.png" 1742991510.14837 45370 e2186aba5a051bf6e0121d3697725f7e ""
+  "memoria-MD3.aux" 1742991526.40266 3628 e89b07432bbc47df2aae7c7d8ee9e642 "pdflatex"
+  "memoria-MD3.tex" 1742991490.50301 12431 5dd1078b3296a4d8566eb66fc0e39ee0 ""
+  "memoria-MD3.toc" 1742991526.40366 1227 e160385f67f6a566a2e4e037d7cf3056 "pdflatex"
   (generated)
   "memoria-MD3.aux"
   "memoria-MD3.log"

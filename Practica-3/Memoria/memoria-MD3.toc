@@ -6,7 +6,7 @@
 \contentsline {subsubsection}{\numberline {2.1.2}Modelo 2: Red densa con capas ocultas}{4}{}%
 \contentsline {subsection}{\numberline {2.2}Modelo 3: CNN}{4}{}%
 \contentsline {subsection}{\numberline {2.3}Modificaciones de CNN}{4}{}%
-\contentsline {subsubsection}{\numberline {2.3.1}Modelo 4: tercera capa convolucional}{4}{}%
+\contentsline {subsubsection}{\numberline {2.3.1}Modelo 4: adición de capas convolucionales}{4}{}%
 \contentsline {subsubsection}{\numberline {2.3.2}Modelo 5: regularización L2}{5}{}%
 \contentsline {section}{\numberline {3}Análisis crítico de los resultados}{6}{}%
 \contentsline {subsection}{\numberline {3.1}Análisis general y gráfica}{6}{}%

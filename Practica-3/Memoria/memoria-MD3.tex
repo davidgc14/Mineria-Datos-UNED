@@ -168,23 +168,23 @@ En la Figura \ref{fig:net3} se puede observar cómo la red ha sido capaz de gene
 
 
 
-\subsubsection{Modelo 4: tercera capa convolucional}
+\subsubsection{Modelo 4: adición de capas convolucionales}
 
-Se ha tratado de mejorar la capacidad de generalización de la red añadiendo una tercera capa convolucional con 128 filtros, además de aumentar el tamaño del kernel a $5 \times 5$ en todas las capas. Se ha mejorado ligeramente el acierto al 91.1\%, a expensas de una sobreetiquetación en la clase Kunzea. La parada temprana se ha realizado en la etapa 27, donde se observa en la Figura \ref{fig:net4} un máximo local en el acierto del conjunto de validación.
+Se ha tratado de mejorar la capacidad de generalización de la red añadiendo una tercera y cuarta capa convolucional con 128 y 256filtros respectivamente, manteniendo el resto de la arquitectura invariante. Se ha mejorado ligeramente el acierto al 92.5\%, a expensas de una ligera sobreetiquetación en la clase Kunzea. La parada temprana se ha realizado en la etapa 28, donde se observa en la Figura \ref{fig:net4} un mínimo local en la función de pérdida.
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.31\textwidth]{images/net4-CM.png}
     \hspace{0.05\textwidth}
     \includegraphics[width=0.6\textwidth]{images/net4-train.png}
-    \caption{\small{Matriz de confusión de la red \ref{fig:net3} con una tercera capa convolucional para el conjunto de testeo y la evolución de la función de pérdida en los conjuntos de entrenamiento y validación.}}
+    \caption{\small{Matriz de confusión de la red \ref{fig:net3} con dos capas convolucionales más para el conjunto de testeo y la evolución de la función de pérdida en los conjuntos de entrenamiento y validación.}}
     \label{fig:net4}
 \end{figure}
 
 
 \subsubsection{Modelo 5: regularización L2}
 
-En este caso, se ha añadido regularización L2 a las dos capas convolucionales de la red original, con un factor de regularización de 0.001. El acierto ha disminuido ligeramente al 88.3\%, además de haber perdido la ponderación de errores. Esto se puede observar en la Figura \ref{fig:net5}, donde la parada temprana se ha realizado en la etapa 56.
+En este caso, se ha añadido regularización L2 a las dos capas convolucionales de la red original, con un factor de regularización de 0.001. El acierto ha disminuido ligeramente al 89.7\%, además de haber perdido la ponderación de errores. Esto se puede observar en la Figura \ref{fig:net5}, donde la parada temprana se ha realizado en la etapa 62.
 
 \begin{figure}[ht]
     \centering
