@@ -198,23 +198,57 @@ En este caso, se ha añadido regularización L2 a las dos capas convolucionales 
 
 
 \newpage
-\section{Análisis crítico de los resultados}
+\section{Análisis de resultados}
+
+
+\subsection{Comparativa general}
+
+% tabla con los resultados
+\begin{table}
+    \centering
+    \scriptsize
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{Red}   & \textbf{Acierto} & \textbf{Parada temprana} \\
+        \hline
+        \ref{fig:net1} & 90.3\%           & 0                        \\
+        \hline
+        \ref{fig:net2} & 90.3\%           & 0                        \\
+        \hline
+        \ref{fig:net3} & 90.3\%           & 81                       \\
+        \hline
+        \ref{fig:net4} & 92.5\%           & 28                       \\
+        \hline
+        \ref{fig:net5} & 89.7\%           & 62                       \\
+        \hline
+    \end{tabular}
+    \label{tab:compendio}
+\end{table}
 
 
 
-\subsection{Análisis general y gráfica}
+
+En la Figura \ref{fig:compendio} se pueden observar las distintas curvas fruto de la evaluación sobre el conjunto de validación. En general, se puede observar cómo, salvo por zonas puntuales del entrenamiento, la red densa con capas ocultas ha sido la que ha obtenido una mejor puntutación en este conjunto durante todo el entrenamiento, compitiendo con la red convolucional de 4 capas. Sin
+\begin{wrapfigure}{r}{0.5\textwidth} % 'r' para la derecha, el ancho de la figura
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/compendio.png}
+    \caption{\small{Gráfica comparativa de los aciertos en el conjunto de validación para las diferentes arquitecturas durante el proceso de entrenamiento.}}
+    \label{fig:compendio}
+\end{wrapfigure}
+embargo, vemos en los resultados en el conjunto de testeo cómo esta perspectiva cambia, haciendo ver que las redes frente a datos no vistos en el entrenamiento se pueden comportar de manera muy distinta a la esperada.
+
+Además, se observa para las redes convolucionales simple y tras aplicarle regularización L2, cómo ambas han presentado un entrenamiento muy similar, salvo que a partir de la etapa 30 la red con regularización ha comenzado a estancarse. Esto nos muestra que la regularización L2, aunque a priori parecía una buena técnica para evitar overfitting, ha terminado por perjudicar la capacidad de generalización de la red. Sin embargo, se ha observado cómo, aunque en los conjuntos de validación se observa una diferencia sustancial, sobre el conjunto de testeo sólo ha repercutido en un punto porcentual, recalcando la importancia de la evaluación sobre conjuntos de testeo independientes.
 
 
+\subsection{Estudio detallado sobre CNN}
 
-\subsection{Análisis de los pesos}
+\subsection{Pesos}
 
-
-
-\subsection{Análisis de los mapas de características}
-
+E
 
 
-\subsection{Cualquier otro análisis}
+\subsection{Mapas de características}
+
 
 
 
