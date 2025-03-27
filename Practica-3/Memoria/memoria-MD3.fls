@@ -269,6 +269,16 @@ INPUT ./images/compendio.png
 INPUT ./images/compendio.png
 INPUT ./images/compendio.png
 INPUT ./images/compendio.png
+INPUT ./images/pesos_1.png
+INPUT ./images/pesos_1.png
+INPUT ./images/pesos_1.png
+INPUT ./images/pesos_1.png
+INPUT ./images/pesos_1.png
+INPUT ./images/pesos_2.png
+INPUT ./images/pesos_2.png
+INPUT ./images/pesos_2.png
+INPUT ./images/pesos_2.png
+INPUT ./images/pesos_2.png
 INPUT memoria-MD3.aux
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb
