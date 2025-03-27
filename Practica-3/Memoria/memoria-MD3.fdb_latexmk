@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1743078947.71956 "/home/david/Documents/Master/MineriaDatos/Practica-3/Memoria/memoria-MD3.tex" "memoria-MD3.pdf" "memoria-MD3" 1743078950.36882 0
+["pdflatex"] 1743080845.87118 "/home/david/Documents/Master/MineriaDatos/Practica-3/Memoria/memoria-MD3.tex" "memoria-MD3.pdf" "memoria-MD3" 1743080849.09429 0
   "/etc/texmf/web2c/texmf.cnf" 1730049747.72736 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/david/Documents/Master/MineriaDatos/Practica-3/Memoria/memoria-MD3.tex" 1743078947.37935 15730 ce980c10a18d27ac21a459c6077ea06c ""
+  "/home/david/Documents/Master/MineriaDatos/Practica-3/Memoria/memoria-MD3.tex" 1743080842.22602 18405 7072ca12cb4442bf0e60886db28ecc98 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -148,9 +148,12 @@
   "images/net5-train.png" 1743078028.22134 46253 20b4e4aef4f4b48c824d932f884b80da ""
   "images/pesos_1.png" 1743073868.07667 56358 f8f54ea2e3fb0903429845b0f14517c7 ""
   "images/pesos_2.png" 1743073879.3068 112927 bba6f648c7b8d26815e3ab4e0e851cf4 ""
-  "memoria-MD3.aux" 1743078950.26937 4312 96718c93ab79bf85cce73a6389f576ac "pdflatex"
-  "memoria-MD3.tex" 1743078947.37935 15730 ce980c10a18d27ac21a459c6077ea06c ""
-  "memoria-MD3.toc" 1743078950.27137 1174 68d3e0574d2088f6f7b5c5933c178655 "pdflatex"
+  "images/polen_1_C1.png" 1743079370.74644 303563 8251ffc11387bc8f1ff786cae5860f97 ""
+  "images/polen_1_C2.png" 1743079383.01154 307820 582f0bd1bafda1aa3eacf0c1b3d91bb7 ""
+  "images/polen_1_base.png" 1743079353.1413 22644 002e725742642cc30dadb2b5bf02b90e ""
+  "memoria-MD3.aux" 1743080849.00908 4752 aa0f1d5f5bd8a649386b4d07bc1ff135 "pdflatex"
+  "memoria-MD3.tex" 1743080842.22602 18405 7072ca12cb4442bf0e60886db28ecc98 ""
+  "memoria-MD3.toc" 1743080849.01108 1175 cf3d7667341d41386848dd7d162af444 "pdflatex"
   (generated)
   "memoria-MD3.aux"
   "memoria-MD3.log"

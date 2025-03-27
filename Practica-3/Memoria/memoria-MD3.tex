@@ -246,14 +246,36 @@ Además, se observa para las redes convolucionales de cuatro capas y la red dens
     \label{fig:pesos}
 \end{figure}
 
-Haciendo un análisis detallado de las características de nuestra red convolucional base, se ha procedido a extraer los pesos de las capas convolucionales para visualizarlos. En la Figura \ref{fig:pesos} se pueden observar los pesos de las dos capas convolucionales, donde cada una ha aprendido a detectar ciertas características de nuestros datos en el conjunto de entrenamiento. Veremos a continuación su efecto en los mapas de características generados para cada imagen.
-
-
+Haciendo un análisis detallado de las características de nuestra red convolucional base, se ha procedido a extraer los pesos de las capas convolucionales para visualizarlos. En la Figura \ref{fig:pesos} se pueden observar los pesos de las dos capas convolucionales, donde cada una ha aprendido a detectar, gracias al backpropagation, ciertas características de nuestros datos en el conjunto de entrenamiento. Veremos a continuación su efecto en los mapas de características generados para cada imagen.
 
 
 \subsection{Mapas de características}
 
+Para la visualización de los mapas de características, se ha procedido a seleccionar dos imágenes del conjunto de testeo para observar las repercusiones de los pesos aprendidos durante el entrenamiento a imágenes no vistas en este proceso. Cabe destacar que la visualización de estos mapas se ha
+\begin{wrapfigure}{r}{0.5\textwidth} % 'r' para la derecha, el ancho de la figura
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/polen_1_base.png}
+    \caption{\small{Comparativa entre las dos gamas de colores estudiadas.}}
+    \label{fig:polen_1}
+\end{wrapfigure}
+decidido realizar mediante el uso de una escala de colores distinta a la escala de grises, para una mejor visualización de los cambios de tonalidad y una mejor detección de cambios sutiles en los píxeles. Podemos ver por ejemplo en la Figura \ref{fig:polen_1} la comparativa de las dos gamas de colores utilizadas. Se observan tanto unos perfiles más marcados como una mejor visualización de las sombras dentro del relieve del grano de polen.
 
+Observamos a continuación en la Figura \ref{fig:mapas_1} los mapas de características de las dos capas de nuestra red convolucional para la imagen anterior.
+
+\begin{figure}[ht]
+    \centering
+    \scriptsize
+    Capa 1 \\
+    \includegraphics[width=0.9\textwidth]{images/polen_1_C1.png} \\
+    Capa 2 \\
+    \includegraphics[width=0.9\textwidth]{images/polen_1_C2.png}
+    \caption{\small{Mapas de características de las dos capas de CNN para la imagen \ref{fig:polen_1}.}}
+    \label{fig:mapas_1}
+\end{figure}
+
+Vemos aquí la importancia de los pesos aprendidos durante el entrenamiento. En la primera capa se ha jugado mucho más con el contraste y las transformaciones más abruptas para detectar formas más genéricas, mientras que en la segunda capa se ha centrado mucho más el foco en la aparición de relieves y sombras, con una mayor sensibilidad a los cambios de tonalidad.
+
+Observando algunos ejemplos en concreto, se puede ver en la segunda capa algunos mapas (como el 38 o el 40) donde los pesos han aprendido a generar unos mapas con altos relieves, simulando la aparición de sombras fruto de una iluminación procedente de la parte superior de la imagen. En contraste, el mapa 56 por ejemplo simula volúmenes y sombras procedentes justo de la dirección opuesta. En conjunto, este juego de transformaciones por parte de los pesos aprendidos durante el entrenamiento le proporcionan a la red una información mucho más rica y mejor procesada, permitiendo una mejor generalización y una mayor capacidad de detección de patrones en imágenes, que a simple vista el ojo humano no es capaz de ver.
 
 
 
