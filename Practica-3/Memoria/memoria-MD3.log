@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.28)  27 MAR 2025 13:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.28)  27 MAR 2025 13:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -503,11 +503,11 @@ File: images/pesos_2.png Graphic file (type png)
 <use images/pesos_2.png>
 Package pdftex.def Info: images/pesos_2.png  used on input line 244.
 (pdftex.def)             Requested size: 350.99762pt x 106.88983pt.
-<images/polen_1_base.png, id=63, 558.6471pt x 291.2481pt>
+<images/polen_1_base.png, id=63, 552.8655pt x 291.2481pt>
 File: images/polen_1_base.png Graphic file (type png)
 <use images/polen_1_base.png>
 Package pdftex.def Info: images/polen_1_base.png  used on input line 257.
-(pdftex.def)             Requested size: 195.0pt x 101.66281pt.
+(pdftex.def)             Requested size: 175.49881pt x 92.45024pt.
  [7 <./images/pesos_1.png> <./images/pesos_2.png>]
 <images/polen_1_C1.png, id=69, 4618.053pt x 690.1785pt>
 File: images/polen_1_C1.png Graphic file (type png)
@@ -537,7 +537,7 @@ Here is how much of TeX's memory you used:
  40 hyphenation exceptions out of 8191
  83i,10n,93p,1001b,371s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on memoria-MD3.pdf (11 pages, 1545982 bytes).
+Output written on memoria-MD3.pdf (11 pages, 1547837 bytes).
 PDF statistics:
  126 PDF objects out of 1000 (max. 8388607)
  60 compressed objects within 1 object stream
