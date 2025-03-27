@@ -184,14 +184,14 @@ Se ha tratado de mejorar la capacidad de generalización de la red añadiendo un
 
 \subsubsection{Modelo 5: regularización L2}
 
-En este caso, se ha añadido regularización L2 a las dos capas convolucionales de la red original, con un factor de regularización de 0.001. El acierto ha disminuido ligeramente al 89.7\%, además de haber perdido la ponderación de errores. Esto se puede observar en la Figura \ref{fig:net5}, donde la parada temprana se ha realizado en la etapa 62.
+En este caso, se ha añadido regularización L2 a las dos capas convolucionales de la red original, con un factor de regularización de 0.001. Además de esta mejora, se han añadido después de la capa de aplanamiento, dos capas densas de 128 y 64 neuronas respectivamente, con la intención de que el modelo pueda obtener lo mejor de ambas arquitecturas. Se ha conseguido de esta manera un aumento al 94.2\%, además de mantener la ponderación de errores. Esto se puede observar en la Figura \ref{fig:net5}, donde la parada temprana se ha realizado en la etapa 21.
 
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.31\textwidth]{images/net5-CM.png}
     \hspace{0.05\textwidth}
     \includegraphics[width=0.6\textwidth]{images/net5-train.png}
-    \caption{\small{Matriz de confusión de la red \ref{fig:net3} con regulación L2 para el conjunto de testeo y la evolución de la función de pérdida en los conjuntos de entrenamiento y validación.}}
+    \caption{\small{Matriz de confusión de la red \ref{fig:net3} con regulación L2 y dos capas densas para el conjunto de testeo y la evolución de la función de pérdida en los conjuntos de entrenamiento y validación.}}
     \label{fig:net5}
 \end{figure}
 
@@ -205,11 +205,11 @@ En este caso, se ha añadido regularización L2 a las dos capas convolucionales 
     \scriptsize
     \begin{tabular}{|c|c|c|c|c|c|}
         \hline
-        \textbf{Red}            & \textbf{NET-1} & \textbf{Red densa} & \textbf{CNN} & \textbf{CNN 4 capas} & \textbf{CNN L2} \\
+        \textbf{Red}            & \textbf{NET-1} & \textbf{Red densa} & \textbf{CNN} & \textbf{CNN 4 capas} & \textbf{CNN L2 + Densa} \\
         \hline
-        \textbf{Acierto}        & 76.4           & 93.3               & 90.3         & 92.5                 & 89.7            \\
+        \textbf{Acierto}        & 76.4           & 93.3               & 90.3         & 92.5                 & 94.2                    \\
         \hline
-        \textbf{Ratio de error} & 88/12          & 50/50              & 50/50        & 60/40                & 60/40           \\
+        \textbf{Ratio de error} & 88/12          & 50/50              & 50/50        & 70/40                & 50/50                   \\
         \hline
     \end{tabular}
     \caption{\small{Resumen de resultados de evaluación sobre el conjunto de testeo.}}
@@ -219,16 +219,16 @@ En este caso, se ha añadido regularización L2 a las dos capas convolucionales 
 \subsection{Comparativa general}
 
 
-En la Figura \ref{fig:compendio} se pueden observar las distintas curvas fruto de la evaluación sobre el conjunto de validación. En general, se puede observar cómo, salvo por zonas puntuales del entrenamiento, la red densa con capas ocultas ha
+En la Figura \ref{fig:compendio} se pueden observar las distintas curvas fruto de la evaluación sobre el conjunto de validación. En general, se puede observar cómo la red convolucional con L2 y dos capas ocultas ha sido la que ha obtenido
 \begin{wrapfigure}{r}{0.5\textwidth} % 'r' para la derecha, el ancho de la figura
     \centering
     \includegraphics[width=0.5\textwidth]{images/compendio.png}
     \caption{\small{Gráfica comparativa de los aciertos en el conjunto de validación para las diferentes arquitecturas durante el proceso de entrenamiento.}}
     \label{fig:compendio}
 \end{wrapfigure}
-sido la que ha obtenido una mejor puntutación en este conjunto durante todo el entrenamiento, compitiendo con la red convolucional de 4 capas. Sin embargo, vemos en los resultados en el conjunto de testeo cómo esta perspectiva cambia, haciendo ver que las redes frente a datos no vistos en el entrenamiento se pueden comportar de manera muy distinta a la esperada.
+una mejor puntutación en este conjunto durante todo el entrenamiento. Sin embargo, Hay que tener cuidado con la interpretación de los resultados de esta gráfica, ya que las redes frente a datos no vistos en el entrenamiento se pueden comportar de manera muy distinta a la observada en el conjunto de validación.
 
-Además, se observa para las redes convolucionales simple y tras aplicarle regularización L2, cómo ambas han presentado un entrenamiento muy similar, salvo que a partir de la etapa 30 la red con regularización ha comenzado a estancarse. Esto nos muestra que la regularización L2, aunque a priori parecía una buena técnica para evitar overfitting, ha terminado por perjudicar la capacidad de generalización de la red. Sin embargo, se ha observado cómo, aunque en los conjuntos de validación se observa una diferencia sustancial, sobre el conjunto de testeo sólo ha repercutido en un punto porcentual, recalcando la importancia de la evaluación sobre conjuntos de testeo independientes.
+Además, se observa para las redes convolucionales de cuatro capas y la red densa, ambas han presentado un entrenamiento muy similar, salvo por pequeños tramos donde ha dominado una frente a otra. Esto nos muestra que las redes convolucionales, aunque a priori deberían presentar un mejor comportamiento frente a las redes densas, ha terminado por ser tanto computacionalmente más costosa como menos eficiente. Sin embargo, se ha observado cómo, aunque en los conjuntos de validación se observan s sustanciales por momentos, sobre el conjunto de testeo sólo ha repercutido en un punto porcentual, recalcando la importancia de la evaluación sobre conjuntos de testeo independientes.
 
 
 \subsection{Estudio detallado sobre CNN}
