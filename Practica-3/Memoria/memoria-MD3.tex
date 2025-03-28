@@ -322,7 +322,15 @@ También mediante el uso de mapas de calor sobre la imagen podemos visualizar la
 \newpage
 \section{Conclusiones}
 
+Durante el desarrollo de esta práctica, se han propiciado distintas situaciones que han permitido extraer conclusiones fundamentales sobre el diseño, la eficacia y las limitaciones de los modelos de deep learning aplicados a la clasificación de imágenes en campos técnicos donde la variabilidad visual es mínima entre clases.
 
+Una de las conclusiones más relevantes desde un principio fue la implicación del uso de data augmentation y su impacto en las distintas arquitecturas de las redes. Mientras que para el modelo NET-1 esta técnica resultó contraproducente, en cuanto la arquitectura subía ligeramente de complejidad el problema quedaba mitigado, proporcionando mejores resultados y un mejor balanceo de clases. Se pudo observar que, aunque a priori pudiera parecer obvio, no en todos los casos tiene cabida la utilización de data augmentation, siendo indispensable la experimentación previa y un análisis del impacto para determinar su utilidad.
+
+Otro punto importante ha sido la comparación de resultados para redes densas y convolucionales. Aunque las redes convolucionales teóricamente están diseñadas específicamente para trabajar con imágenes, hemos podido ver cómo una red densa bastante simple ha conseguido buenos resultados en nuestro caso de uso, mejorando incluso la demanda computacional en el entrenamiento y los resultados obtenidos para algunos casos de CNN.
+
+Si bien a priori se pudiera ver con los experimentos realizados que el uso de la convolución no es estrictamente necesario, el maridaje de ambas técnicas ha dado fruto a lo mejor de cada una de las arquitecturas. Habiendo obtenido los patrones necesarios por los mapas de características en las capas de convolución, las capas densas han sido capaces, gracias a esta información depurada, de proporcionar una generalización mucho más efectiva de las pequeñas sutilezas de las imagenes, generando modelos con una mayor capacidad de abstracción.
+
+La integración de los distintos enfoques experimentales y la comparación entre arquitecturas han permitido evidenciar que el éxito en la clasificación de imágenes con esta mínima variabilidad visual que nos concierne depende de un proceso iterativo y meticuloso, en el que la experimentación y el análisis crítico son fundamentales. Gracias a esto, se ha podido comprender en profundidad que cualquier investigación en este campo, además de la literatura existente, debe de ir guiada siempre por una experimentación consciente del problema a resolver.
 
 
 % \cite{exampleReference}
