@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.28)  28 MAR 2025 10:32
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.28)  28 MAR 2025 15:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -519,7 +519,34 @@ File: images/polen_1_C2.png Graphic file (type png)
 <use images/polen_1_C2.png>
 Package pdftex.def Info: images/polen_1_C2.png  used on input line 271.
 (pdftex.def)             Requested size: 350.99762pt x 106.88983pt.
- [8 <./images/polen_1_base.png> <./images/polen_1_C1.png> <./images/polen_1_C2.png>] [9] [10] (./memoria-MD3.aux
+<images/polen_2_base.png, id=71, 237.0456pt x 252.945pt>
+File: images/polen_2_base.png Graphic file (type png)
+<use images/polen_2_base.png>
+Package pdftex.def Info: images/polen_2_base.png  used on input line 281.
+(pdftex.def)             Requested size: 109.19952pt x 116.52592pt.
+ [8 <./images/polen_1_base.png> <./images/polen_1_C1.png> <./images/polen_1_C2.png>]
+<images/polen_2_C1.png, id=78, 4618.053pt x 690.1785pt>
+File: images/polen_2_C1.png Graphic file (type png)
+<use images/polen_2_C1.png>
+Package pdftex.def Info: images/polen_2_C1.png  used on input line 293.
+(pdftex.def)             Requested size: 350.99762pt x 52.4562pt.
+<images/polen_2_C2.png, id=79, 4618.053pt x 1406.3742pt>
+File: images/polen_2_C2.png Graphic file (type png)
+<use images/polen_2_C2.png>
+Package pdftex.def Info: images/polen_2_C2.png  used on input line 295.
+(pdftex.def)             Requested size: 350.99762pt x 106.88983pt.
+<images/gradcam_1.png, id=80, 705.3552pt x 365.6862pt>
+File: images/gradcam_1.png Graphic file (type png)
+<use images/gradcam_1.png>
+Package pdftex.def Info: images/gradcam_1.png  used on input line 307.
+(pdftex.def)             Requested size: 272.99881pt x 141.53453pt.
+ [9 <./images/polen_2_base.png> <./images/polen_2_C1.png> <./images/polen_2_C2.png>]
+<images/gradcam_2.png, id=87, 705.3552pt x 365.6862pt>
+File: images/gradcam_2.png Graphic file (type png)
+<use images/gradcam_2.png>
+Package pdftex.def Info: images/gradcam_2.png  used on input line 316.
+(pdftex.def)             Requested size: 272.99881pt x 141.53453pt.
+ [10 <./images/gradcam_1.png> <./images/gradcam_2.png>] [11] (./memoria-MD3.aux
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 )
@@ -529,18 +556,18 @@ L3 programming layer <2024-01-22>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 15959 strings out of 476120
- 312134 string characters out of 5793656
+ 15998 strings out of 476120
+ 313161 string characters out of 5793656
  1939975 words of memory out of 5000000
- 37727 multiletter control sequences out of 15000+600000
+ 37766 multiletter control sequences out of 15000+600000
  566810 words of font info for 68 fonts, out of 8000000 for 9000
  40 hyphenation exceptions out of 8191
  83i,10n,93p,1001b,371s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on memoria-MD3.pdf (11 pages, 1547676 bytes).
+Output written on memoria-MD3.pdf (12 pages, 2165167 bytes).
 PDF statistics:
- 126 PDF objects out of 1000 (max. 8388607)
- 60 compressed objects within 1 object stream
+ 139 PDF objects out of 1000 (max. 8388607)
+ 62 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 93 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 118 words of extra memory for PDF output out of 10000 (max. 10000000)
 

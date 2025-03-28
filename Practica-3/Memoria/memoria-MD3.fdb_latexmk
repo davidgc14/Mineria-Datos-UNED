@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1743157979.1619 "/home/david/Documents/Master/MineriaDatos/Practica-3/Memoria/memoria-MD3.tex" "memoria-MD3.pdf" "memoria-MD3" 1743157984.27736 0
+["pdflatex"] 1743177361.25976 "/home/david/Documents/Master/MineriaDatos/Practica-3/Memoria/memoria-MD3.tex" "memoria-MD3.pdf" "memoria-MD3" 1743177366.81886 0
   "/etc/texmf/web2c/texmf.cnf" 1730049747.72736 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/david/Documents/Master/MineriaDatos/Practica-3/Memoria/memoria-MD3.tex" 1743157978.83721 18578 c5565fdf8ce60d7015d991e56d45d4d5 ""
+  "/home/david/Documents/Master/MineriaDatos/Practica-3/Memoria/memoria-MD3.tex" 1743177360.61761 20795 5ed1338e950c323b2bdb44f0e8b03934 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -136,6 +136,8 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1730050020.65447 128028 f533b797fba58d231669ea19e894e23e ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1730142013 6822836 85cebf1abe9f452230372d2d34b760f6 ""
   "images/compendio.png" 1743078300.84302 75805 2d8d43c093de572b1efe80e64d5fa3bc ""
+  "images/gradcam_1.png" 1743168062.67691 30271 88f80bed02ef0a6420da0b073a35aa58 ""
+  "images/gradcam_2.png" 1743168113.50966 26008 b599eb643c1b1933a34639c5513207c6 ""
   "images/net1-CM.png" 1742985645.54625 26803 ec832de09372d4e56802d037840520d8 ""
   "images/net1-train.png" 1742985645.54825 43458 4305239b5dc3427b9a297a661836efb6 ""
   "images/net2-CM.png" 1742985645.67425 27105 088811deb10e8dad5cebfd87097eadde ""
@@ -151,9 +153,12 @@
   "images/polen_1_C1.png" 1743081258.80306 325211 4f67ee5750086a4fda8f350c2ed70bf1 ""
   "images/polen_1_C2.png" 1743081266.65912 349612 465a4a35c654cb0bca5938a5f294c749 ""
   "images/polen_1_base.png" 1743081396.0451 25217 8bb625301c70a570bebb033a92a0c89b ""
-  "memoria-MD3.aux" 1743157984.13027 4752 aa0f1d5f5bd8a649386b4d07bc1ff135 "pdflatex"
-  "memoria-MD3.tex" 1743157978.83721 18578 c5565fdf8ce60d7015d991e56d45d4d5 ""
-  "memoria-MD3.toc" 1743157984.13427 1175 cf3d7667341d41386848dd7d162af444 "pdflatex"
+  "images/polen_2_C1.png" 1743167577.68466 267988 e3b98344a8c05dd677bbdea74c56e123 ""
+  "images/polen_2_C2.png" 1743167591.92194 303733 bae8137d486342e11c02d91898cfc661 ""
+  "images/polen_2_base.png" 1743167563.75138 9435 7482943b2222f952893568c9949d0a22 ""
+  "memoria-MD3.aux" 1743177366.6854 5729 e21f1470c725daf62e11268dc12572f0 "pdflatex"
+  "memoria-MD3.tex" 1743177360.61761 20795 5ed1338e950c323b2bdb44f0e8b03934 ""
+  "memoria-MD3.toc" 1743177366.68839 1241 e8ad71f9eda111e5e24074ac548cf2b9 "pdflatex"
   (generated)
   "memoria-MD3.aux"
   "memoria-MD3.log"

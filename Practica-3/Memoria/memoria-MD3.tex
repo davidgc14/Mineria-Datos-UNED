@@ -275,12 +275,55 @@ Observamos a continuación en la Figura \ref{fig:mapas_1} los mapas de caracter�
 
 Vemos aquí la importancia de los pesos aprendidos durante el entrenamiento. En la primera capa se ha jugado mucho más con el contraste y las transformaciones más abruptas para detectar formas más genéricas, mientras que en la segunda capa se ha centrado mucho más el foco en la aparición de relieves y sombras, con una mayor sensibilidad a los cambios de tonalidad.
 
-Observando algunos ejemplos en concreto, se puede ver en el 38 cómo sus pesos han aprendido a generar unos mapas con altos relieves, simulando la aparición de sombras fruto de una iluminación procedente de la parte superior de la imagen. En efecto, el filtro 38 con los pesos entrenados de la Figura \ref{fig:pesos} contiene un degradado de pesos en el eje vertical, propiciando lo que observamos en su respectivo mapa de características. En contraste, el mapa 56 por ejemplo simula volúmenes y sombras procedentes justo de la dirección opuesta. En conjunto, este juego de transformaciones por parte de los pesos aprendidos durante el entrenamiento le proporcionan a la red una información mucho más rica y mejor procesada, permitiendo una mejor generalización y una mayor capacidad de detección de patrones en imágenes, que a simple vista el ojo humano no sería capaz de ver.
+Observando algunos ejemplos en concreto, se puede ver en el 38 cómo sus pesos han aprendido a generar unos mapas con altos relieves, simulando la aparición de sombras fruto de una iluminación procedente de la parte superior de la imagen. En efecto, el filtro 38 con los pesos entrenados de la Figura \ref{fig:pesos} contiene un degradado de pesos en el eje vertical, propiciando lo que observamos en su respectivo mapa de características. En contraste, el mapa 56 por
+\begin{wrapfigure}{r}{0.28\textwidth} % 'r' para la derecha, el ancho de la figura
+    \centering
+    \includegraphics[width=0.28\textwidth]{images/polen_2_base.png}
+    \caption{\small{Imagen del conjunto de testeo.}}
+    \label{fig:polen_2}
+\end{wrapfigure}
+ejemplo simula volúmenes y sombras procedentes justo de la dirección opuesta. En conjunto, este juego de transformaciones por parte de los pesos aprendidos durante el entrenamiento le proporcionan a la red una información mucho más rica y mejor procesada, permitiendo una mejor generalización y una mayor capacidad de detección de patrones en imágenes, que a simple vista el ojo humano no sería capaz de ver.
 
+Veamos otro ejemplo, ahora del conjunto de test para una nueva imagen donde se observa un patrón circular mucho más marcado. Tenemos en la Figura \ref{fig:polen_2} la imagen de la que se han extraído los mapas de características. Como los pesos aprendidos por la red son los mismos para ambas imágenes en la clasificación, sus patrones en los mapas de características también son similares, ya que la transformación es la misma. Observamos a continuación en la Figura \ref{fig:mapas_2} los mapas de características de la imagen \ref{fig:polen_2}.
+
+\begin{figure}[ht]
+    \centering
+    \scriptsize
+    Capa 1 \\
+    \includegraphics[width=0.9\textwidth]{images/polen_2_C1.png} \\
+    Capa 2 \\
+    \includegraphics[width=0.9\textwidth]{images/polen_2_C2.png}
+    \caption{\small{Mapas de características de las dos capas de CNN para la imagen \ref{fig:polen_2}.}}
+    \label{fig:mapas_2}
+\end{figure}
+
+\subsection{Mapas de calor}
+
+También mediante el uso de mapas de calor sobre la imagen podemos visualizar la importancia de cada uno de los píxeles en la imagen para la red. En la Figura \ref{fig:calor_1} y \ref{fig:calor_2} se puede observar cómo la red ha aprendido a centrar su atención en ciertas áreas de la imagen, por supuesto como es obvio centrando su atención en los píxeles con información. Cabe destacar que en estas imágenes se muerstra en color rojo las zonas con mayor importancia y en azul aquellas con menor importancia.
+
+\begin{figure}[ht]
+    \centering
+    \scriptsize
+    \includegraphics[width=0.7\textwidth]{images/gradcam_1.png}
+    \caption{\small{Mapa de calor de la Figura \ref{fig:polen_1} para la red convolucional.}}
+    \label{fig:calor_1}
+\end{figure}
+
+
+\begin{figure}[ht]
+    \centering
+    \scriptsize
+    \includegraphics[width=0.7\textwidth]{images/gradcam_2.png}
+    \caption{\small{Mapa de calor de la Figura \ref{fig:polen_1} para la red convolucional.}}
+    \label{fig:calor_2}
+\end{figure}
 
 
 \newpage
 \section{Conclusiones}
+
+
+
 
 % \cite{exampleReference}
 

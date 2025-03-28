@@ -13,4 +13,5 @@
 \contentsline {subsection}{\numberline {3.2}Estudio detallado sobre CNN}{7}{}%
 \contentsline {subsection}{\numberline {3.3}Pesos}{7}{}%
 \contentsline {subsection}{\numberline {3.4}Mapas de características}{7}{}%
-\contentsline {section}{\numberline {4}Conclusiones}{10}{}%
+\contentsline {subsection}{\numberline {3.5}Mapas de calor}{9}{}%
+\contentsline {section}{\numberline {4}Conclusiones}{11}{}%
