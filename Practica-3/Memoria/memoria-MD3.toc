@@ -1,0 +1,17 @@
+\babel@toc {spanish}{}\relax 
+\contentsline {section}{\numberline {1}Técnicas de \textit {Data Augmentation}. Impacto en el modelado}{2}{}%
+\contentsline {section}{\numberline {2}Resultados}{3}{}%
+\contentsline {subsection}{\numberline {2.1}Redes densas estándar}{3}{}%
+\contentsline {subsubsection}{\numberline {2.1.1}Modelo 1: NET-1}{3}{}%
+\contentsline {subsubsection}{\numberline {2.1.2}Modelo 2: Red densa con capas ocultas}{4}{}%
+\contentsline {subsection}{\numberline {2.2}Modelo 3: CNN}{4}{}%
+\contentsline {subsection}{\numberline {2.3}Modificaciones de CNN}{4}{}%
+\contentsline {subsubsection}{\numberline {2.3.1}Modelo 4: adición de capas convolucionales}{4}{}%
+\contentsline {subsubsection}{\numberline {2.3.2}Modelo 5: regularización L2 + Capas densas}{5}{}%
+\contentsline {section}{\numberline {3}Análisis de resultados}{6}{}%
+\contentsline {subsection}{\numberline {3.1}Comparativa general}{6}{}%
+\contentsline {subsection}{\numberline {3.2}Estudio detallado sobre CNN}{7}{}%
+\contentsline {subsection}{\numberline {3.3}Pesos}{7}{}%
+\contentsline {subsection}{\numberline {3.4}Mapas de características}{7}{}%
+\contentsline {subsection}{\numberline {3.5}Mapas de calor}{9}{}%
+\contentsline {section}{\numberline {4}Conclusiones}{11}{}%
