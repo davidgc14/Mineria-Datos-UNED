@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.28)  28 MAR 2025 17:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.10.28)  29 MAR 2025 16:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -535,16 +535,16 @@ File: images/polen_2_C2.png Graphic file (type png)
 <use images/polen_2_C2.png>
 Package pdftex.def Info: images/polen_2_C2.png  used on input line 295.
 (pdftex.def)             Requested size: 350.99762pt x 106.88983pt.
-<images/gradcam_1.png, id=80, 705.3552pt x 365.6862pt>
+ [9 <./images/polen_2_base.png> <./images/polen_2_C1.png> <./images/polen_2_C2.png>]
+<images/gradcam_1.png, id=86, 705.3552pt x 365.6862pt>
 File: images/gradcam_1.png Graphic file (type png)
 <use images/gradcam_1.png>
-Package pdftex.def Info: images/gradcam_1.png  used on input line 307.
+Package pdftex.def Info: images/gradcam_1.png  used on input line 309.
 (pdftex.def)             Requested size: 272.99881pt x 141.53453pt.
- [9 <./images/polen_2_base.png> <./images/polen_2_C1.png> <./images/polen_2_C2.png>]
 <images/gradcam_2.png, id=87, 705.3552pt x 365.6862pt>
 File: images/gradcam_2.png Graphic file (type png)
 <use images/gradcam_2.png>
-Package pdftex.def Info: images/gradcam_2.png  used on input line 316.
+Package pdftex.def Info: images/gradcam_2.png  used on input line 318.
 (pdftex.def)             Requested size: 272.99881pt x 141.53453pt.
  [10 <./images/gradcam_1.png> <./images/gradcam_2.png>] [11] (./memoria-MD3.aux
 LaTeX Info: Redefining \. on input line 8.
@@ -564,7 +564,7 @@ Here is how much of TeX's memory you used:
  40 hyphenation exceptions out of 8191
  83i,10n,93p,1001b,371s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on memoria-MD3.pdf (12 pages, 2167472 bytes).
+Output written on memoria-MD3.pdf (12 pages, 2168273 bytes).
 PDF statistics:
  139 PDF objects out of 1000 (max. 8388607)
  62 compressed objects within 1 object stream

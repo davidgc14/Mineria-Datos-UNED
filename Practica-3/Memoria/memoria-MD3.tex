@@ -63,7 +63,7 @@
 
 En el contexto de la clasificación de granos de polen, cuya variabilidad visual es mínima y las diferencias entre especies se concentran en detalles sutiles de forma y tamaño, se ha explorado en esta práctica la aplicación de técnicas de data augmentation para evaluar su impacto en la capacidad de generalización de los modelos. Dado el tamaño del conjunto de datos y la alta similitud entre clases, se ha realizado el estudio basado en transformaciones que replicaran posibles variaciones naturales en la captura de imágenes microscópicas, realizando una generación de 5 muestras mediante modificaciones aleatorias a partir de cada instancia en el conjunto de entrenamiento. Estas transformaciones se basaron en operaciones geométricas, como rotaciones de hasta 10 grados en ambas direcciones, zoom entre $\times 0.9$ y $\times 1.1$ y un desplazamiento en ambos ejes de hasta 5 píxeles.
 
-Para evaluar la validez de esta técnica, se han realizado varios entrenamientos para cada una de las arquitecturas. Tras la aplicación de data augmentation al conjunto de entrenamiento, este se ha adherido al conjunto original para constituir así el nuevo conjunto de entrenamiento aumentado. Estos son los resultados tras la evaluación con el conjunto de testeo:
+Para evaluar la validez de esta técnica, se han realizado varios entrenamientos para cada una de las arquitecturas. Tras la aplicación de data augmentation al conjunto de entrenamiento, este se ha adherido al conjunto original para constituir así el nuevo ``conjunto de entrenamiento aumentado''. Estos son los resultados tras la evaluación sobre el conjunto de testeo:
 
 
 \begin{table}[ht]
@@ -94,7 +94,7 @@ Para evaluar la validez de esta técnica, se han realizado varios entrenamientos
         \hline
         CNN                   &                         &                   &               & 85.3                  & 70/30                   \\
         \hline
-        CNN                   & \checkmark              &                   &               & 88.6                  & 73/27                   \\
+        CNN                   & \checkmark              &                   &               & 88.6                  & 27/73                   \\
         \hline
         CNN                   & \checkmark              & \checkmark        &               & 89.2                  & 74/26                   \\
         \hline
@@ -103,21 +103,21 @@ Para evaluar la validez de esta técnica, se han realizado varios entrenamientos
     \end{tabular}
 \end{table}
 
-Observamos cómo, salvo para NET-1, la aplicación de data augmentation ha mejorado el rendimiento de los modelos. Y no sólo el rendimiento es importante en este caso, sino que también se ha visto influenciada la ponderación entre clases, aproximándonos gracias a estas técnicas a un ratio del error equitativo para ambas categorías. Es por ello que para el análisis de las arquitecturas presentes y las modificaciones faltantes, se ha decidido emplear la técnica de data augmentation en el entrenamiento de los modelos con todas las transformaciones anteriores, con la intención de maximizar la capacidad de generalización de los modelos y obtener resultados más robustos y fiables.
+Observamos cómo, salvo para NET-1, la aplicación de data augmentation ha mejorado el rendimiento de los modelos. Y no sólo el rendimiento es importante en este caso, sino que también se ha visto influenciada la ponderación entre clases, aproximándonos gracias a estas técnicas a un ratio equitativo del error. Es por ello que para el análisis de las arquitecturas presentes y las modificaciones faltantes, se ha decidido emplear la técnica de data augmentation en el entrenamiento de los modelos con todas las transformaciones anteriores, con la intención de maximizar la capacidad de generalización de los modelos y obtener resultados más robustos y fiables.
 
 
 
 \newpage
 \section{Resultados}
 
-Se presentan a continuación los resultados obtenidos para cada una de las arquitecturas. Cabe denotar que todas las redes que aquí se presentan se han entrenado y evaluado bajo el mismo pipeline, con la intención de que la comparación sea fiable y robusta. Se ha definido un valor máximo de etapas de entrenamiento a 100, incluyendo una parada temprana en función del decrecimiento de la función de pérdida para el conjunto de validación. El entrenamiento se ha realizado con un batch de tamaño 128 y una tasa de aprendizaje de 0.0001 para el optimizador Adam. Estos valores permanecerán inmutables a lo largo de este análisis.
+Se presentan a continuación los resultados obtenidos para cada una de las arquitecturas. Cabe denotar que todas las redes que aquí se presentan se han entrenado y evaluado bajo el mismo pipeline, con la intención de que la comparación sea fiable y robusta. Se ha definido un valor máximo de etapas de entrenamiento a 150, incluyendo una parada temprana en función del decrecimiento de la función de pérdida para el conjunto de validación. El entrenamiento se ha realizado con un batch de tamaño 128 y una tasa de aprendizaje de 0.0001 para el optimizador Adam. Estos valores permanecerán inmutables a lo largo de este análisis.
 
 \subsection{Redes densas estándar}
 
 
 \subsubsection{Modelo 1: NET-1}
 
-El modelo NET-1 consiste en un modelo sin capas ocultas, disponiendo únicamente de una capa de aplanamiento de la imagen y una neurona discriminativa con función sigmoide, haciendo que la red actúe como una regresión logística binomial. %Esta red ha sido implementada para establecer un punto de comparación frente a arquitecturas más complejas.
+El modelo NET-1 consiste en un modelo sin capas ocultas, el cual dispone únicamente de una capa de aplanamiento de la imagen y una neurona discriminativa con función sigmoide, haciendo que la red actúe como una regresión logística binomial. %Esta red ha sido implementada para establecer un punto de comparación frente a arquitecturas más complejas.
 
 Debido a la carencia de capas ocultas, este modelo ha demostrado un rendimiento bastante mejorable, obteniendo un acierto en el conjunto de testeo del 76.4\%. Este valor fue extraído del modelo en la etapa 7 de entrenamiento, donde se puede empezar a ver en la Figura \ref{fig:net1} un mínimo de la función de pérdida. La matriz de confusión denota una marcada desponderación del error, predominando la clasificación de la clase Kunzea.
 
@@ -170,7 +170,7 @@ En la Figura \ref{fig:net3} se puede observar cómo la red ha sido capaz de gene
 
 \subsubsection{Modelo 4: adición de capas convolucionales}
 
-Se ha tratado de mejorar la capacidad de generalización de la red añadiendo una tercera y cuarta capa convolucional con 128 y 256filtros respectivamente, manteniendo el resto de la arquitectura invariante. Se ha mejorado ligeramente el acierto al 92.5\%, a expensas de una ligera sobreetiquetación en la clase Kunzea. La parada temprana se ha realizado en la etapa 28, donde se observa en la Figura \ref{fig:net4} un mínimo local en la función de pérdida.
+Se ha tratado de mejorar la capacidad de generalización de la red añadiendo una tercera y cuarta capa convolucional con 128 y 256 filtros respectivamente, manteniendo el resto de la arquitectura invariante. Se ha mejorado ligeramente el acierto al 92.5\%, a expensas de una ligera sobreetiquetación en la clase Kunzea. La parada temprana se ha realizado en la etapa 28, donde se observa en la Figura \ref{fig:net4} un mínimo local en la función de pérdida.
 
 \begin{figure}[ht]
     \centering
@@ -182,7 +182,7 @@ Se ha tratado de mejorar la capacidad de generalización de la red añadiendo un
 \end{figure}
 
 
-\subsubsection{Modelo 5: regularización L2}
+\subsubsection{Modelo 5: regularización L2 + Capas densas}
 
 En este caso, se ha añadido regularización L2 a las dos capas convolucionales de la red original, con un factor de regularización de 0.001. Además de esta mejora, se han añadido después de la capa de aplanamiento, dos capas densas de 128 y 64 neuronas respectivamente, con la intención de que el modelo pueda obtener lo mejor de ambas arquitecturas. Se ha conseguido de esta manera un aumento al 94.2\%, además de mantener la ponderación de errores. Esto se puede observar en la Figura \ref{fig:net5}, donde la parada temprana se ha realizado en la etapa 21.
 
@@ -219,7 +219,7 @@ En este caso, se ha añadido regularización L2 a las dos capas convolucionales 
 \subsection{Comparativa general}
 
 
-En la Figura \ref{fig:compendio} se pueden observar las distintas curvas fruto de la evaluación sobre el conjunto de validación. En general, se puede observar cómo la red convolucional con L2 y dos capas ocultas ha sido la que ha obtenido
+En la Figura \ref{fig:compendio} se pueden observar las distintas curvas fruto de la evaluación sobre el conjunto de validación. En general, se puede observar cómo la red convolucional con L2 y dos capas densas ha sido la que ha obtenido
 \begin{wrapfigure}{r}{0.5\textwidth} % 'r' para la derecha, el ancho de la figura
     \centering
     \includegraphics[width=0.5\textwidth]{images/compendio.png}
@@ -228,7 +228,7 @@ En la Figura \ref{fig:compendio} se pueden observar las distintas curvas fruto d
 \end{wrapfigure}
 una mejor puntutación en este conjunto durante todo el entrenamiento. Sin embargo, Hay que tener cuidado con la interpretación de los resultados de esta gráfica, ya que las redes frente a datos no vistos en el entrenamiento se pueden comportar de manera muy distinta a la observada en el conjunto de validación.
 
-Además, se observa para las redes convolucionales de cuatro capas y la red densa, ambas han presentado un entrenamiento muy similar, salvo por pequeños tramos donde ha dominado una frente a otra. Esto nos muestra que las redes convolucionales, aunque a priori deberían presentar un mejor comportamiento frente a las redes densas, ha terminado por ser tanto computacionalmente más costosa como menos eficiente. Sin embargo, se ha observado cómo, aunque en los conjuntos de validación se observan s sustanciales por momentos, sobre el conjunto de testeo sólo ha repercutido en un punto porcentual, recalcando la importancia de la evaluación sobre conjuntos de testeo independientes.
+Además, se observa para la red convolucional de cuatro capas y la red densa, ambas han presentado un entrenamiento muy similar, salvo por pequeños tramos donde ha dominado una frente a la otra. Esto nos muestra que las redes convolucionales, aunque a priori deberían presentar un mejor comportamiento frente a las redes densas, ha terminado por ser tanto computacionalmente más costosa como menos eficiente. Sin embargo, aunque en los conjuntos de validación se observan mejoras sustanciales por momentos, sobre el conjunto de testeo sólo ha repercutido en un punto porcentual, recalcando la importancia de la evaluación sobre conjuntos de testeo independientes.
 
 
 \subsection{Estudio detallado sobre CNN}
@@ -246,19 +246,19 @@ Además, se observa para las redes convolucionales de cuatro capas y la red dens
     \label{fig:pesos}
 \end{figure}
 
-Haciendo un análisis detallado de las características de nuestra red convolucional base, se ha procedido a extraer los pesos de las capas convolucionales para visualizarlos. En la Figura \ref{fig:pesos} se pueden observar los pesos de las dos capas convolucionales, donde cada una ha aprendido a detectar, gracias al backpropagation, ciertas características de nuestros datos en el conjunto de entrenamiento. Veremos a continuación su efecto en los mapas de características generados para cada imagen.
+Haciendo un análisis detallado de las características de nuestra red convolucional base, se ha procedido a extraer los pesos de las capas convolucionales para su visualización. En la Figura \ref{fig:pesos} se pueden observar los pesos de las dos capas convolucionales, donde cada una ha aprendido a detectar, gracias al backpropagation, ciertas características de nuestros datos en el conjunto de entrenamiento. Veremos a continuación su efecto en los mapas de características generados para cada imagen.
 
 
 \subsection{Mapas de características}
 
-Para la visualización de los mapas de características, se ha procedido a seleccionar dos imágenes del conjunto de testeo para observar las repercusiones de los pesos aprendidos durante el entrenamiento a imágenes no vistas
+Para la visualización de los mapas de características, se ha procedido a seleccionar dos imágenes del conjunto de testeo, con la intención de observar las repercusiones de los pesos aprendidos durante el entrenamiento en imágenes
 \begin{wrapfigure}{r}{0.45\textwidth} % 'r' para la derecha, el ancho de la figura
     \centering
     \includegraphics[width=0.45\textwidth]{images/polen_1_base.png}
     \caption{\small{Comparativa entre las dos gamas de colores estudiadas.}}
     \label{fig:polen_1}
 \end{wrapfigure}
-no vistas en este proceso. Cabe destacar que la visualización de estos mapas se ha decidido realizar mediante el uso de una escala de colores distinta a la escala de grises, para una mejor visualización de los cambios de tonalidad y una mejor detección de cambios sutiles en los píxeles. Podemos ver por ejemplo en la Figura \ref{fig:polen_1} la comparativa de las dos gamas de colores utilizadas. Se observan tanto unos perfiles más marcados como una mejor visualización de las sombras dentro del relieve del grano de polen.
+no vistas en este proceso. Cabe destacar que la visualización de estos mapas se ha decidido realizar mediante el uso de una escala de colores distinta a la escala de grises, para facilitar la visualización de los cambios de tonalidad y mejorar la detección de cambios sutiles en los píxeles. Podemos ver por ejemplo en la Figura \ref{fig:polen_1} la comparativa de las dos gamas de colores utilizadas. Se observan tanto unos perfiles más marcados como una mejor visualización de las sombras dentro del relieve del grano de polen.
 
 Observamos a continuación en la Figura \ref{fig:mapas_1} los mapas de características de las dos capas de nuestra red convolucional para la imagen anterior.
 
@@ -284,7 +284,7 @@ Observando algunos ejemplos en concreto, se puede ver en el 38 cómo sus pesos h
 \end{wrapfigure}
 ejemplo simula volúmenes y sombras procedentes justo de la dirección opuesta. En conjunto, este juego de transformaciones por parte de los pesos aprendidos durante el entrenamiento le proporcionan a la red una información mucho más rica y mejor procesada, permitiendo una mejor generalización y una mayor capacidad de detección de patrones en imágenes, que a simple vista el ojo humano no sería capaz de ver.
 
-Veamos otro ejemplo, ahora del conjunto de test para una nueva imagen donde se observa un patrón circular mucho más marcado. Tenemos en la Figura \ref{fig:polen_2} la imagen de la que se han extraído los mapas de características. Como los pesos aprendidos por la red son los mismos para ambas imágenes en la clasificación, sus patrones en los mapas de características también son similares, ya que la transformación es la misma. Observamos a continuación en la Figura \ref{fig:mapas_2} los mapas de características de la imagen \ref{fig:polen_2}.
+Veamos otro ejemplo, ahora para una nueva imagen donde se observa un patrón circular mucho más marcado. Tenemos en la Figura \ref{fig:polen_2} la imagen de la que se han extraído los mapas de características. Como los pesos aprendidos por la red son los mismos para ambas imágenes en la clasificación, sus patrones en los mapas de características también son similares, ya que la transformación es la misma. Observamos a continuación en la Figura \ref{fig:mapas_2} los mapas de características de la imagen \ref{fig:polen_2}.
 
 \begin{figure}[ht]
     \centering
@@ -299,7 +299,9 @@ Veamos otro ejemplo, ahora del conjunto de test para una nueva imagen donde se o
 
 \subsection{Mapas de calor}
 
-También mediante el uso de mapas de calor sobre la imagen podemos visualizar la importancia de cada uno de los píxeles en la imagen para la red. En la Figura \ref{fig:calor_1} y \ref{fig:calor_2} se puede observar cómo la red ha aprendido a centrar su atención en ciertas áreas de la imagen, por supuesto como es obvio centrando su atención en los píxeles con información. Cabe destacar que en estas imágenes se muerstra en color rojo las zonas con mayor importancia y en azul aquellas con menor importancia.
+También mediante el uso de mapas de calor sobre la imagen podemos visualizar la importancia de cada uno de los píxeles en la imagen para la red. En la Figura \ref{fig:calor_1} y \ref{fig:calor_2} se puede observar cómo la red ha aprendido a centrar su atención en ciertas áreas de la imagen, apreciando cómo su atención se ha focailzado en los píxeles con mayor información (que no dejan de ser aquellos con perfiles blancos más marcados).
+
+Cabe destacar que en estas imágenes se muerstra en color rojo las zonas con mayor importancia, decreciendo hacia el amarillo y por último al azul en aquellas con menor relevancia para la red.
 
 \begin{figure}[ht]
     \centering
@@ -314,7 +316,7 @@ También mediante el uso de mapas de calor sobre la imagen podemos visualizar la
     \centering
     \scriptsize
     \includegraphics[width=0.7\textwidth]{images/gradcam_2.png}
-    \caption{\small{Mapa de calor de la Figura \ref{fig:polen_1} para la red convolucional.}}
+    \caption{\small{Mapa de calor de la Figura \ref{fig:polen_2} para la red convolucional.}}
     \label{fig:calor_2}
 \end{figure}
 
@@ -326,11 +328,11 @@ Durante el desarrollo de esta práctica, se han propiciado distintas situaciones
 
 Una de las conclusiones más relevantes desde un principio fue la implicación del uso de data augmentation y su impacto en las distintas arquitecturas de las redes. Mientras que para el modelo NET-1 esta técnica resultó contraproducente, en cuanto la arquitectura subía ligeramente de complejidad el problema quedaba mitigado, proporcionando mejores resultados y un mejor balanceo de clases. Se pudo observar que, aunque a priori pudiera parecer obvio, no en todos los casos tiene cabida la utilización de data augmentation, siendo indispensable la experimentación previa y un análisis del impacto para determinar su utilidad.
 
-Otro punto importante ha sido la comparación de resultados para redes densas y convolucionales. Aunque las redes convolucionales teóricamente están diseñadas específicamente para trabajar con imágenes, hemos podido ver cómo una red densa bastante simple ha conseguido buenos resultados en nuestro caso de uso, mejorando incluso la demanda computacional en el entrenamiento y los resultados obtenidos para algunos casos de CNN.
+Otro punto importante ha sido la comparación de resultados para redes densas frente a las convolucionales. Aunque las redes convolucionales teóricamente están diseñadas específicamente para trabajar con imágenes, hemos podido ver cómo una red densa bastante simple ha conseguido buenos resultados, mejorando incluso la demanda computacional en el entrenamiento y los resultados obtenidos para algunos casos de CNN.
 
-Si bien a priori se pudiera ver con los experimentos realizados que el uso de la convolución no es estrictamente necesario, el maridaje de ambas técnicas ha dado fruto a lo mejor de cada una de las arquitecturas. Habiendo obtenido los patrones necesarios por los mapas de características en las capas de convolución, las capas densas han sido capaces, gracias a esta información depurada, de proporcionar una generalización mucho más efectiva de las pequeñas sutilezas de las imagenes, generando modelos con una mayor capacidad de abstracción.
+Si bien a priori se pudiera ver con los experimentos realizados que el uso de la convolución no es estrictamente necesario, el maridaje de ambas técnicas ha dado fruto a lo mejor de cada una de las arquitecturas. Habiendo obtenido los patrones necesarios por los mapas de características en las capas de convolución, las capas densas han sido capaces, gracias a esta información depurada, de proporcionar una generalización mucho más efectiva de las pequeñas sutilezas de las imágenes, generando modelos con una mayor capacidad de abstracción.
 
-La integración de los distintos enfoques experimentales y la comparación entre arquitecturas han permitido evidenciar que el éxito en la clasificación de imágenes con esta mínima variabilidad visual que nos concierne depende de un proceso iterativo y meticuloso, en el que la experimentación y el análisis crítico son fundamentales. Gracias a esto, se ha podido comprender en profundidad que cualquier investigación en este campo, además de la literatura existente, debe de ir guiada siempre por una experimentación consciente del problema a resolver.
+La integración de los distintos enfoques experimentales y la comparación entre arquitecturas han permitido evidenciar que el éxito en la clasificación de imágenes con esta mínima variabilidad visual depende de un proceso iterativo y meticuloso, en el que la experimentación y el análisis crítico son fundamentales. Gracias a esto, se ha podido comprender en profundidad que cualquier investigación en este campo, además de la literatura existente, debe ir guiada siempre por una experimentación consciente del problema a resolver.
 
 
 % \cite{exampleReference}

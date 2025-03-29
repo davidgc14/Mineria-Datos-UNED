@@ -7,7 +7,7 @@
 \contentsline {subsection}{\numberline {2.2}Modelo 3: CNN}{4}{}%
 \contentsline {subsection}{\numberline {2.3}Modificaciones de CNN}{4}{}%
 \contentsline {subsubsection}{\numberline {2.3.1}Modelo 4: adición de capas convolucionales}{4}{}%
-\contentsline {subsubsection}{\numberline {2.3.2}Modelo 5: regularización L2}{5}{}%
+\contentsline {subsubsection}{\numberline {2.3.2}Modelo 5: regularización L2 + Capas densas}{5}{}%
 \contentsline {section}{\numberline {3}Análisis de resultados}{6}{}%
 \contentsline {subsection}{\numberline {3.1}Comparativa general}{6}{}%
 \contentsline {subsection}{\numberline {3.2}Estudio detallado sobre CNN}{7}{}%
