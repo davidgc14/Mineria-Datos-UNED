@@ -3,44 +3,44 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: memoria-MD4.aux
 The style file: plain.bst
 Database file #1: library.bib
-You've used 2 entries,
+You've used 3 entries,
             2118 wiz_defined-function locations,
-            508 strings with 4369 characters,
-and the built_in function-call counts, 423 in all, are:
-= -- 36
-> -- 14
+            516 strings with 4555 characters,
+and the built_in function-call counts, 728 in all, are:
+= -- 65
+> -- 32
 < -- 0
-+ -- 6
-- -- 4
-* -- 14
-:= -- 75
-add.period$ -- 5
-call.type$ -- 2
-change.case$ -- 8
++ -- 14
+- -- 10
+* -- 34
+:= -- 129
+add.period$ -- 9
+call.type$ -- 3
+change.case$ -- 14
 chr.to.int$ -- 0
-cite$ -- 2
-duplicate$ -- 14
-empty$ -- 45
-format.name$ -- 4
-if$ -- 89
+cite$ -- 3
+duplicate$ -- 26
+empty$ -- 67
+format.name$ -- 10
+if$ -- 152
 int.to.chr$ -- 0
-int.to.str$ -- 2
-missing$ -- 0
-newline$ -- 12
-num.names$ -- 4
-pop$ -- 18
+int.to.str$ -- 3
+missing$ -- 2
+newline$ -- 18
+num.names$ -- 6
+pop$ -- 25
 preamble$ -- 1
-purify$ -- 6
+purify$ -- 11
 quote$ -- 0
-skip$ -- 15
+skip$ -- 21
 stack$ -- 0
-substring$ -- 10
-swap$ -- 2
+substring$ -- 16
+swap$ -- 3
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 8
+type$ -- 10
 warning$ -- 0
-while$ -- 4
-width$ -- 3
-write$ -- 20
+while$ -- 6
+width$ -- 4
+write$ -- 34

@@ -5,6 +5,12 @@ David~García Curbelo.
 \newblock Práctica 2 - minería de datos, 2024.
 \newblock Este trabajo presenta un análisis detallado de los métodos de selección de características estudiados en este curso.
 
+\bibitem{libro}
+Trevor Hastie, Robert Tibshirani, and Jerome Friedman.
+\newblock {\em The Elements of Statistical Learning: Data Mining, Inference, and Prediction}.
+\newblock Springer, New York, 2 edition, 2009.
+\newblock Chapter 7: Random Forests.
+
 \bibitem{dataset}
 {William Wolberg, Olvi Mangasarian, Nick Street, W. Street}.
 \newblock Breast cancer wisconsin (diagnostic), 1993.

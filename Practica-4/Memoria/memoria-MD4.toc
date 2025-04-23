@@ -9,9 +9,14 @@
 \contentsline {section}{\numberline {3}Preprocesamiento y tratamiento de datos}{8}{}%
 \contentsline {subsection}{\numberline {3.1}Normalización de los datos}{8}{}%
 \contentsline {subsection}{\numberline {3.2}Selección de características}{9}{}%
-\contentsline {subsubsection}{\numberline {3.2.1}Información mutua}{9}{}%
-\contentsline {subsubsection}{\numberline {3.2.2}Test-$F$}{9}{}%
-\contentsline {subsubsection}{\numberline {3.2.3}ReliefF}{10}{}%
-\contentsline {subsubsection}{\numberline {3.2.4}RFE-SVM}{10}{}%
-\contentsline {section}{\numberline {4}Conclusiones}{12}{}%
-\contentsline {section}{Referencias}{13}{}%
+\contentsline {subsubsection}{\numberline {3.2.1}Métodos clásicos}{9}{}%
+\contentsline {paragraph}{Información mutua \\ \\}{9}{}%
+\contentsline {paragraph}{Test-$F$ \\ \\}{10}{}%
+\contentsline {paragraph}{ReliefF \\ \\}{10}{}%
+\contentsline {paragraph}{RFE-SVM \\ \\}{11}{}%
+\contentsline {subsubsection}{\numberline {3.2.2}Métodos de árboles de decisión}{11}{}%
+\contentsline {paragraph}{Selección Aleatoria de Variables en Cada División \\ \\}{11}{}%
+\contentsline {paragraph}{Importancia de Variables basada en el Índice de División \\ \\}{11}{}%
+\contentsline {paragraph}{Importancia de Variables basada en la Permutación \\ \\}{12}{}%
+\contentsline {section}{\numberline {4}Conclusiones}{13}{}%
+\contentsline {section}{Referencias}{14}{}%

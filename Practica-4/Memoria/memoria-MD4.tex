@@ -184,9 +184,11 @@ Por último, aunque no estrictamente necesario, se ha aplicado el método \texti
 
 \subsection{Selección de características}
 
-Debido a los análisis exploratorios de los datos realizados anteriormente, se presupone que no todas las variables van a ser relevantes para la clasificación. Es por ello que se ha decido aplicar distintos métodos de selección de características para reducir la dimensionalidad del conjunto de datos y mejorar el rendimiento de los modelos. Los métodos aquí planteados han sido estudiados en detalle en la segunda entrega del curso \cite{entrega2}.
+Debido a los análisis exploratorios de los datos realizados anteriormente, se presupone que no todas las variables van a ser relevantes para la clasificación. Es por ello que se ha decido aplicar distintos métodos de selección de características para reducir la dimensionalidad del conjunto de datos y mejorar el rendimiento de los modelos. Los métodos aquí planteados se han dividido en dos secciones. En la primera, los algoritmos mostrados han sido estudiados en detalle en la segunda entrega del curso \cite{entrega2}. Por otro lado, en una segunda sección veremos métodos aplicados mediante algoritmos asociados a árboles de decisión, presentes en el libro base de la asignatura \cite{libro}.
 
-\subsubsection{Información mutua}
+\subsubsection{Métodos clásicos}
+
+\paragraph{Información mutua \\ \\}
 
 \begin{wrapfigure}{r}{0.45\textwidth}
     \centering
@@ -198,8 +200,7 @@ Este método univariado evalúa la dependencia entre cada característica y la v
 
 Observamos en la Figura \ref{fig:fselection-MI} que, a nivel individual de cada una de las características, observamos una predominancia en las primeras posiciones de variables pertenecientes a los sugrupos worst y mean, predominando la media tabla el subgrupo de error. Esto nos muestra de nuevo que las características de los subgrupos worst y mean presentan una relación más directa con la variable objetivo, predominando además las asociadas a \textit{concave points} y \textit{perimeter}.
 
-\subsubsection{Test-$F$}
-
+\paragraph{Test-$F$ \\ \\}
 
 El test-$F$ es otro método estadístico univariante que evalúa la relación entre cada característica y la variable objetivo mediante la comparación de varianzas. Se calcula el valor del estadístico $F$ para cada característica y se seleccionan las características con los valores más altos.
 
@@ -213,9 +214,7 @@ En la Figura \ref{fig:fselection-F} se observa que, al igual que en el caso de l
 
 Por otro lado, sigue destacando en relación univariada la variable \textit{concave points} y \textit{perimeter} tanto para el subgrupo de worst como de mean, que se encuentran en las primeras posiciones del ranking. Además, a nivel de Score obtenido, se pueden distinguir tres grupos claramente marcados, donde el tercer grupo (Scores menor que 200) contiene todas las variables del subgrupo error, lo que indica que en relación univariada no son el subgrupo que más información aporta a la variable objetivo.
 
-\subsubsection{ReliefF}
-
-El algoritmo ReliefF es un método multivariado de selección de características que evalúa la importancia de cada característica en función de su capacidad para distinguir entre instancias cercanas. Este método nos proporcionará una persepctiva distinta a la de los métodos univariados, ya que tiene en cuenta la interacción entre las características.
+\paragraph{ReliefF \\ \\}
 
 \begin{wrapfigure}{r}{0.45\textwidth}
     \centering
@@ -223,10 +222,11 @@ El algoritmo ReliefF es un método multivariado de selección de característica
     \caption{Ranking de características mediante ReliefF.}
     \label{fig:fselection-ReliefF}
 \end{wrapfigure}
+El algoritmo ReliefF es un método multivariado de selección de características que evalúa la importancia de cada característica en función de su capacidad para distinguir entre instancias cercanas. Este método nos proporcionará una persepctiva distinta a la de los métodos univariados, ya que tiene en cuenta la interacción entre las características.
+
 En la Figura \ref{fig:fselection-ReliefF} se observa que, al igual que en los métodos univariados, las características de los subgrupos worst y mean predominan en las primeras posiciones del ranking. Como en los test anteriores, de nuevo las primeras posiciones están ocupadas por las variables \textit{concave points}, \textit{perimeter} y \textit{radius}, lo que refuerza la idea de que estas características son relevantes para la clasificación.
 
-\subsubsection{RFE-SVM}
-En este caso, se ha utilizado el algoritmo de eliminación recursiva de características con un clasificador SVM como modelo base.
+\paragraph{RFE-SVM \\ \\}
 
 \begin{wraptable}{r}{0.4\textwidth}
     \tiny
@@ -270,13 +270,41 @@ En este caso, se ha utilizado el algoritmo de eliminación recursiva de caracter
     \caption{Ranking de Características por RFE-SVM.}
     \label{tab:fselection-RFE-SVM}
 \end{wraptable}
+En este caso, se ha utilizado el algoritmo de eliminación recursiva de características con un clasificador SVM como modelo base.
+
 Para este caso se observa que el algoritmo ha seleccionado las características de forma diferente a los métodos anteriores. En la Tabla \ref{tab:fselection-RFE-SVM} se observa que las variables \textit{perimeter} y \textit{radius} son las más relevantes, pero también se incluyen otras características asociadas al subgrupo error, como \textit{perimeter error} y \textit{radius error}, que no habían sido destacadas en los métodos univariados.
 
 Este algoritmo ha encontrado unos patrones que difieren considerablemente de los métodos anteriores, lo que sugiere que la interacción entre las características es importante para la clasificación. Además, se observa que el algoritmo ha seleccionado características de todos los subgrupos, lo que indica que la combinación de características de diferentes grupos puede ser beneficiosa para el rendimiento del modelo.
 
+\subsubsection{Métodos de árboles de decisión}
 
+% En el capítulo sobre Bosques Aleatorios (Random Forests) del documento proporcionado, se presentan varios métodos de selección de características que son fundamentales para comprender cómo este algoritmo identifica y evalúa la importancia de las variables en un conjunto de datos. A continuación, se detallan los métodos mencionados:
 
+% Estos métodos no solo permiten identificar las variables más relevantes para las predicciones del Bosque Aleatorio, sino que también facilitan la reducción de dimensionalidad y mejoran la interpretabilidad del modelo. Además, se complementan con otros aspectos tratados en el capítulo, como el uso de muestras OOB para estimar el error sin necesidad de un conjunto de validación separado, y el control de parámetros como la profundidad del árbol o el tamaño mínimo de los nodos, que influyen indirectamente en la selección de características al regular la complejidad del modelo.
 
+\paragraph{Selección Aleatoria de Variables en Cada División \\ \\}
+
+% ### 1. **Selección Aleatoria de Variables en Cada División**
+%    - **Descripción**: En cada nodo de los árboles que componen un Bosque Aleatorio, se selecciona un subconjunto aleatorio de \( m \) variables de las \( p \) variables totales disponibles. Solo estas \( m \) variables se consideran como candidatas para determinar la mejor división en ese nodo.
+%    - **Propósito**: Este enfoque reduce la correlación entre los árboles individuales al introducir aleatoriedad en la selección de variables, lo que a su vez disminuye la varianza del modelo combinado.
+%    - **Valores típicos de \( m \)**:
+%      - Para problemas de **clasificación**: \( m = \sqrt{p} \) (raíz cuadrada del número total de variables).
+%      - Para problemas de **regresión**: \( m = \lfloor p / 3 \rfloor \) (un tercio del número total de variables redondeado hacia abajo).
+%    - **Detalles adicionales**: Estos valores son recomendaciones por defecto, pero pueden ajustarse según las necesidades específicas del problema como un parámetro de ajuste.
+
+\paragraph{Importancia de Variables basada en el Índice de División \\ \\}
+
+% ### 2. **Importancia de Variables basada en el Índice de División**
+%    - **Descripción**: Este método mide la importancia de una variable sumando la mejora en el criterio de división (por ejemplo, la disminución en el índice de Gini para clasificación o la reducción en la suma de cuadrados para regresión) cada vez que esa variable se utiliza para dividir un nodo en cualquier árbol del bosque.
+%    - **Procedimiento**: La contribución de cada variable se acumula a lo largo de todos los árboles, proporcionando una medida global de su relevancia en el modelo.
+%    - **Uso**: Este enfoque ofrece una visión de cuáles variables son más influyentes en las divisiones del modelo, ayudando a interpretar su contribución a las predicciones.
+
+\paragraph{Importancia de Variables basada en la Permutación \\ \\}
+
+% ### 3. **Importancia de Variables basada en la Permutación**
+%    - **Descripción**: Utiliza las muestras fuera de la bolsa (Out-of-Bag, OOB) para evaluar la importancia de las variables. Para cada árbol, se calcula la precisión de predicción en las muestras OOB; luego, los valores de una variable específica se permutan aleatoriamente en estas muestras y se recalcula la precisión.
+%    - **Cálculo**: La disminución en la precisión tras la permutación se promedia sobre todos los árboles del bosque, proporcionando una medida de la importancia de la variable.
+%    - **Interpretación**: Este método evalúa el impacto de "eliminar" la información de una variable en la capacidad predictiva del modelo, siendo especialmente útil para entender la robustez de las predicciones frente a cambios en las variables.
 
 \newpage
 \section{Conclusiones}
