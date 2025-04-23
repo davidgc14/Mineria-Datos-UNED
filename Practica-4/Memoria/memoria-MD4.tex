@@ -20,7 +20,7 @@
     \centering
     \vspace*{1cm}
 
-    {\Huge \textbf{Práctica 3}} \\[0.5cm]
+    {\Huge \textbf{Práctica 4}} \\[0.5cm]
     % {\Huge \textbf{Práctica 1}} \\[0.2cm]
     % {\large \textit{Sección práctica}} \\[0.5cm]
     {\Large {David García Curbelo}}
@@ -55,8 +55,129 @@
 
 \section{Introducción}
 
+En este trabajo se presenta una investigación profunda sobre el proceso de análisis de datos y su aplicación a selección de modelos dentro del grupo de árboles de decisión. Se ha usado el dataset \textit{breast-cancer-wisconsin} de la UCI Machine Learning Repository, que contiene información sobre tumores de mama y su clasificación como benignos o malignos. El objetivo es aplicar diferentes algoritmos de árboles de decisión y evaluar su rendimiento en términos de precisión, sensibilidad y especificidad.
+
+\section{Análisis exploratorio}
+
+\subsection{Descripción del dataset}
+
+El conjunto de datos \textit{breast-cancer-wisconsin} es un recurso ampliamente empleado en tareas de clasificación y análisis biomédico. Este conjunto de datos, disponible en el UCI Machine Learning Repository, contiene información derivada de imágenes digitalizadas de aspirados con aguja fina de masas mamarias \cite{dataset}.
+
+El objetivo principal del dataset es predecir si un tumor es benigno o maligno a partir de diversas características morfológicas extraídas de las imágenes microscópicas de las células. Cada instancia del conjunto de datos representa una muestra individual y está compuesta por un conjunto de variables numéricas que describen propiedades específicas de los núcleos celulares.
+
+Las características principales del dataset son las siguientes:
+
+\begin{itemize}
+    \item \textbf{Instancias:} 569 registros.
+    \item \textbf{Características:} 30 variables numéricas continuas.
+    \item \textbf{Variable objetivo:} Tipo de tumor (benigno o maligno).
+\end{itemize}
+
+Además, las características se dividen en tres grupos de 10 atributos cada uno, que representan diferentes aspectos de las medidas tomadas en las células. Los atributos son radio, textura, perímetro, área, suavidad, compacidad, concavidad, puntos cóncavos, simetría y dimensión fractal. Para cada una de ellas, se presentan las siguientes medidas:
+
+\begin{itemize}
+    \item \textbf{mean:} Describen el valor promedio de los atributos.
+    \item \textbf{error:} Reflejan la desviación estándar de las mismas propiedades.
+    \item \textbf{worst:} Representan el valor máximo observado para cada atributo.
+\end{itemize}
 
 
+\subsection{Análisis de los datos}
 
+\subsubsection{Características}
+
+Tras un primer estudio de los datos, no se han observado valores nulos ni corruptos en el dataset. Todas las variables predictoras son numéricas continuas, lo que facilita el análisis estadístico y su posterior aplicación de los algoritmos de aprendizaje automático.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.45\textwidth]{images/features-distribution.png}
+    \hspace{1cm}
+    \includegraphics[width=0.45\textwidth]{images/features-distribution-curve.png}
+    \caption{Distribución de los datos para cada una de las características.}
+    \label{fig:features-distribution}
+\end{figure}
+
+Además, centrando nuestra atención en la distribución individual que presenta cada una de las características, podemos observar en la Figura \ref{fig:features-distribution} cómo todas ellas siguen una distribución que se aproxima a la normal, y en muchas de ellas con un marcado sesgo positivo en la curva.
+
+También es muy importante la visualización de la correlación dos a dos que existe entre las variables, puesto que pueden surgir patrones como el que veremos a continuación. En la Figura \ref{fig:features-correlation} se ha dividido el gráfico según los tres subgrupos de variables mencionados anteriormente: mean, error y worst. Esto ha dado lugar, además de la matriz 30$\times$30 resultante del conjunto total de variables, a una matriz 3$\times$3 de la cual podemos extraer patrones muy interesantes.
+
+Podemos observar que las variables asociadas a \textit{radius}, \textit{perimeter} y \textit{area} están altamente correlacionadas entre sí, lo que indica que estas características están relacionadas y podrían contener información complementaria. Por otro lado, las variables asociadas a \textit{texture}, \textit{smoothness} y \textit{fractal dimension} presentan una correlación considerablemente más baja con las demás, lo que podría sugerir que estas variables están aportando ruido a los datos, no siendo variables relevantes para la predicción.\footnote{Veremos a posteriori si realmente estas variables aportan ruido o no cuando se estudie su relevancia en conjunto con la variable objetivo.}
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/features-correlation.png}
+    \caption{Correlación entre las características, con separación entre los tres subgrupos mean, error y worst.}
+    \label{fig:features-correlation}
+\end{figure}
+
+Lo más relevante de esta matriz de correlación es que la relación entre esas variables (ya sean con datos de meam, error o worst) se mantiene más o menos estable en los 9 cuadrantes. A nivel de estos 3 subgrupos, vemos cómo estas correlaciones se ven incentivadas positivamente allá donde las variables de mean se vean implicadas, en especial entre ellas y con las del subgrupo de worst.
+
+Sin embargo, se observa claramente que las variables de error son las que menos correlación presentan con el resto de variables, lo que podría sugerir que estas variables no aportan información relevante.
+
+
+\subsubsection{Variable objetivo}
+
+
+%wrapfigure
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+    \centering
+    \includegraphics[width=0.35\textwidth]{images/target-distribution.png}
+    % \caption{Distribución de la variable objetivo.}
+    \label{fig:target-distribution}
+\end{wrapfigure}
+La variable objetivo del dataset es la clasificación de los tumores como benignos o malignos. En el conjunto de datos, esta variable se representa mediante un valor binario, donde 0 indica un tumor benigno y 1 indica un tumor maligno. La distribución de la variable objetivo no es execisvamente desequilibrada, con 357 instancias de tumores benignos y 212 instancias de tumores malignos.
+
+Realizando un análisis pormenorizado de la distribución de la variable objetivo para cada una de las características, se observa en la Figura \ref{fig:targetfeatures-individual-distribution} un marcado solapamiento para la mayoría de características, lo que sugiere que la separación entre las dos clases no es tan clara como podría esperarse.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/targetfeatures-individual-distribution.png}
+    \caption{Distribución de la variable objetivo para cada una de las características.}
+    \label{fig:targetfeatures-individual-distribution}
+\end{figure}
+
+Es por ello que es necesario realizar un análisis conjunto de las variables para tratar de encontrar una mejor separación entre las dos clases a clasificar.
+
+\subsubsection{Análisis conjunto de características y variable objetivo}
+
+Para analizar la relación entre las características y la variable objetivo, se han realizado gráficos de dispersión conjuntos cada una de las características, separadas por cada uno de los tres subgrupos para una mejor visualización.\footnote{Recalcar que no se ha realizado este estudio entre distintos subgrupos de características, ya que, debido a la cantidad de características, la visualización se haría muy complicada y no aportaría información relevante.}
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/targetfeatures-mean-distribution.png}
+    \caption{Distribución de las características del subgrupo mean con respecto a la variable objetivo.}
+    \label{fig:targetfeatures-mean-distribution}
+\end{figure}
+
+Podemos observar en la Figura \ref{fig:targetfeatures-mean-distribution} de forma más acusada la relación lineal que existe entre las variables \textit{radius}, \textit{perimeter} y \textit{area} dentro del subgrupo mean. Además, no sólo se observa una relación lineal entre estas variables, sino que también se puede apreciar cómo en general en este grupo la separación entre las dos clases de la variable objetivo es bastante clara. Esto sugiere que este subgrupo de características es bastante relevante para nuestro problema de clasificación.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/targetfeatures-error-distribution.png}
+    \caption{Distribución de las características del subgrupo error con respecto a la variable objetivo.}
+    \label{fig:targetfeatures-error-distribution}
+\end{figure}
+
+En el caso de la Figura \ref{fig:targetfeatures-error-distribution}, se observa que la separación entre las dos clases de la variable objetivo no es tan clara como en el caso del subgrupo mean. Sin embargo, todavía hay una tendencia general en la que la implicación de las variables \textit{radius}, \textit{perimeter} y \textit{area} sugiere que algunas características de este subgrupo puedan ser útiles para la clasificación.
+
+\begin{figure}[ht!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{images/targetfeatures-worst-distribution.png}
+    \caption{Distribución de las características del subgrupo worst con respecto a la variable objetivo.}
+    \label{fig:targetfeatures-worst-distribution}
+\end{figure}
+
+Por último, en la Figura \ref{fig:targetfeatures-worst-distribution} se observa de nuevo que la separación entre las dos clases de la variable objetivo es bastante clara, presentando incluso relaciones lineales como en el caso del subgrupo mean, incluso para sus mismas variables. Esto denota una fuerte alineación de los grupos mean y worst, lo que podría sugerir que el subgrupo worst es una redundancia del grupo mean, o vicebersa.
+
+
+\newpage
+\section{Preprocesamiento y tratamiento de datos}
+
+
+\newpage
+\addcontentsline{toc}{section}{Referencias}
+\bibliographystyle{plain}
+\bibliography{library}
 
 \end{document}
