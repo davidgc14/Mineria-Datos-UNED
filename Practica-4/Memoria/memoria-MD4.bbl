@@ -1,5 +1,10 @@
 \begin{thebibliography}{1}
 
+\bibitem{entrega2}
+David~García Curbelo.
+\newblock Práctica 2 - minería de datos, 2024.
+\newblock Este trabajo presenta un análisis detallado de los métodos de selección de características estudiados en este curso.
+
 \bibitem{dataset}
 {William Wolberg, Olvi Mangasarian, Nick Street, W. Street}.
 \newblock Breast cancer wisconsin (diagnostic), 1993.

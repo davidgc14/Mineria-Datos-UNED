@@ -7,4 +7,11 @@
 \contentsline {subsubsection}{\numberline {2.2.2}Variable objetivo}{4}{}%
 \contentsline {subsubsection}{\numberline {2.2.3}Análisis conjunto de características y variable objetivo}{6}{}%
 \contentsline {section}{\numberline {3}Preprocesamiento y tratamiento de datos}{8}{}%
-\contentsline {section}{Referencias}{9}{}%
+\contentsline {subsection}{\numberline {3.1}Normalización de los datos}{8}{}%
+\contentsline {subsection}{\numberline {3.2}Selección de características}{9}{}%
+\contentsline {subsubsection}{\numberline {3.2.1}Información mutua}{9}{}%
+\contentsline {subsubsection}{\numberline {3.2.2}Test-$F$}{9}{}%
+\contentsline {subsubsection}{\numberline {3.2.3}ReliefF}{10}{}%
+\contentsline {subsubsection}{\numberline {3.2.4}RFE-SVM}{10}{}%
+\contentsline {section}{\numberline {4}Conclusiones}{12}{}%
+\contentsline {section}{Referencias}{13}{}%

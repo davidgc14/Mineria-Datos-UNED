@@ -174,6 +174,112 @@ Por último, en la Figura \ref{fig:targetfeatures-worst-distribution} se observa
 \newpage
 \section{Preprocesamiento y tratamiento de datos}
 
+\subsection{Normalización de los datos}
+
+Para el preprocesamiento de los datos, se ha dividido el dataset en dos conjuntos: uno de entrenamiento y otro de prueba, con una proporción del 70\% para entrenamiento y el 30\% para prueba. Todo el preprocesamiento que sigue se ha realizado sobre el conjunto de entrenamiento, y posteriormente se ha aplicado al conjunto de prueba para que así la evaluación de los modelos no se vea influenciada por el preprocesamiento.
+
+Tras la división de los subconjuntos, se ha optado por aplicar una normalización a las características del dataset. La normalización es un paso crucial en el análisis de datos, ya que permite que todas las características tengan la misma escala y rango, lo que facilita la convergencia de los algoritmos de aprendizaje automático. En este caso, se ha utilizado el método \textit{StandardScaler} de la biblioteca \textit{scikit-learn}, que transforma los datos para que tengan una media de 0 y una desviación estándar de 1. Aunque la normalización no es estrictamente necesaria para todos los algoritmos de aprendizaje automático, es una práctica recomendada.
+
+Por último, aunque no estrictamente necesario, se ha aplicado el método \textit{SMOTE} (Synthetic Minority Oversampling Technique) para equilibrar el conjunto de datos. Este método genera nuevas instancias sintéticas de la clase minoritaria (en este caso, los tumores malignos) para equilibrar la distribución de clases en el conjunto de entrenamiento.
+
+\subsection{Selección de características}
+
+Debido a los análisis exploratorios de los datos realizados anteriormente, se presupone que no todas las variables van a ser relevantes para la clasificación. Es por ello que se ha decido aplicar distintos métodos de selección de características para reducir la dimensionalidad del conjunto de datos y mejorar el rendimiento de los modelos. Los métodos aquí planteados han sido estudiados en detalle en la segunda entrega del curso \cite{entrega2}.
+
+\subsubsection{Información mutua}
+
+\begin{wrapfigure}{r}{0.45\textwidth}
+    \centering
+    \includegraphics[width=0.42\textwidth]{images/fselection-MI.png}
+    \caption{Ranking de características mediante Información Mutua.}
+    \label{fig:fselection-MI}
+\end{wrapfigure}
+Este método univariado evalúa la dependencia entre cada característica y la variable objetivo. Se calcula la información mutua entre cada característica y la variable objetivo, y se seleccionan las características con mayor información mutua.
+
+Observamos en la Figura \ref{fig:fselection-MI} que, a nivel individual de cada una de las características, observamos una predominancia en las primeras posiciones de variables pertenecientes a los sugrupos worst y mean, predominando la media tabla el subgrupo de error. Esto nos muestra de nuevo que las características de los subgrupos worst y mean presentan una relación más directa con la variable objetivo, predominando además las asociadas a \textit{concave points} y \textit{perimeter}.
+
+\subsubsection{Test-$F$}
+
+
+El test-$F$ es otro método estadístico univariante que evalúa la relación entre cada característica y la variable objetivo mediante la comparación de varianzas. Se calcula el valor del estadístico $F$ para cada característica y se seleccionan las características con los valores más altos.
+
+\begin{wrapfigure}{r}{0.45\textwidth}
+    \centering
+    \includegraphics[width=0.42\textwidth]{images/fselection-TestF.png}
+    \caption{Ranking de características mediante Test-$F$.}
+    \label{fig:fselection-F}
+\end{wrapfigure}
+En la Figura \ref{fig:fselection-F} se observa que, al igual que en el caso de la información mutua, las características de los subgrupos worst y mean predominan en las primeras posiciones del ranking. Sin embargo, en este caso, el subgrupo error presenta una correlación más baja con la variable objetivo, destacando por presentar más de la mitad de ellas puntuaciones cercanas a cero.
+
+Por otro lado, sigue destacando en relación univariada la variable \textit{concave points} y \textit{perimeter} tanto para el subgrupo de worst como de mean, que se encuentran en las primeras posiciones del ranking. Además, a nivel de Score obtenido, se pueden distinguir tres grupos claramente marcados, donde el tercer grupo (Scores menor que 200) contiene todas las variables del subgrupo error, lo que indica que en relación univariada no son el subgrupo que más información aporta a la variable objetivo.
+
+\subsubsection{ReliefF}
+
+El algoritmo ReliefF es un método multivariado de selección de características que evalúa la importancia de cada característica en función de su capacidad para distinguir entre instancias cercanas. Este método nos proporcionará una persepctiva distinta a la de los métodos univariados, ya que tiene en cuenta la interacción entre las características.
+
+\begin{wrapfigure}{r}{0.45\textwidth}
+    \centering
+    \includegraphics[width=0.42\textwidth]{images/fselection-ReliefF.png}
+    \caption{Ranking de características mediante ReliefF.}
+    \label{fig:fselection-ReliefF}
+\end{wrapfigure}
+En la Figura \ref{fig:fselection-ReliefF} se observa que, al igual que en los métodos univariados, las características de los subgrupos worst y mean predominan en las primeras posiciones del ranking. Como en los test anteriores, de nuevo las primeras posiciones están ocupadas por las variables \textit{concave points}, \textit{perimeter} y \textit{radius}, lo que refuerza la idea de que estas características son relevantes para la clasificación.
+
+\subsubsection{RFE-SVM}
+En este caso, se ha utilizado el algoritmo de eliminación recursiva de características con un clasificador SVM como modelo base.
+
+\begin{wraptable}{r}{0.4\textwidth}
+    \tiny
+    \centering
+    \begin{tabular}{|l c|}
+        \hline
+        \textbf{feature}        & \textbf{ranking} \\
+        \hline
+        worst perimeter         & 1                \\
+        worst radius            & 2                \\
+        worst smoothness        & 3                \\
+        perimeter error         & 4                \\
+        worst area              & 5                \\
+        mean concave points     & 6                \\
+        worst texture           & 7                \\
+        radius error            & 8                \\
+        worst concavity         & 9                \\
+        area error              & 10               \\
+        compactness error       & 11               \\
+        mean radius             & 12               \\
+        mean perimeter          & 13               \\
+        worst symmetry          & 14               \\
+        smoothness error        & 15               \\
+        mean fractal dimension  & 16               \\
+        concave points error    & 17               \\
+        fractal dimension error & 18               \\
+        symmetry error          & 19               \\
+        mean concavity          & 20               \\
+        mean compactness        & 21               \\
+        mean area               & 22               \\
+        worst concave points    & 23               \\
+        mean texture            & 24               \\
+        mean smoothness         & 25               \\
+        worst compactness       & 26               \\
+        mean symmetry           & 27               \\
+        worst fractal dimension & 28               \\
+        texture error           & 29               \\
+        concavity error         & 30               \\
+        \hline
+    \end{tabular}
+    \caption{Ranking de Características por RFE-SVM.}
+    \label{tab:fselection-RFE-SVM}
+\end{wraptable}
+Para este caso se observa que el algoritmo ha seleccionado las características de forma diferente a los métodos anteriores. En la Tabla \ref{tab:fselection-RFE-SVM} se observa que las variables \textit{perimeter} y \textit{radius} son las más relevantes, pero también se incluyen otras características asociadas al subgrupo error, como \textit{perimeter error} y \textit{radius error}, que no habían sido destacadas en los métodos univariados.
+
+Este algoritmo ha encontrado unos patrones que difieren considerablemente de los métodos anteriores, lo que sugiere que la interacción entre las características es importante para la clasificación. Además, se observa que el algoritmo ha seleccionado características de todos los subgrupos, lo que indica que la combinación de características de diferentes grupos puede ser beneficiosa para el rendimiento del modelo.
+
+
+
+
+
+\newpage
+\section{Conclusiones}
 
 \newpage
 \addcontentsline{toc}{section}{Referencias}
