@@ -97,9 +97,9 @@ Tras un primer estudio de los datos, no se han observado valores nulos ni corrup
     \label{fig:features-distribution}
 \end{figure}
 
-Además, centrando nuestra atención en la distribución individual que presenta cada una de las características, podemos observar en la Figura \ref{fig:features-distribution} cómo todas ellas siguen una distribución que se aproxima a la normal, y en muchas de ellas con un marcado sesgo positivo en la curva.
+Además, centrando nuestra atención en la distribución individual que presenta cada una de las características, podemos observar en la Figura~\ref{fig:features-distribution} cómo todas ellas siguen una distribución que se aproxima a la normal, y en muchas de ellas con un marcado sesgo positivo en la curva.
 
-También es muy importante la visualización de la correlación dos a dos que existe entre las variables, puesto que pueden surgir patrones como el que veremos a continuación. En la Figura \ref{fig:features-correlation} se ha dividido el gráfico según los tres subgrupos de variables mencionados anteriormente: mean, error y worst. Esto ha dado lugar, además de la matriz 30$\times$30 resultante del conjunto total de variables, a una matriz 3$\times$3 de la cual podemos extraer patrones muy interesantes.
+También es muy importante la visualización de la correlación dos a dos que existe entre las variables, puesto que pueden surgir patrones como el que veremos a continuación. En la Figura~\ref{fig:features-correlation} se ha dividido el gráfico según los tres subgrupos de variables mencionados anteriormente: mean, error y worst. Esto ha dado lugar, además de la matriz 30$\times$30 resultante del conjunto total de variables, a una matriz 3$\times$3 de la cual podemos extraer patrones muy interesantes.
 
 Podemos observar que las variables asociadas a \textit{radius}, \textit{perimeter} y \textit{area} están altamente correlacionadas entre sí, lo que indica que estas características están relacionadas y podrían contener información complementaria. Por otro lado, las variables asociadas a \textit{texture}, \textit{smoothness} y \textit{fractal dimension} presentan una correlación considerablemente más baja con las demás, lo que podría sugerir que estas variables están aportando ruido a los datos, no siendo variables relevantes para la predicción.\footnote{Veremos a posteriori si realmente estas variables aportan ruido o no cuando se estudie su relevancia en conjunto con la variable objetivo.}
 
@@ -128,7 +128,7 @@ Sin embargo, se observa claramente que las variables de error son las que menos 
 \end{wrapfigure}
 La variable objetivo del dataset es la clasificación de los tumores como benignos o malignos. En el conjunto de datos, esta variable se representa mediante un valor binario, donde 0 indica un tumor benigno y 1 indica un tumor maligno. La distribución de la variable objetivo no es execisvamente desequilibrada, con 357 instancias de tumores benignos y 212 instancias de tumores malignos.
 
-Realizando un análisis pormenorizado de la distribución de la variable objetivo para cada una de las características, se observa en la Figura \ref{fig:targetfeatures-individual-distribution} un marcado solapamiento para la mayoría de características, lo que sugiere que la separación entre las dos clases no es tan clara como podría esperarse.
+Realizando un análisis pormenorizado de la distribución de la variable objetivo para cada una de las características, se observa en la Figura~\ref{fig:targetfeatures-individual-distribution} un marcado solapamiento para la mayoría de características, lo que sugiere que la separación entre las dos clases no es tan clara como podría esperarse.
 
 \begin{figure}[ht!]
     \centering
@@ -150,7 +150,7 @@ Para analizar la relación entre las características y la variable objetivo, se
     \label{fig:targetfeatures-mean-distribution}
 \end{figure}
 
-Podemos observar en la Figura \ref{fig:targetfeatures-mean-distribution} de forma más acusada la relación lineal que existe entre las variables \textit{radius}, \textit{perimeter} y \textit{area} dentro del subgrupo mean. Además, no sólo se observa una relación lineal entre estas variables, sino que también se puede apreciar cómo en general en este grupo la separación entre las dos clases de la variable objetivo es bastante clara. Esto sugiere que este subgrupo de características es bastante relevante para nuestro problema de clasificación.
+Podemos observar en la Figura~\ref{fig:targetfeatures-mean-distribution} de forma más acusada la relación lineal que existe entre las variables \textit{radius}, \textit{perimeter} y \textit{area} dentro del subgrupo mean. Además, no sólo se observa una relación lineal entre estas variables, sino que también se puede apreciar cómo en general en este grupo la separación entre las dos clases de la variable objetivo es bastante clara. Esto sugiere que este subgrupo de características es bastante relevante para nuestro problema de clasificación.
 
 \begin{figure}[ht!]
     \centering
@@ -159,7 +159,7 @@ Podemos observar en la Figura \ref{fig:targetfeatures-mean-distribution} de form
     \label{fig:targetfeatures-error-distribution}
 \end{figure}
 
-En el caso de la Figura \ref{fig:targetfeatures-error-distribution}, se observa que la separación entre las dos clases de la variable objetivo no es tan clara como en el caso del subgrupo mean. Sin embargo, todavía hay una tendencia general en la que la implicación de las variables \textit{radius}, \textit{perimeter} y \textit{area} sugiere que algunas características de este subgrupo puedan ser útiles para la clasificación.
+En el caso de la Figura~\ref{fig:targetfeatures-error-distribution}, se observa que la separación entre las dos clases de la variable objetivo no es tan clara como en el caso del subgrupo mean. Sin embargo, todavía hay una tendencia general en la que la implicación de las variables \textit{radius}, \textit{perimeter} y \textit{area} sugiere que algunas características de este subgrupo puedan ser útiles para la clasificación.
 
 \begin{figure}[ht!]
     \centering
@@ -168,7 +168,7 @@ En el caso de la Figura \ref{fig:targetfeatures-error-distribution}, se observa 
     \label{fig:targetfeatures-worst-distribution}
 \end{figure}
 
-Por último, en la Figura \ref{fig:targetfeatures-worst-distribution} se observa de nuevo que la separación entre las dos clases de la variable objetivo es bastante clara, presentando incluso relaciones lineales como en el caso del subgrupo mean, incluso para sus mismas variables. Esto denota una fuerte alineación de los grupos mean y worst, lo que podría sugerir que el subgrupo worst es una redundancia del grupo mean, o vicebersa.
+Por último, en la Figura~\ref{fig:targetfeatures-worst-distribution} se observa de nuevo que la separación entre las dos clases de la variable objetivo es bastante clara, presentando incluso relaciones lineales como en el caso del subgrupo mean, incluso para sus mismas variables. Esto denota una fuerte alineación de los grupos mean y worst, lo que podría sugerir que el subgrupo worst es una redundancia del grupo mean, o vicebersa.
 
 
 \newpage
@@ -198,7 +198,7 @@ Debido a los análisis exploratorios de los datos realizados anteriormente, se p
 \end{wrapfigure}
 Este método univariado evalúa la dependencia entre cada característica y la variable objetivo. Se calcula la información mutua entre cada característica y la variable objetivo, y se seleccionan las características con mayor información mutua.
 
-Observamos en la Figura \ref{fig:fselection-MI} que, a nivel individual de cada una de las características, observamos una predominancia en las primeras posiciones de variables pertenecientes a los sugrupos worst y mean, predominando la media tabla el subgrupo de error. Esto nos muestra de nuevo que las características de los subgrupos worst y mean presentan una relación más directa con la variable objetivo, predominando además las asociadas a \textit{concave points} y \textit{perimeter}.
+Observamos en la Figura~\ref{fig:fselection-MI} que, a nivel individual de cada una de las características, observamos una predominancia en las primeras posiciones de variables pertenecientes a los sugrupos worst y mean, predominando la media tabla el subgrupo de error. Esto nos muestra de nuevo que las características de los subgrupos worst y mean presentan una relación más directa con la variable objetivo, predominando además las asociadas a \textit{concave points} y \textit{perimeter}.
 
 \paragraph{Test-$F$ \\ \\}
 
@@ -210,7 +210,7 @@ El test-$F$ es otro método estadístico univariante que evalúa la relación en
     \caption{Ranking de características mediante Test-$F$.}
     \label{fig:fselection-F}
 \end{wrapfigure}
-En la Figura \ref{fig:fselection-F} se observa que, al igual que en el caso de la información mutua, las características de los subgrupos worst y mean predominan en las primeras posiciones del ranking. Sin embargo, en este caso, el subgrupo error presenta una correlación más baja con la variable objetivo, destacando por presentar más de la mitad de ellas puntuaciones cercanas a cero.
+En la Figura~\ref{fig:fselection-F} se observa que, al igual que en el caso de la información mutua, las características de los subgrupos worst y mean predominan en las primeras posiciones del ranking. Sin embargo, en este caso, el subgrupo error presenta una correlación más baja con la variable objetivo, destacando por presentar más de la mitad de ellas puntuaciones cercanas a cero.
 
 Por otro lado, sigue destacando en relación univariada la variable \textit{concave points} y \textit{perimeter} tanto para el subgrupo de worst como de mean, que se encuentran en las primeras posiciones del ranking. Además, a nivel de Score obtenido, se pueden distinguir tres grupos claramente marcados, donde el tercer grupo (Scores menor que 200) contiene todas las variables del subgrupo error, lo que indica que en relación univariada no son el subgrupo que más información aporta a la variable objetivo.
 
@@ -224,7 +224,7 @@ Por otro lado, sigue destacando en relación univariada la variable \textit{conc
 \end{wrapfigure}
 El algoritmo ReliefF es un método multivariado de selección de características que evalúa la importancia de cada característica en función de su capacidad para distinguir entre instancias cercanas. Este método nos proporcionará una persepctiva distinta a la de los métodos univariados, ya que tiene en cuenta la interacción entre las características.
 
-En la Figura \ref{fig:fselection-ReliefF} se observa que, al igual que en los métodos univariados, las características de los subgrupos worst y mean predominan en las primeras posiciones del ranking. Como en los test anteriores, de nuevo las primeras posiciones están ocupadas por las variables \textit{concave points}, \textit{perimeter} y \textit{radius}, lo que refuerza la idea de que estas características son relevantes para la clasificación.
+En la Figura~\ref{fig:fselection-ReliefF} se observa que, al igual que en los métodos univariados, las características de los subgrupos worst y mean predominan en las primeras posiciones del ranking. Como en los test anteriores, de nuevo las primeras posiciones están ocupadas por las variables \textit{concave points}, \textit{perimeter} y \textit{radius}, lo que refuerza la idea de que estas características son relevantes para la clasificación.
 
 \paragraph{RFE-SVM \\ \\}
 
@@ -290,7 +290,7 @@ Para los dos siguientes métodos que se presentan a continuación de medición d
 \end{wrapfigure}
 La importancia de Gini es un método que evalúa la importancia de cada característica en función de su contribución a la reducción de la impureza del nodo en el árbol de decisión. Este método se basa en el índice de Gini, que mide la pureza de los nodos en un árbol de decisión.
 
-En este caso se observa cierta consistencia (salvo pequeñas variaciones locales) en el orden aportado por ambos modelos para el cálculo de este método. En la Figura \ref{fig:fselection-Gini} se han ordenado los registros por la suma de la importancia en ambos modelos, y se observa que el orden es muy similar al de los métodos anteriores, destacando las variables \textit{concave points} y \textit{radius} como las más relevantes. Además, se observa que las variables del subgrupo error tienen una importancia menor en comparación con las variables de los subgrupos worst y mean, ratificando su escasa importancia en el análisis.
+En este caso se observa cierta consistencia (salvo pequeñas variaciones locales) en el orden aportado por ambos modelos para el cálculo de este método. En la Figura~\ref{fig:fselection-Gini} se han ordenado los registros por la suma de la importancia en ambos modelos, y se observa que el orden es muy similar al de los métodos anteriores, destacando las variables \textit{concave points} y \textit{radius} como las más relevantes. Además, se observa que las variables del subgrupo error tienen una importancia menor en comparación con las variables de los subgrupos worst y mean, ratificando su escasa importancia en el análisis.
 
 
 \paragraph{Importancia de Permutación \\ \\}
@@ -303,7 +303,7 @@ En este caso se observa cierta consistencia (salvo pequeñas variaciones locales
 \end{wrapfigure}
 La importancia de permutación es un método que evalúa la importancia de cada característica en función de su impacto en el rendimiento del modelo. Este método mide la disminución del rendimiento del modelo al permutar los valores de una característica específica.
 
-Al igual que en el caso anterior, el orden mostrado es el asociado a la suma de los resultados obtenidos en ambos modelos. Sin embargo, se observa aquí en la Figura \ref{fig:fselection-Perm} una variabilidad mucho más alta en cuanto a los resultados obtenidos por los dos modelos. Por ejemplo, destaca que la primera posición la ocupe la variable \textit{worst radius}, cuando para el modelo \textit{Random Forest} ocupaba la posición 10. Otro caso muy visual es el de la variable \textit{mean smoothness}, donde ambos modelos difieren por completo en su impacto en el rendimiento del modelo.
+Al igual que en el caso anterior, el orden mostrado es el asociado a la suma de los resultados obtenidos en ambos modelos. Sin embargo, se observa aquí en la Figura~\ref{fig:fselection-Perm} una variabilidad mucho más alta en cuanto a los resultados obtenidos por los dos modelos. Por ejemplo, destaca que la primera posición la ocupe la variable \textit{worst radius}, cuando para el modelo \textit{Random Forest} ocupaba la posición 10. Otro caso muy visual es el de la variable \textit{mean smoothness}, donde ambos modelos difieren por completo en su impacto en el rendimiento del modelo.
 
 Además, esta inconsistencia entre ambos modelos ha producido que el orden obtenido con respecto a los métodos anteriores haya cambiado considerablemente. En este caso, las variables del subgrupo error han obtenido una puntuación más alta que en los métodos anteriores, lo que sugiere que la importancia de estas características puede depender del modelo utilizado.
 
@@ -326,12 +326,72 @@ El conjunto final de características seleccionadas incluye las siguientes varia
     \item \textit{mean area}
 \end{itemize}
 
-Se realizarán comparaciones en la fase de modelado entre el rendimiento de los modelos con este conjunto de características y el rendimiento de los modelos con todas las características del dataset. Esto permitirá evaluar si la reducción de dimensionalidad mejora el rendimiento del modelo y si la selección de características realizada es efectiva.
+Se realizarán a continuación comparaciones en la fase de modelado entre el rendimiento de los modelos con este conjunto de características y el rendimiento de los modelos con todas las características del dataset. Esto permitirá evaluar si la reducción de dimensionalidad mejora el rendimiento del modelo y si la selección de características realizada es efectiva.
 
 
 \section{Modelado}
 
+\subsection{Resumen de Resultados}
 
+En esta fase, hemos entrenado y evaluado un conjunto diverso de algoritmos de clasificación\footnote{Cabe destacar que los seis algoritmos seleccionados han sido evaluados sobre instancias de clasificadores con los hiperparámetros por defecto proporcionados por la librería \textit{scikit-learn}, los cuales son además valores típicos con los que se suelen entrenar estos clasificadores. El ajuste de estos hiperparámetros se realizará en la sección siguiente.} utilizando validación cruzada para obtener una estimación robusta de su rendimiento predictivo. Se evaluaron dos escenarios: uno utilizando el conjunto completo de 30 características originales y otro utilizando el subconjunto calculado de 10 características. El objetivo es comparar el desempeño inicial de los modelos seleccionados e identificar los tres modelos más adecuados para una optimización de hiperparámetros posterior.
+
+Los resultados promedio (media $\pm$ desviación estándar) obtenidos mediante validación cruzada para ambos escenarios se presentan a continuación.
+
+\begin{table}[h!]
+    \small
+    \centering
+    \begin{tabular}{lcccc}
+        \hline
+        Modelo        & Accuracy                 & Precision                & Recall                   & F1-Score                 \\
+        \hline
+        Random Forest & \textbf{0.96 $\pm$ 0.03} & 0.95 $\pm$ 0.05          & \textbf{0.94 $\pm$ 0.06} & \textbf{0.94 $\pm$ 0.04} \\
+        G. Boosting   & \textbf{0.96 $\pm$ 0.03} & \textbf{0.96 $\pm$ 0.03} & 0.92 $\pm$ 0.07          & \textbf{0.94 $\pm$ 0.04} \\
+        Bagging       & 0.95 $\pm$ 0.02          & 0.95 $\pm$ 0.02          & 0.92 $\pm$ 0.05          & 0.93 $\pm$ 0.04          \\
+        k-NN          & 0.93 $\pm$ 0.03          & 0.93 $\pm$ 0.03          & 0.88 $\pm$ 0.08          & 0.90 $\pm$ 0.05          \\
+        SVM           & 0.91 $\pm$ 0.02          & \textbf{0.96 $\pm$ 0.03} & 0.80 $\pm$ 0.03          & 0.87 $\pm$ 0.02          \\
+        MLP           & 0.89 $\pm$ 0.01          & 0.83 $\pm$ 0.03          & 0.89 $\pm$ 0.06          & 0.86 $\pm$ 0.02          \\
+        \hline
+    \end{tabular}
+    \caption{Resultados de validación cruzada por modelo (30 características)}
+    \label{tab:resultados_cv_30}
+\end{table}
+
+\begin{table}[h!]
+    \small
+    \centering
+    \begin{tabular}{lcccc}
+        \hline
+        Modelo        & Accuracy                 & Precision                & Recall                   & F1-Score                 \\
+        \hline
+        Random Forest & \textbf{0.95 $\pm$ 0.03} & 0.95 $\pm$ 0.05          & \textbf{0.91 $\pm$ 0.04} & \textbf{0.93 $\pm$ 0.03} \\
+        G. Boosting   & 0.94 $\pm$ 0.02          & 0.94 $\pm$ 0.04          & \textbf{0.91 $\pm$ 0.05} & 0.92 $\pm$ 0.03          \\
+        Bagging       & 0.94 $\pm$ 0.03          & 0.94 $\pm$ 0.04          & 0.89 $\pm$ 0.04          & 0.92 $\pm$ 0.04          \\
+        k-NN          & 0.93 $\pm$ 0.03          & 0.93 $\pm$ 0.03          & 0.88 $\pm$ 0.08          & 0.90 $\pm$ 0.05          \\
+        SVM           & 0.91 $\pm$ 0.01          & \textbf{0.96 $\pm$ 0.03} & 0.81 $\pm$ 0.02          & 0.88 $\pm$ 0.02          \\
+        MLP           & 0.90 $\pm$ 0.04          & \textbf{0.96 $\pm$ 0.02} & 0.78 $\pm$ 0.11          & 0.85 $\pm$ 0.06          \\
+        \hline
+    \end{tabular}
+    \caption{Resultados de validación cruzada por modelo (10 características)}
+    \label{tab:resultados_cv_10}
+\end{table}
+
+Al comparar los resultados de ambos escenarios observamos que, en general, los modelos basados en ensambles obtienen un rendimiento ligeramente superior cuando utilizan el conjunto completo de características. Aunque la reducción de dimensionalidad podría esperarse que simplificara el modelo o redujera el ruido, en este caso parece haber eliminado información relevante para estos algoritmos potentes, que intrínsecamente manejan bien un mayor número de variables debido al modo con el que manejan los datos en el aprendizaje. Para modelos como SVM o k-NN, la diferencia es mínima o inexistente, mientras que MLP muestra resultados mixtos.
+
+Es cierto que la reducción de características ha permitido una reducción en el tiempo de entrenamiento y evaluación, lo que podría ser beneficioso en escenarios con conjuntos de datos más grandes o complejos. Sin embargo, en este caso específico, la reducción de dimensionalidad ha afectado negativamente el rendimiento de los modelos basados en ensambles, que son los más potentes y robustos para este tipo de tareas. Dado que los ensambles son el foco principal y muestran mejor rendimiento con todas las características, continuaremos el análisis y la selección basándonos en los resultados obtenidos con el total del espacio de características.
+
+
+\subsection{Modelos seleccionados}
+
+Considerando tanto el rendimiento cuantitativo como la estabilidad de la desviación estándar, los tres modelos seleccionados para pasar a la fase de optimización son:
+
+\begin{enumerate}
+    \item \textbf{Random Forest:} Por obtener el mejor rendimiento general (Accuracy y F1-Score) y mostrar un buen equilibrio entre precisión y exhaustividad, además de una estabilidad razonable. Es el algoritmo central de esta práctica y su rendimiento justifica plenamente su inclusión.
+    \item \textbf{Gradient Boosting:} Por su rendimiento casi idéntico al de Random Forest, su excelente estabilidad (bajas desviaciones estándar) y por ser un representante clave de la familia de algoritmos de Boosting, lo que permite una comparación directa y profunda entre las dos principales estrategias de ensambles basados en árboles.
+    \item \textbf{Bagging Classifier:} Aunque ligeramente inferior a los dos anteriores, su rendimiento sigue siendo muy alto y superior al resto de modelos. Incluirlo permite analizar directamente el impacto de la modificación introducida por Random Forest (selección aleatoria de variables) y evaluar si la optimización de hiperparámetros puede acercar su rendimiento a los de \textit{Random Forest} y \textit{Gradient Boosting}.
+\end{enumerate}
+
+
+\subsection{Optimización de hiperparámetros}
 
 \newpage
 \section{Conclusiones}
