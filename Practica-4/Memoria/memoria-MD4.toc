@@ -15,7 +15,9 @@
 \contentsline {paragraph}{ReliefF \\ \\}{10}{}%
 \contentsline {paragraph}{RFE-SVM \\ \\}{11}{}%
 \contentsline {subsubsection}{\numberline {3.2.2}Métodos de árboles de decisión}{11}{}%
-\contentsline {paragraph}{Importancia Gini \\ \\}{11}{}%
-\contentsline {paragraph}{Importancia de Permutación \\ \\}{11}{}%
-\contentsline {section}{\numberline {4}Conclusiones}{12}{}%
-\contentsline {section}{Referencias}{13}{}%
+\contentsline {paragraph}{Importancia Gini \\ \\}{12}{}%
+\contentsline {paragraph}{Importancia de Permutación \\ \\}{12}{}%
+\contentsline {subsubsection}{\numberline {3.2.3}Selección de características finales}{13}{}%
+\contentsline {section}{\numberline {4}Modelado}{14}{}%
+\contentsline {section}{\numberline {5}Conclusiones}{15}{}%
+\contentsline {section}{Referencias}{16}{}%

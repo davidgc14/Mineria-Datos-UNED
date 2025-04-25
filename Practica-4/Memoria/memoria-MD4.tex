@@ -278,13 +278,58 @@ Este algoritmo ha encontrado unos patrones que difieren considerablemente de los
 
 \subsubsection{Métodos de árboles de decisión}
 
-Para los dos siguientes métodos que se presentan a continuación de medición de importancia de las características, se han entrenado dos modelos
+Para los dos siguientes métodos que se presentan a continuación de medición de importancia de las características, se han entrenado dos modelos basados en árboles de decisión: un clasificador \textit{Random Forest} y un clasificador \textit{Extra Trees}. Ambos modelos son algoritmos se han entrenado con 100 estimadores, y se han utilizado exclusivamente para calcular la importancia de las características mediante el método de Gini y el método de permutación de variables
 
 \paragraph{Importancia Gini \\ \\}
 
+\begin{wrapfigure}{r}{0.45\textwidth}
+    \centering
+    \includegraphics[width=0.42\textwidth]{images/fselection-GI.png}
+    \caption{Ranking de características mediante la Importancia Gini.}
+    \label{fig:fselection-Gini}
+\end{wrapfigure}
+La importancia de Gini es un método que evalúa la importancia de cada característica en función de su contribución a la reducción de la impureza del nodo en el árbol de decisión. Este método se basa en el índice de Gini, que mide la pureza de los nodos en un árbol de decisión.
+
+En este caso se observa cierta consistencia (salvo pequeñas variaciones locales) en el orden aportado por ambos modelos para el cálculo de este método. En la Figura \ref{fig:fselection-Gini} se han ordenado los registros por la suma de la importancia en ambos modelos, y se observa que el orden es muy similar al de los métodos anteriores, destacando las variables \textit{concave points} y \textit{radius} como las más relevantes. Además, se observa que las variables del subgrupo error tienen una importancia menor en comparación con las variables de los subgrupos worst y mean, ratificando su escasa importancia en el análisis.
 
 
 \paragraph{Importancia de Permutación \\ \\}
+
+\begin{wrapfigure}{r}{0.45\textwidth}
+    \centering
+    \includegraphics[width=0.42\textwidth]{images/fselection-Perm.png}
+    \caption{Ranking mediante la Importancia por Permutación.}
+    \label{fig:fselection-Perm}
+\end{wrapfigure}
+La importancia de permutación es un método que evalúa la importancia de cada característica en función de su impacto en el rendimiento del modelo. Este método mide la disminución del rendimiento del modelo al permutar los valores de una característica específica.
+
+Al igual que en el caso anterior, el orden mostrado es el asociado a la suma de los resultados obtenidos en ambos modelos. Sin embargo, se observa aquí en la Figura \ref{fig:fselection-Perm} una variabilidad mucho más alta en cuanto a los resultados obtenidos por los dos modelos. Por ejemplo, destaca que la primera posición la ocupe la variable \textit{worst radius}, cuando para el modelo \textit{Random Forest} ocupaba la posición 10. Otro caso muy visual es el de la variable \textit{mean smoothness}, donde ambos modelos difieren por completo en su impacto en el rendimiento del modelo.
+
+Además, esta inconsistencia entre ambos modelos ha producido que el orden obtenido con respecto a los métodos anteriores haya cambiado considerablemente. En este caso, las variables del subgrupo error han obtenido una puntuación más alta que en los métodos anteriores, lo que sugiere que la importancia de estas características puede depender del modelo utilizado.
+
+
+\subsubsection{Selección de características finales}
+
+Para la selección de características finales, se ha optado por un enfoque combinado que incluye tanto los métodos clásicos como los métodos basados en árboles de decisión. Se han seleccionado las 10 características más relevantes de cada método y se han combinado para formar un conjunto final de características. Esta combinación se ha realizado mediante la media de las puntuaciones obtenidas por cada característica en los diferentes métodos.
+El conjunto final de características seleccionadas incluye las siguientes variables:
+
+\begin{itemize}
+    \item \textit{worst concave points}
+    \item \textit{mean concave points}
+    \item \textit{worst area}
+    \item \textit{worst perimeter}
+    \item \textit{worst concavity}
+    \item \textit{worst radius}
+    \item \textit{mean concavity}
+    \item \textit{mean radius}
+    \item \textit{mean perimeter}
+    \item \textit{mean area}
+\end{itemize}
+
+Se realizarán comparaciones en la fase de modelado entre el rendimiento de los modelos con este conjunto de características y el rendimiento de los modelos con todas las características del dataset. Esto permitirá evaluar si la reducción de dimensionalidad mejora el rendimiento del modelo y si la selección de características realizada es efectiva.
+
+
+\section{Modelado}
 
 
 

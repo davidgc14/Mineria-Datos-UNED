@@ -272,6 +272,16 @@ INPUT ./images/fselection-ReliefF.png
 INPUT ./images/fselection-ReliefF.png
 INPUT ./images/fselection-ReliefF.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm
+INPUT ./images/fselection-GI.png
+INPUT ./images/fselection-GI.png
+INPUT ./images/fselection-GI.png
+INPUT ./images/fselection-GI.png
+INPUT ./images/fselection-GI.png
+INPUT ./images/fselection-Perm.png
+INPUT ./images/fselection-Perm.png
+INPUT ./images/fselection-Perm.png
+INPUT ./images/fselection-Perm.png
+INPUT ./images/fselection-Perm.png
 INPUT ./memoria-MD4.bbl
 INPUT ./memoria-MD4.bbl
 INPUT memoria-MD4.bbl
