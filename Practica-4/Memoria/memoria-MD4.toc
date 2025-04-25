@@ -15,8 +15,7 @@
 \contentsline {paragraph}{ReliefF \\ \\}{10}{}%
 \contentsline {paragraph}{RFE-SVM \\ \\}{11}{}%
 \contentsline {subsubsection}{\numberline {3.2.2}Métodos de árboles de decisión}{11}{}%
-\contentsline {paragraph}{Selección Aleatoria de Variables en Cada División \\ \\}{11}{}%
-\contentsline {paragraph}{Importancia de Variables basada en el Índice de División \\ \\}{11}{}%
-\contentsline {paragraph}{Importancia de Variables basada en la Permutación \\ \\}{12}{}%
-\contentsline {section}{\numberline {4}Conclusiones}{13}{}%
-\contentsline {section}{Referencias}{14}{}%
+\contentsline {paragraph}{Importancia Gini \\ \\}{11}{}%
+\contentsline {paragraph}{Importancia de Permutación \\ \\}{11}{}%
+\contentsline {section}{\numberline {4}Conclusiones}{12}{}%
+\contentsline {section}{Referencias}{13}{}%

@@ -176,7 +176,7 @@ Por último, en la Figura \ref{fig:targetfeatures-worst-distribution} se observa
 
 \subsection{Normalización de los datos}
 
-Para el preprocesamiento de los datos, se ha dividido el dataset en dos conjuntos: uno de entrenamiento y otro de prueba, con una proporción del 70\% para entrenamiento y el 30\% para prueba. Todo el preprocesamiento que sigue se ha realizado sobre el conjunto de entrenamiento, y posteriormente se ha aplicado al conjunto de prueba para que así la evaluación de los modelos no se vea influenciada por el preprocesamiento.
+Para el preprocesamiento de los datos, se ha dividido el dataset en tres conjuntos: entrenamiento, evaluación y test, con una proporción del 60\% para entrenamiento, 20\% para evaluación y 20\% para testeo. Todo el preprocesamiento que sigue se ha realizado sobre el conjunto de entrenamiento, y posteriormente se ha aplicado al conjunto de evaluación y test para que así la evaluación de los modelos no se vea influenciada por el preprocesamiento.
 
 Tras la división de los subconjuntos, se ha optado por aplicar una normalización a las características del dataset. La normalización es un paso crucial en el análisis de datos, ya que permite que todas las características tengan la misma escala y rango, lo que facilita la convergencia de los algoritmos de aprendizaje automático. En este caso, se ha utilizado el método \textit{StandardScaler} de la biblioteca \textit{scikit-learn}, que transforma los datos para que tengan una media de 0 y una desviación estándar de 1. Aunque la normalización no es estrictamente necesaria para todos los algoritmos de aprendizaje automático, es una práctica recomendada.
 
@@ -278,33 +278,15 @@ Este algoritmo ha encontrado unos patrones que difieren considerablemente de los
 
 \subsubsection{Métodos de árboles de decisión}
 
-% En el capítulo sobre Bosques Aleatorios (Random Forests) del documento proporcionado, se presentan varios métodos de selección de características que son fundamentales para comprender cómo este algoritmo identifica y evalúa la importancia de las variables en un conjunto de datos. A continuación, se detallan los métodos mencionados:
+Para los dos siguientes métodos que se presentan a continuación de medición de importancia de las características, se han entrenado dos modelos
 
-% Estos métodos no solo permiten identificar las variables más relevantes para las predicciones del Bosque Aleatorio, sino que también facilitan la reducción de dimensionalidad y mejoran la interpretabilidad del modelo. Además, se complementan con otros aspectos tratados en el capítulo, como el uso de muestras OOB para estimar el error sin necesidad de un conjunto de validación separado, y el control de parámetros como la profundidad del árbol o el tamaño mínimo de los nodos, que influyen indirectamente en la selección de características al regular la complejidad del modelo.
+\paragraph{Importancia Gini \\ \\}
 
-\paragraph{Selección Aleatoria de Variables en Cada División \\ \\}
 
-% ### 1. **Selección Aleatoria de Variables en Cada División**
-%    - **Descripción**: En cada nodo de los árboles que componen un Bosque Aleatorio, se selecciona un subconjunto aleatorio de \( m \) variables de las \( p \) variables totales disponibles. Solo estas \( m \) variables se consideran como candidatas para determinar la mejor división en ese nodo.
-%    - **Propósito**: Este enfoque reduce la correlación entre los árboles individuales al introducir aleatoriedad en la selección de variables, lo que a su vez disminuye la varianza del modelo combinado.
-%    - **Valores típicos de \( m \)**:
-%      - Para problemas de **clasificación**: \( m = \sqrt{p} \) (raíz cuadrada del número total de variables).
-%      - Para problemas de **regresión**: \( m = \lfloor p / 3 \rfloor \) (un tercio del número total de variables redondeado hacia abajo).
-%    - **Detalles adicionales**: Estos valores son recomendaciones por defecto, pero pueden ajustarse según las necesidades específicas del problema como un parámetro de ajuste.
 
-\paragraph{Importancia de Variables basada en el Índice de División \\ \\}
+\paragraph{Importancia de Permutación \\ \\}
 
-% ### 2. **Importancia de Variables basada en el Índice de División**
-%    - **Descripción**: Este método mide la importancia de una variable sumando la mejora en el criterio de división (por ejemplo, la disminución en el índice de Gini para clasificación o la reducción en la suma de cuadrados para regresión) cada vez que esa variable se utiliza para dividir un nodo en cualquier árbol del bosque.
-%    - **Procedimiento**: La contribución de cada variable se acumula a lo largo de todos los árboles, proporcionando una medida global de su relevancia en el modelo.
-%    - **Uso**: Este enfoque ofrece una visión de cuáles variables son más influyentes en las divisiones del modelo, ayudando a interpretar su contribución a las predicciones.
 
-\paragraph{Importancia de Variables basada en la Permutación \\ \\}
-
-% ### 3. **Importancia de Variables basada en la Permutación**
-%    - **Descripción**: Utiliza las muestras fuera de la bolsa (Out-of-Bag, OOB) para evaluar la importancia de las variables. Para cada árbol, se calcula la precisión de predicción en las muestras OOB; luego, los valores de una variable específica se permutan aleatoriamente en estas muestras y se recalcula la precisión.
-%    - **Cálculo**: La disminución en la precisión tras la permutación se promedia sobre todos los árboles del bosque, proporcionando una medida de la importancia de la variable.
-%    - **Interpretación**: Este método evalúa el impacto de "eliminar" la información de una variable en la capacidad predictiva del modelo, siendo especialmente útil para entender la robustez de las predicciones frente a cambios en las variables.
 
 \newpage
 \section{Conclusiones}
