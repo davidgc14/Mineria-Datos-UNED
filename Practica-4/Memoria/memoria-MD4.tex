@@ -496,6 +496,20 @@ Dado el rendimiento idéntico y superior en el conjunto de test, tanto \textit{G
 \newpage
 \section{Conclusiones}
 
+La realización de este trabajo ha permitido no solo aplicar y evaluar diversas técnicas de modelado predictivo, sino también reflexionar sobre la dinámica y las particularidades del proceso completo de un proyecto de este tipo. La estructuración en fases bien definidas, aunque necesario en este tipo de proyectos, ha revelado una interconexión entre ellas, que ha requerido en varios casos hacer y deshacer las distintas fases en función de los resultados obtenidos.
+
+Una de las observaciones más significativas surgió durante la etapa de tratamiento de datos, específicamente en la evaluación del impacto de la selección de características. A pesar de explorar múltiples enfoques y de construir un conjunto reducido de variables teóricamente más relevantes, la evaluación empírica posterior demostró que los modelos de ensamble más potentes alcanzaban un rendimiento bastante superior al operar sobre el espacio completo de características original. Este hecho entra en conflicto con lo que se esperaba de la reducción de dimensionalidad, con la que se esperaban beneficios en términos de simplificación o generalización. Sin embargo, la experimentación en esta práctica nos ha mostrado cómo algoritmos robustos pueden gestionar eficazmente una mayor dimensionalidad, extrayendo información útil incluso de variables que podrían parecer ruidosas.
+
+Otro aspecto notable del flujo de trabajo se manifestó en la fase de optimización de hiperparámetros. La evaluación final de estos modelos optimizados sobre el conjunto de test nos mostró que la evaluación durante la validación cruzada nos puede anticipar un rendimiento muy distinto al que se podría esperar del modelo. Esta divergencia entre las métricas obtenidas en validación cruzada y el rendimiento real sobre datos nuevos, pone de relieve la importancia crítica del conjunto de test como el verdadero árbitro de la capacidad de generalización.
+
+En definitiva, este trabajo práctico ha servido como un recordatorio tangible de que la construcción de modelos de aprendizaje automático es un ejercicio que va más allá de la simple consecución de métricas elevadas. Requiere una comprensión profunda de las herramientas, una aplicación crítica de la metodología y, sobre todo, una constante evaluación y reevaluación de las decisiones tomadas a lo largo de un proceso que es inherentemente exploratorio y adaptativo. La verdadera lección reside en la apreciación de la complejidad del flujo de trabajo y en el desarrollo de un criterio analítico para navegar sus desafíos, asegurando que los modelos resultantes no solo sean precisos, sino también robustos y verdaderamente generalizables.
+
+
+% El desarrollo de la práctica nos ha mostrado que, si bien la optimización es una fase crucial, debe interpretarse con cautela y siempre validarse rigurosamente sobre datos no vistos, reconociendo que el objetivo último no es maximizar una métrica en CV, sino obtener un modelo fiable y generalizable. 
+
+El flujo completo, por lo tanto, se ha visto como un ejercicio iterativo de hipótesis, experimentación y validación crítica continua.
+
+
 \newpage
 \addcontentsline{toc}{section}{Referencias}
 \bibliographystyle{plain}
