@@ -391,7 +391,107 @@ Considerando tanto el rendimiento cuantitativo como la estabilidad de la desviac
 \end{enumerate}
 
 
-\subsection{Optimización de hiperparámetros}
+
+\section{Optimización de hiperparámetros}
+
+Para esta fase se empleó la técnica de Grid Search con validación cruzada de 5 divisiones para realizar la búsqueda óptima de hiperparámetros. Para cada uno de los tres modelos seleccionados, se definió un espacio de búsqueda de hiperparámetros clave asociado a cada modelo, y se utilizó el acierto de los modelos para guiar la búsqueda y seleccionar la mejor combinación de ellos.
+
+Una vez identificados los mejores hiperparámetros para cada modelo según el acierto promedio en la evaluación de la validación cruzada, el modelo final se reentrenó con dichos parámetros utilizando la totalidad de los datos de entrenamiento. Finalmente, este modelo optimizado se evaluó sobre el conjunto de test, que no fue utilizado durante el proceso de selección de modelos ni de optimización, para obtener una estimación final del rendimiento generalizado.
+
+\subsection{Resultados de la Optimización}
+
+La búsqueda en cuadrícula arrojó los siguientes resultados, identificando la mejor combinación de hiperparámetros y el F1-score ponderado promedio correspondiente obtenido durante la validación cruzada:
+
+\begin{itemize}
+    \item \textbf{Random Forest:}
+          \begin{itemize}
+              \item Mejor Accuracy (CV): \textbf{0.9754}
+              \item Mejores Parámetros:
+                    \begin{itemize}
+                        \item max\_depth: None
+                        \item max\_features: sqrt
+                        \item min\_samples\_leaf: 1
+                        \item min\_samples\_split: 2
+                        \item n\_estimators: 200
+                    \end{itemize}
+          \end{itemize}
+    \item \textbf{Gradient Boosting:}
+          \begin{itemize}
+              \item Mejor Accuracy (CV): \textbf{0.9772}
+              \item Mejores Parámetros:
+                    \begin{itemize}
+                        \item learning\_rate: 0.1
+                        \item max\_depth: 5
+                        \item n\_estimators: 200
+                        \item subsample: 0.7
+                    \end{itemize}
+          \end{itemize}
+    \item \textbf{Bagging Classifier:}
+          \begin{itemize}
+              \item Mejor Accuracy (CV): \textbf{0.9719}
+                    % Nota: Se asume que 'estimator__max_depth' fue parte del grid search para Bagging
+              \item Mejores Parámetros:
+                    \begin{itemize}
+                        \item estimator\_\_max\_depth: None
+                        \item max\_features: 0.85
+                        \item max\_samples: 0.7
+                        \item n\_estimators: 300
+                    \end{itemize}
+          \end{itemize}
+\end{itemize}
+
+
+\subsection{Evaluación sobre Test}
+
+Los modelos fueron reentrenados con los mejores hiperparámetros encontrados sobre el conjunto total de entrenamiento y evaluados en el conjunto de test. A continuación se presentan las métricas y las matrices de confusión para cada modelo optimizado.
+
+\subsubsection*{Random Forest}
+
+\begin{minipage}{0.4\textwidth}
+    Accuracy: \textbf{0.9304} \\
+    F1-score: \textbf{0.9298} \\
+\end{minipage}
+\begin{minipage}{0.55\textwidth}
+    \includegraphics[width=0.8\textwidth]{images/confusionmatrix-RF.png}
+\end{minipage}
+
+
+\subsubsection*{Gradient Boosting}
+
+
+\begin{minipage}{0.4\textwidth}
+    Accuracy: \textbf{0.9392} \\
+    F1-score: \textbf{0.9386} \\
+\end{minipage}
+\begin{minipage}{0.55\textwidth}
+    \includegraphics[width=0.8\textwidth]{images/confusionmatrix-GB.png}
+\end{minipage}
+
+
+
+
+\subsubsection*{Bagging Classifier}
+
+\begin{minipage}{0.4\textwidth}
+    Accuracy: \textbf{0.9392} \\
+    F1-score: \textbf{0.9386} \\
+\end{minipage}
+\begin{minipage}{0.55\textwidth}
+    \includegraphics[width=0.8\textwidth]{images/confusionmatrix-Bagging.png}
+\end{minipage}
+
+\subsection{Análisis y Selección del Modelo Final}
+
+La evaluación final en el conjunto de test revela un rendimiento muy similar y alto para los tres modelos optimizados. Tanto \textit{Gradient Boosting} como \textit{Bagging Classifier} obtienen un F1-score idéntico de 0.9392, superando ligeramente a \textit{Random Forest}.
+
+Al examinar los informes de clasificación y las matrices de confusión, observamos que \textit{Gradient Boosting} y \textit{Bagging} no solo alcanzan el mismo F1-score global, sino que también presentan métricas idénticas por clase y la misma matriz de confusión. Ambos clasifican erróneamente 6 instancias benignas como malignas, y solo un falso negativo. Esto se traduce en una precisión muy alta para la clase benignas y un recall muy alto para la clase malignas.
+
+Es interesante notar la discrepancia entre los altísimos scores obtenidos durante la validación cruzada y los scores finales en el conjunto de test. Esta diferencia, aunque no drástica, sugiere que los scores de CV o bien sufrieron una leve sobreestimación de los modelos durante la búsqueda GridSearch, o simplemente ha sido el resultado de la elección en la división de los datos y las peculiaridades de los mismos.
+
+También es relevante comparar estos resultados finales con los obtenidos en la fase de modelado antes de la optimización (utilizando las 30 características y los parámetros por defecto). En esa fase, \textit{Random Forest} y \textit{Gradient Boosting} obtuvieron un F1 de 0.94 en la validación cruzada, y \textit{Bagging} un F1 de 0.93. Sorprendentemente, la optimización de hiperparámetros no ha resultado en una mejora considerable en la evaluación de las métricas mediante la validación cruzada. Podría indicar que los parámetros por defecto de Scikit-learn ya eran muy adecuados para este problema o que la cuadrícula explorada, aunque extensa, no contenía una combinación que generalizara marginalmente mejor en el test set final.
+
+Dado el rendimiento idéntico y superior en el conjunto de test, tanto \textit{Gradient Boosting} como \textit{Bagging Classifier} se pueden considerar como los mejores modelos resultantes de este estudio. La elección final entre ambos podría basarse en otros criterios no evaluados aquí, como el tiempo de inferencia, la interpretabilidad o la robustez ante ligeras variaciones en los datos.
+
 
 \newpage
 \section{Conclusiones}
