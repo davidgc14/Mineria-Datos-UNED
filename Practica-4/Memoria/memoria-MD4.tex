@@ -11,6 +11,7 @@
 \usepackage{tcolorbox}
 \usepackage{enumerate}
 \usepackage{enumitem}
+\usepackage{caption}
 
 
 \begin{document}
@@ -494,6 +495,35 @@ Es interesante notar la discrepancia entre los altísimos scores obtenidos duran
 También es relevante comparar estos resultados finales con los obtenidos en la fase de modelado antes de la optimización (utilizando las 30 características y los parámetros por defecto). En esa fase, \textit{Random Forest} y \textit{Gradient Boosting} obtuvieron un F1 de 0.94 en la validación cruzada, y \textit{Bagging} un F1 de 0.93. Sorprendentemente, la optimización de hiperparámetros no ha resultado en una mejora considerable en la evaluación de las métricas mediante la validación cruzada. Podría indicar que los parámetros por defecto de Scikit-learn ya eran muy adecuados para este problema o que la cuadrícula explorada, aunque extensa, no contenía una combinación que generalizara marginalmente mejor en el test set final.
 
 Dado el rendimiento idéntico y superior en el conjunto de test, tanto \textit{Gradient Boosting} como \textit{Bagging Classifier} se pueden considerar como los mejores modelos resultantes de este estudio. La elección final entre ambos podría basarse en otros criterios no evaluados aquí, como el tiempo de inferencia, la interpretabilidad o la robustez ante ligeras variaciones en los datos.
+
+
+\newpage
+\section{Explicabilidad}
+
+\section{Explicabilidad}
+
+El análisis de ambas medidas revela una notable consistencia en la identificación de las características más relevantes para la predicción. Tanto la importancia Gini en la Figura~\ref{fig:explicability-gini} como los valores SHAP en la Figura~\ref{fig:explicability-shap} destacan de manera recurrente variables como \textit{worst concave points}, \textit{mean concave points}, \textit{worst area}, \textit{worst perimeter} y \textit{worst texture} como las de mayor impacto en la clasificación de tumores.
+
+\vspace{0.5cm}
+\noindent
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{images/explicability-Gini.png}
+    \captionof{figure}{Importancia Gini.}
+    \label{fig:explicability-gini}
+\end{minipage}
+\begin{minipage}{0.48\textwidth}
+    \centering
+    \includegraphics[width=0.9\textwidth]{images/explicability-shap.png}
+    \captionof{figure}{Valores SHAP.}
+    \label{fig:explicability-shap}
+\end{minipage}
+\vspace{0.5cm}
+
+Este resultado coincide plenamente con los estudios previos de selección de características realizados en las fases exploratoria y de modelado, donde estas mismas variables ya se posicionaban sistemáticamente en los primeros puestos de los distintos rankings, tanto en métodos clásicos como en los basados en árboles de decisión. Además, se puede observar cómo la información más relevante para la predicción se concentra en un subconjunto reducido de variables, principalmente asociadas a medidas de \textit{concave points} y de \textit{area}.
+
+La alineación entre las distintas métricas de importancia y los resultados de la selección de características no solo aporta transparencia al proceso predictivo, sino que también respalda la fiabilidad y robustez de las decisiones tomadas por el modelo en el contexto de la clasificación de tumores.
+
 
 
 \newpage

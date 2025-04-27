@@ -1,16 +1,16 @@
 # Fdb version 4
-["bibtex memoria-MD4"] 1745745590.90475 "memoria-MD4.aux" "memoria-MD4.bbl" "memoria-MD4" 1745745596.97387 0
+["bibtex memoria-MD4"] 1745747767.93081 "memoria-MD4.aux" "memoria-MD4.bbl" "memoria-MD4" 1745747847.51217 0
   "./library.bib" 1745410515.41966 1011 29416c519df753aed67f47b96c2acb70 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "memoria-MD4.aux" 1745745596.84585 6689 8ace2c205b4d737e23c28cfcb7602f21 "pdflatex"
+  "memoria-MD4.aux" 1745747847.39753 7353 15ab39c7cfe539b5a10d92fbbe576a78 "pdflatex"
   (generated)
   "memoria-MD4.bbl"
   "memoria-MD4.blg"
   (rewritten before read)
-["pdflatex"] 1745745590.92956 "/home/david/Documents/Master/MineriaDatos/Practica-4/Memoria/memoria-MD4.tex" "memoria-MD4.pdf" "memoria-MD4" 1745745596.97412 0
+["pdflatex"] 1745747841.37293 "/home/david/Documents/Master/MineriaDatos/Practica-4/Memoria/memoria-MD4.tex" "memoria-MD4.pdf" "memoria-MD4" 1745747847.51239 0
   "/etc/texmf/web2c/texmf.cnf" 1730049747.72736 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/david/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk" 1731164547.90785 14040 f85c059031eda2835b1a8f9173385174 ""
-  "/home/david/Documents/Master/MineriaDatos/Practica-4/Memoria/memoria-MD4.tex" 1745745584.13294 40311 fc43331991ae3e595acf52c737a4f5db ""
+  "/home/david/Documents/Master/MineriaDatos/Practica-4/Memoria/memoria-MD4.tex" 1745747841.03848 42237 2564a048bf74d0e24ce347bf7ba49028 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -116,6 +116,8 @@
   "/usr/share/texlive/texmf-dist/tex/latex/base/article.cls" 1705352648 20144 147463a6a579f4597269ef9565205cfe ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty" 1705352648 5048 425739d70251273bf93e3d51f3c40048 ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo" 1705352648 8449 f07039d8e4e89f21078d9b5137579bfc ""
+  "/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty" 1696191071 56128 c2ccf1a29d78c33bc553880402e4fb9a ""
+  "/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty" 1696191071 72619 ee90b6612147680fd73c3b1406a74245 ""
   "/usr/share/texlive/texmf-dist/tex/latex/cite/cite.sty" 1425427964 26218 19edeff8cdc2bcb704e8051dc55eb5a7 ""
   "/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty" 1561238569 51697 f8f08183cd2080d9d18a41432d651dfb ""
   "/usr/share/texlive/texmf-dist/tex/latex/environ/environ.sty" 1399239813 4378 f429f0da968c278653359293040a8f52 ""
@@ -154,6 +156,8 @@
   "images/confusionmatrix-Bagging.png" 1745683508.0495 21744 adeaa9f886d79859f954bd3c62a82cdc ""
   "images/confusionmatrix-GB.png" 1745683487.23594 21744 adeaa9f886d79859f954bd3c62a82cdc ""
   "images/confusionmatrix-RF.png" 1745683470.22748 21963 ceff3a9052c16b06291b57d498dcda31 ""
+  "images/explicability-Gini.png" 1745747716.10239 33881 5cbfce6ffffe19ba36c7741facbb305d ""
+  "images/explicability-shap.png" 1745747703.77227 90141 5a417c2180c04e1349f8707dd1552e2a ""
   "images/features-correlation.png" 1745401583.80335 158072 2978c2bde71cf582d325384c893d20f8 ""
   "images/features-distribution-curve.png" 1745401331.24997 410824 2c6d86fe21dee62d56f0a6bc071beee4 ""
   "images/features-distribution.png" 1745400801.75025 184551 b3984f3c45f309ec87b790e7b5b2e5e2 ""
@@ -167,10 +171,10 @@
   "images/targetfeatures-individual-distribution.png" 1745404461.48136 582700 9403ae3fcd2ec9774477cccd811ed0df ""
   "images/targetfeatures-mean-distribution.png" 1745403576.62065 2335494 5ef78446611eeb16f70ee664ecbd26b8 ""
   "images/targetfeatures-worst-distribution.png" 1745403733.78742 2298324 18e1bfb30e8d162b23a65c69f960bc8a ""
-  "memoria-MD4.aux" 1745745596.84585 6689 8ace2c205b4d737e23c28cfcb7602f21 "pdflatex"
-  "memoria-MD4.bbl" 1745745590.92389 657 33b559997dbfea5a83f0ce73c8542fbd "bibtex memoria-MD4"
-  "memoria-MD4.tex" 1745745584.13294 40311 fc43331991ae3e595acf52c737a4f5db ""
-  "memoria-MD4.toc" 1745745596.84885 2047 d9de660ead76f5c9c12d55613fa5c2b2 "pdflatex"
+  "memoria-MD4.aux" 1745747847.39753 7353 15ab39c7cfe539b5a10d92fbbe576a78 "pdflatex"
+  "memoria-MD4.bbl" 1745747767.95087 657 33b559997dbfea5a83f0ce73c8542fbd "bibtex memoria-MD4"
+  "memoria-MD4.tex" 1745747841.03848 42237 2564a048bf74d0e24ce347bf7ba49028 ""
+  "memoria-MD4.toc" 1745747847.40053 2171 b9c2340689fc74d1fd2f30a318e471b2 "pdflatex"
   (generated)
   "memoria-MD4.aux"
   "memoria-MD4.log"
