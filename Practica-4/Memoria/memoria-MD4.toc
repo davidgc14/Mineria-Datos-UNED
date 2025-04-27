@@ -4,7 +4,7 @@
 \contentsline {subsection}{\numberline {2.1}Descripción del dataset}{2}{}%
 \contentsline {subsection}{\numberline {2.2}Análisis de los datos}{3}{}%
 \contentsline {subsubsection}{\numberline {2.2.1}Características}{3}{}%
-\contentsline {subsubsection}{\numberline {2.2.2}Variable objetivo}{4}{}%
+\contentsline {subsubsection}{\numberline {2.2.2}Variable objetivo}{5}{}%
 \contentsline {subsubsection}{\numberline {2.2.3}Análisis conjunto de características y variable objetivo}{6}{}%
 \contentsline {section}{\numberline {3}Preprocesamiento y tratamiento de datos}{8}{}%
 \contentsline {subsection}{\numberline {3.1}Normalización de los datos}{8}{}%

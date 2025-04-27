@@ -55,13 +55,15 @@
 
 \section{Introducción}
 
-En este trabajo se presenta una investigación profunda sobre el proceso de análisis de datos y su aplicación a selección de modelos dentro del grupo de árboles de decisión. Se ha usado el dataset \textit{breast-cancer-wisconsin} de la UCI Machine Learning Repository, que contiene información sobre tumores de mama y su clasificación como benignos o malignos. El objetivo es aplicar diferentes algoritmos de árboles de decisión y evaluar su rendimiento en términos de precisión, sensibilidad y especificidad.
+En este trabajo se presenta una investigación profunda sobre el proceso de análisis de datos y su aplicación a selección de modelos dentro del grupo de árboles de decisión. Se ha usado el dataset \textit{breast-cancer-wisconsin}, el cual es un recurso ampliamente empleado en tareas de clasificación y análisis biomédico. Este conjunto de datos, disponible en el UCI Machine Learning Repository, contiene información derivada de imágenes digitalizadas de aspirados con aguja fina de masas mamarias \cite{dataset}.
 
+El objetivo principal de este trabajo es aplicar diferentes algoritmos de árboles de decisión para clasificar los tumores como benignos o malignos, utilizando las características morfológicas extraídas de las imágenes. A lo largo del trabajo, se explorarán diversas técnicas de preprocesamiento, selección de características y modelado, con el fin de optimizar el rendimiento de los modelos y proporcionar una comprensión más profunda del conjunto de datos.
+
+
+% \newpage
 \section{Análisis exploratorio}
 
 \subsection{Descripción del dataset}
-
-El conjunto de datos \textit{breast-cancer-wisconsin} es un recurso ampliamente empleado en tareas de clasificación y análisis biomédico. Este conjunto de datos, disponible en el UCI Machine Learning Repository, contiene información derivada de imágenes digitalizadas de aspirados con aguja fina de masas mamarias \cite{dataset}.
 
 El objetivo principal del dataset es predecir si un tumor es benigno o maligno a partir de diversas características morfológicas extraídas de las imágenes microscópicas de las células. Cada instancia del conjunto de datos representa una muestra individual y está compuesta por un conjunto de variables numéricas que describen propiedades específicas de los núcleos celulares.
 
@@ -329,6 +331,7 @@ El conjunto final de características seleccionadas incluye las siguientes varia
 Se realizarán a continuación comparaciones en la fase de modelado entre el rendimiento de los modelos con este conjunto de características y el rendimiento de los modelos con todas las características del dataset. Esto permitirá evaluar si la reducción de dimensionalidad mejora el rendimiento del modelo y si la selección de características realizada es efectiva.
 
 
+\newpage
 \section{Modelado}
 
 \subsection{Resumen de Resultados}
@@ -375,9 +378,9 @@ Los resultados promedio (media $\pm$ desviación estándar) obtenidos mediante v
     \label{tab:resultados_cv_10}
 \end{table}
 
-Al comparar los resultados de ambos escenarios observamos que, en general, los modelos basados en ensambles obtienen un rendimiento ligeramente superior cuando utilizan el conjunto completo de características. Aunque la reducción de dimensionalidad podría esperarse que simplificara el modelo o redujera el ruido, en este caso parece haber eliminado información relevante para estos algoritmos potentes, que intrínsecamente manejan bien un mayor número de variables debido al modo con el que manejan los datos en el aprendizaje. Para modelos como SVM o k-NN, la diferencia es mínima o inexistente, mientras que MLP muestra resultados mixtos.
+Al comparar los resultados de ambos escenarios observamos que, en general, los modelos basados en ensembles obtienen un rendimiento ligeramente superior cuando utilizan el conjunto completo de características. Aunque la reducción de dimensionalidad podría esperarse que simplificara el modelo o redujera el ruido, en este caso parece haber eliminado información relevante para estos algoritmos potentes, que intrínsecamente manejan bien un mayor número de variables debido al modo con el que manejan los datos en el aprendizaje. Para modelos como SVM o k-NN, la diferencia es mínima o inexistente, mientras que MLP muestra resultados mixtos.
 
-Es cierto que la reducción de características ha permitido una reducción en el tiempo de entrenamiento y evaluación, lo que podría ser beneficioso en escenarios con conjuntos de datos más grandes o complejos. Sin embargo, en este caso específico, la reducción de dimensionalidad ha afectado negativamente el rendimiento de los modelos basados en ensambles, que son los más potentes y robustos para este tipo de tareas. Dado que los ensambles son el foco principal y muestran mejor rendimiento con todas las características, continuaremos el análisis y la selección basándonos en los resultados obtenidos con el total del espacio de características.
+Es cierto que la reducción de características ha permitido una reducción en el tiempo de entrenamiento y evaluación, lo que podría ser beneficioso en escenarios con conjuntos de datos más grandes o complejos. Sin embargo, en este caso específico, la reducción de dimensionalidad ha afectado negativamente el rendimiento de los modelos basados en ensembles, que son los más potentes y robustos para este tipo de tareas. Dado que los ensembles son el foco principal y muestran mejor rendimiento con todas las características, continuaremos el análisis y la selección basándonos en los resultados obtenidos con el total del espacio de características.
 
 
 \subsection{Modelos seleccionados}
@@ -386,12 +389,12 @@ Considerando tanto el rendimiento cuantitativo como la estabilidad de la desviac
 
 \begin{enumerate}
     \item \textbf{Random Forest:} Por obtener el mejor rendimiento general (Accuracy y F1-Score) y mostrar un buen equilibrio entre precisión y exhaustividad, además de una estabilidad razonable. Es el algoritmo central de esta práctica y su rendimiento justifica plenamente su inclusión.
-    \item \textbf{Gradient Boosting:} Por su rendimiento casi idéntico al de Random Forest, su excelente estabilidad (bajas desviaciones estándar) y por ser un representante clave de la familia de algoritmos de Boosting, lo que permite una comparación directa y profunda entre las dos principales estrategias de ensambles basados en árboles.
+    \item \textbf{Gradient Boosting:} Por su rendimiento casi idéntico al de Random Forest, su excelente estabilidad (bajas desviaciones estándar) y por ser un representante clave de la familia de algoritmos de Boosting, lo que permite una comparación directa y profunda entre las dos principales estrategias de ensembles basados en árboles.
     \item \textbf{Bagging Classifier:} Aunque ligeramente inferior a los dos anteriores, su rendimiento sigue siendo muy alto y superior al resto de modelos. Incluirlo permite analizar directamente el impacto de la modificación introducida por Random Forest (selección aleatoria de variables) y evaluar si la optimización de hiperparámetros puede acercar su rendimiento a los de \textit{Random Forest} y \textit{Gradient Boosting}.
 \end{enumerate}
 
 
-
+\newpage
 \section{Optimización de hiperparámetros}
 
 Para esta fase se empleó la técnica de Grid Search con validación cruzada de 5 divisiones para realizar la búsqueda óptima de hiperparámetros. Para cada uno de los tres modelos seleccionados, se definió un espacio de búsqueda de hiperparámetros clave asociado a cada modelo, y se utilizó el acierto de los modelos para guiar la búsqueda y seleccionar la mejor combinación de ellos.
@@ -498,16 +501,19 @@ Dado el rendimiento idéntico y superior en el conjunto de test, tanto \textit{G
 
 La realización de este trabajo ha permitido no solo aplicar y evaluar diversas técnicas de modelado predictivo, sino también reflexionar sobre la dinámica y las particularidades del proceso completo de un proyecto de este tipo. La estructuración en fases bien definidas, aunque necesario en este tipo de proyectos, ha revelado una interconexión entre ellas, que ha requerido en varios casos hacer y deshacer las distintas fases en función de los resultados obtenidos.
 
-Una de las observaciones más significativas surgió durante la etapa de tratamiento de datos, específicamente en la evaluación del impacto de la selección de características. A pesar de explorar múltiples enfoques y de construir un conjunto reducido de variables teóricamente más relevantes, la evaluación empírica posterior demostró que los modelos de ensamble más potentes alcanzaban un rendimiento bastante superior al operar sobre el espacio completo de características original. Este hecho entra en conflicto con lo que se esperaba de la reducción de dimensionalidad, con la que se esperaban beneficios en términos de simplificación o generalización. Sin embargo, la experimentación en esta práctica nos ha mostrado cómo algoritmos robustos pueden gestionar eficazmente una mayor dimensionalidad, extrayendo información útil incluso de variables que podrían parecer ruidosas.
+Una de las observaciones más significativas surgió durante la etapa de tratamiento de datos, específicamente en la evaluación del impacto de la selección de características. A pesar de explorar múltiples enfoques y de construir un conjunto reducido de variables teóricamente más relevantes, la evaluación empírica posterior demostró que los modelos de ensemble más potentes alcanzaban un rendimiento bastante superior al operar sobre el espacio completo de características original. Este hecho entra en conflicto con lo que se esperaba de la reducción de dimensionalidad, con la que se buscaban beneficios en términos de simplificación o generalización. Sin embargo, la experimentación en esta práctica nos ha mostrado cómo algoritmos robustos pueden gestionar eficazmente una mayor dimensionalidad, extrayendo información útil incluso de variables que podrían parecer ruidosas.
 
-Otro aspecto notable del flujo de trabajo se manifestó en la fase de optimización de hiperparámetros. La evaluación final de estos modelos optimizados sobre el conjunto de test nos mostró que la evaluación durante la validación cruzada nos puede anticipar un rendimiento muy distinto al que se podría esperar del modelo. Esta divergencia entre las métricas obtenidas en validación cruzada y el rendimiento real sobre datos nuevos, pone de relieve la importancia crítica del conjunto de test como el verdadero árbitro de la capacidad de generalización.
+Otro aspecto notable del flujo de trabajo se manifestó en la fase de optimización de hiperparámetros. La evaluación final de estos modelos optimizados sobre el conjunto de test nos mostró que la evaluación durante la validación cruzada nos puede anticipar un rendimiento muy distinto al que se podría esperar del modelo. Esta divergencia entre las métricas obtenidas en validación cruzada y el rendimiento real sobre datos nuevos, pone de manifiesto la importancia crítica del conjunto de test como el verdadero indicador de la capacidad de generalización.
 
-En definitiva, este trabajo práctico ha servido como un recordatorio tangible de que la construcción de modelos de aprendizaje automático es un ejercicio que va más allá de la simple consecución de métricas elevadas. Requiere una comprensión profunda de las herramientas, una aplicación crítica de la metodología y, sobre todo, una constante evaluación y reevaluación de las decisiones tomadas a lo largo de un proceso que es inherentemente exploratorio y adaptativo. La verdadera lección reside en la apreciación de la complejidad del flujo de trabajo y en el desarrollo de un criterio analítico para navegar sus desafíos, asegurando que los modelos resultantes no solo sean precisos, sino también robustos y verdaderamente generalizables.
+En definitiva, este trabajo práctico ha servido como un recordatorio tangible de que la construcción de modelos de aprendizaje automático es un ejercicio que va más allá de la simple consecución de métricas elevadas. Requiere una comprensión profunda de los datos, una aplicación crítica de la metodología y, sobre todo, una constante evaluación y reevaluación de las decisiones tomadas a lo largo de un proceso que está basado en la experimentación. El flujo completo, por lo tanto, se ha visto como un ejercicio iterativo de hipótesis, experimentación y validación crítica continua.
+
+
+% La verdadera lección reside en la apreciación de la complejidad del flujo de trabajo y en el desarrollo de un criterio analítico para navegar sus desafíos, asegurando que los modelos resultantes no solo sean precisos, sino también robustos y verdaderamente generalizables.
 
 
 % El desarrollo de la práctica nos ha mostrado que, si bien la optimización es una fase crucial, debe interpretarse con cautela y siempre validarse rigurosamente sobre datos no vistos, reconociendo que el objetivo último no es maximizar una métrica en CV, sino obtener un modelo fiable y generalizable. 
 
-El flujo completo, por lo tanto, se ha visto como un ejercicio iterativo de hipótesis, experimentación y validación crítica continua.
+
 
 
 \newpage
