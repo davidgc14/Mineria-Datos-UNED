@@ -1,16 +1,16 @@
 # Fdb version 4
-["bibtex memoria-MD4"] 1745747767.93081 "memoria-MD4.aux" "memoria-MD4.bbl" "memoria-MD4" 1745747847.51217 0
+["bibtex memoria-MD4"] 1745776353.45584 "memoria-MD4.aux" "memoria-MD4.bbl" "memoria-MD4" 1745777380.99987 0
   "./library.bib" 1745410515.41966 1011 29416c519df753aed67f47b96c2acb70 ""
   "/usr/share/texlive/texmf-dist/bibtex/bst/base/plain.bst" 1292289607 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "memoria-MD4.aux" 1745747847.39753 7353 15ab39c7cfe539b5a10d92fbbe576a78 "pdflatex"
+  "memoria-MD4.aux" 1745777380.87305 7250 f52c1f82e642022b8c08f9eb3df26aa8 "pdflatex"
   (generated)
   "memoria-MD4.bbl"
   "memoria-MD4.blg"
   (rewritten before read)
-["pdflatex"] 1745747841.37293 "/home/david/Documents/Master/MineriaDatos/Practica-4/Memoria/memoria-MD4.tex" "memoria-MD4.pdf" "memoria-MD4" 1745747847.51239 0
+["pdflatex"] 1745777374.35292 "/home/david/Documents/Master/MineriaDatos/Practica-4/Memoria/memoria-MD4.tex" "memoria-MD4.pdf" "memoria-MD4" 1745777381.0001 0
   "/etc/texmf/web2c/texmf.cnf" 1730049747.72736 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/david/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1200.600pk" 1731164547.90785 14040 f85c059031eda2835b1a8f9173385174 ""
-  "/home/david/Documents/Master/MineriaDatos/Practica-4/Memoria/memoria-MD4.tex" 1745747841.03848 42237 2564a048bf74d0e24ce347bf7ba49028 ""
+  "/home/david/Documents/Master/MineriaDatos/Practica-4/Memoria/memoria-MD4.tex" 1745777373.99975 40429 3393cdfacf28c79b760036ef40336564 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -171,10 +171,10 @@
   "images/targetfeatures-individual-distribution.png" 1745404461.48136 582700 9403ae3fcd2ec9774477cccd811ed0df ""
   "images/targetfeatures-mean-distribution.png" 1745403576.62065 2335494 5ef78446611eeb16f70ee664ecbd26b8 ""
   "images/targetfeatures-worst-distribution.png" 1745403733.78742 2298324 18e1bfb30e8d162b23a65c69f960bc8a ""
-  "memoria-MD4.aux" 1745747847.39753 7353 15ab39c7cfe539b5a10d92fbbe576a78 "pdflatex"
-  "memoria-MD4.bbl" 1745747767.95087 657 33b559997dbfea5a83f0ce73c8542fbd "bibtex memoria-MD4"
-  "memoria-MD4.tex" 1745747841.03848 42237 2564a048bf74d0e24ce347bf7ba49028 ""
-  "memoria-MD4.toc" 1745747847.40053 2171 b9c2340689fc74d1fd2f30a318e471b2 "pdflatex"
+  "memoria-MD4.aux" 1745777380.87305 7250 f52c1f82e642022b8c08f9eb3df26aa8 "pdflatex"
+  "memoria-MD4.bbl" 1745776353.47595 657 33b559997dbfea5a83f0ce73c8542fbd "bibtex memoria-MD4"
+  "memoria-MD4.tex" 1745777373.99975 40429 3393cdfacf28c79b760036ef40336564 ""
+  "memoria-MD4.toc" 1745777380.87505 2109 e01d24998e838bd9667c1d388bb6da16 "pdflatex"
   (generated)
   "memoria-MD4.aux"
   "memoria-MD4.log"

@@ -56,9 +56,9 @@
 
 \section{Introducción}
 
-En este trabajo se presenta una investigación profunda sobre el proceso de análisis de datos y su aplicación a selección de modelos dentro del grupo de árboles de decisión. Se ha usado el dataset \textit{breast-cancer-wisconsin}, el cual es un recurso ampliamente empleado en tareas de clasificación y análisis biomédico. Este conjunto de datos, disponible en el UCI Machine Learning Repository, contiene información derivada de imágenes digitalizadas de aspirados con aguja fina de masas mamarias \cite{dataset}.
+En este trabajo se presenta una investigación profunda sobre el proceso de análisis de datos y su aplicación a selección de modelos dentro del grupo de algoritmos ensembles. Se ha usado el dataset \textit{breast-cancer-wisconsin}, el cual es un recurso ampliamente empleado en tareas de clasificación y análisis biomédico. Este conjunto de datos, disponible en el UCI Machine Learning Repository, contiene información derivada de imágenes digitalizadas de aspirados con aguja fina de masas mamarias \cite{dataset}.
 
-El objetivo principal de este trabajo es aplicar diferentes algoritmos de árboles de decisión para clasificar los tumores como benignos o malignos, utilizando las características morfológicas extraídas de las imágenes. A lo largo del trabajo, se explorarán diversas técnicas de preprocesamiento, selección de características y modelado, con el fin de optimizar el rendimiento de los modelos y proporcionar una comprensión más profunda del conjunto de datos.
+El objetivo principal de este trabajo es aplicar diferentes algoritmos para clasificar los tumores como benignos o malignos, utilizando las características morfológicas extraídas de las imágenes. A lo largo del trabajo, se explorarán diversas técnicas de preprocesamiento, selección de características y modelado, con el fin de optimizar el rendimiento de los modelos y proporcionar una comprensión más profunda del conjunto de datos.
 
 
 % \newpage
@@ -104,7 +104,7 @@ Además, centrando nuestra atención en la distribución individual que presenta
 
 También es muy importante la visualización de la correlación dos a dos que existe entre las variables, puesto que pueden surgir patrones como el que veremos a continuación. En la Figura~\ref{fig:features-correlation} se ha dividido el gráfico según los tres subgrupos de variables mencionados anteriormente: mean, error y worst. Esto ha dado lugar, además de la matriz 30$\times$30 resultante del conjunto total de variables, a una matriz 3$\times$3 de la cual podemos extraer patrones muy interesantes.
 
-Podemos observar que las variables asociadas a \textit{radius}, \textit{perimeter} y \textit{area} están altamente correlacionadas entre sí, lo que indica que estas características están relacionadas y podrían contener información complementaria. Por otro lado, las variables asociadas a \textit{texture}, \textit{smoothness} y \textit{fractal dimension} presentan una correlación considerablemente más baja con las demás, lo que podría sugerir que estas variables están aportando ruido a los datos, no siendo variables relevantes para la predicción.\footnote{Veremos a posteriori si realmente estas variables aportan ruido o no cuando se estudie su relevancia en conjunto con la variable objetivo.}
+Podemos observar que las variables asociadas a \textit{radius}, \textit{perimeter} y \textit{area} están altamente correlacionadas entre sí, lo que indica que estas características podrían contener información complementaria. Por otro lado, las variables asociadas a \textit{texture}, \textit{smoothness} y \textit{fractal dimension} presentan una correlación considerablemente más baja con las demás, lo que podría ser un indicativo de que estas variables están aportando ruido a los datos, no siendo variables relevantes para la predicción.\footnote{Veremos a posteriori si realmente estas variables aportan ruido o no cuando se estudie su relevancia en conjunto con la variable objetivo.}
 
 \begin{figure}[ht!]
     \centering
@@ -113,9 +113,9 @@ Podemos observar que las variables asociadas a \textit{radius}, \textit{perimete
     \label{fig:features-correlation}
 \end{figure}
 
-Lo más relevante de esta matriz de correlación es que la relación entre esas variables (ya sean con datos de meam, error o worst) se mantiene más o menos estable en los 9 cuadrantes. A nivel de estos 3 subgrupos, vemos cómo estas correlaciones se ven incentivadas positivamente allá donde las variables de mean se vean implicadas, en especial entre ellas y con las del subgrupo de worst.
+Lo más relevante de esta matriz de correlación es que la relación entre esas variables (ya sean con datos de mean, error o worst) se mantiene más o menos estable en los 9 cuadrantes. A nivel de estos 3 subgrupos, vemos cómo estas correlaciones se ven incentivadas positivamente allá donde las variables de mean se vean implicadas, en especial entre ellas y con las del subgrupo de worst.
 
-Sin embargo, se observa claramente que las variables de error son las que menos correlación presentan con el resto de variables, lo que podría sugerir que estas variables no aportan información relevante.
+Sin embargo, se observa claramente que las variables de error son las que menos correlación presentan con el resto de variables, mostrando una independencia bastante clara entre ellas y el resto de variables.
 
 
 \subsubsection{Variable objetivo}
@@ -144,7 +144,7 @@ Es por ello que es necesario realizar un análisis conjunto de las variables par
 
 \subsubsection{Análisis conjunto de características y variable objetivo}
 
-Para analizar la relación entre las características y la variable objetivo, se han realizado gráficos de dispersión conjuntos cada una de las características, separadas por cada uno de los tres subgrupos para una mejor visualización.\footnote{Recalcar que no se ha realizado este estudio entre distintos subgrupos de características, ya que, debido a la cantidad de características, la visualización se haría muy complicada y no aportaría información relevante.}
+Para analizar la relación entre las características y la variable objetivo, se han realizado gráficos de dispersión conjuntos para cada una de las características, separadas por cada uno de los tres subgrupos para una mejor visualización.\footnote{Recalcar que no se ha realizado este estudio entre distintos subgrupos de características, ya que, debido a la cantidad de características, la visualización se haría muy complicada y no aportaría información relevante.}
 
 \begin{figure}[ht!]
     \centering
@@ -162,7 +162,7 @@ Podemos observar en la Figura~\ref{fig:targetfeatures-mean-distribution} de form
     \label{fig:targetfeatures-error-distribution}
 \end{figure}
 
-En el caso de la Figura~\ref{fig:targetfeatures-error-distribution}, se observa que la separación entre las dos clases de la variable objetivo no es tan clara como en el caso del subgrupo mean. Sin embargo, todavía hay una tendencia general en la que la implicación de las variables \textit{radius}, \textit{perimeter} y \textit{area} sugiere que algunas características de este subgrupo puedan ser útiles para la clasificación.
+En el caso de la Figura~\ref{fig:targetfeatures-error-distribution}, se observa que la separación entre las dos clases de la variable objetivo no es tan clara como en el caso del subgrupo mean. Sin embargo, todavía hay una tendencia general en la que la implicación de las variables \textit{radius}, \textit{perimeter} y \textit{area} sugiere que algunas características de este subgrupo pudieran ser útiles para la clasificación.
 
 \begin{figure}[ht!]
     \centering
@@ -171,7 +171,7 @@ En el caso de la Figura~\ref{fig:targetfeatures-error-distribution}, se observa 
     \label{fig:targetfeatures-worst-distribution}
 \end{figure}
 
-Por último, en la Figura~\ref{fig:targetfeatures-worst-distribution} se observa de nuevo que la separación entre las dos clases de la variable objetivo es bastante clara, presentando incluso relaciones lineales como en el caso del subgrupo mean, incluso para sus mismas variables. Esto denota una fuerte alineación de los grupos mean y worst, lo que podría sugerir que el subgrupo worst es una redundancia del grupo mean, o vicebersa.
+Por último, en la Figura~\ref{fig:targetfeatures-worst-distribution} se observa de nuevo que la separación entre las dos clases de la variable objetivo es bastante clara, presentando incluso relaciones lineales como en el caso del subgrupo mean, incluso para sus mismas variables. Esto denota una fuerte alineación de los grupos mean y worst, lo que podría sugerir una redundancia de la información entre ambos conjuntos.
 
 
 \newpage
@@ -181,7 +181,7 @@ Por último, en la Figura~\ref{fig:targetfeatures-worst-distribution} se observa
 
 Para el preprocesamiento de los datos, se ha dividido el dataset en tres conjuntos: entrenamiento, evaluación y test, con una proporción del 60\% para entrenamiento, 20\% para evaluación y 20\% para testeo. Todo el preprocesamiento que sigue se ha realizado sobre el conjunto de entrenamiento, y posteriormente se ha aplicado al conjunto de evaluación y test para que así la evaluación de los modelos no se vea influenciada por el preprocesamiento.
 
-Tras la división de los subconjuntos, se ha optado por aplicar una normalización a las características del dataset. La normalización es un paso crucial en el análisis de datos, ya que permite que todas las características tengan la misma escala y rango, lo que facilita la convergencia de los algoritmos de aprendizaje automático. En este caso, se ha utilizado el método \textit{StandardScaler} de la biblioteca \textit{scikit-learn}, que transforma los datos para que tengan una media de 0 y una desviación estándar de 1. Aunque la normalización no es estrictamente necesaria para todos los algoritmos de aprendizaje automático, es una práctica recomendada.
+Tras la división de los subconjuntos, se ha optado por aplicar una normalización a las características del dataset. La normalización es un paso crucial en el análisis de datos, ya que permite que todas las características tengan la misma escala y rango, lo que facilita la generalización de los algoritmos de aprendizaje automático. En este caso, se ha utilizado el método \textit{StandardScaler} de la biblioteca \textit{scikit-learn}, que transforma los datos para que tengan una media de 0 y una desviación estándar de 1. Aunque la normalización no es estrictamente necesaria para todos los algoritmos de aprendizaje automático, es una práctica recomendada en general.
 
 Por último, aunque no estrictamente necesario, se ha aplicado el método \textit{SMOTE} (Synthetic Minority Oversampling Technique) para equilibrar el conjunto de datos. Este método genera nuevas instancias sintéticas de la clase minoritaria (en este caso, los tumores malignos) para equilibrar la distribución de clases en el conjunto de entrenamiento.
 
@@ -199,13 +199,13 @@ Debido a los análisis exploratorios de los datos realizados anteriormente, se p
     \caption{Ranking de características mediante Información Mutua.}
     \label{fig:fselection-MI}
 \end{wrapfigure}
-Este método univariado evalúa la dependencia entre cada característica y la variable objetivo. Se calcula la información mutua entre cada característica y la variable objetivo, y se seleccionan las características con mayor información mutua.
+Este método univariado evalúa la dependencia entre cada característica y la variable objetivo. Se calcula el estadístico para cada característica y se seleccionan aquellas con mayor información mutua.
 
-Observamos en la Figura~\ref{fig:fselection-MI} que, a nivel individual de cada una de las características, observamos una predominancia en las primeras posiciones de variables pertenecientes a los sugrupos worst y mean, predominando la media tabla el subgrupo de error. Esto nos muestra de nuevo que las características de los subgrupos worst y mean presentan una relación más directa con la variable objetivo, predominando además las asociadas a \textit{concave points} y \textit{perimeter}.
+Observamos en la Figura~\ref{fig:fselection-MI} que, a nivel individual de cada una de las características, observamos una predominancia en las primeras posiciones de variables pertenecientes a los sugrupos worst y mean, predominando en la media tabla el subgrupo de error. Esto nos muestra de nuevo que las características de los subgrupos worst y mean presentan una relación más directa con la variable objetivo, predominando además las asociadas a \textit{concave points} y \textit{perimeter}.
 
 \paragraph{Test-$F$ \\ \\}
 
-El test-$F$ es otro método estadístico univariante que evalúa la relación entre cada característica y la variable objetivo mediante la comparación de varianzas. Se calcula el valor del estadístico $F$ para cada característica y se seleccionan las características con los valores más altos.
+El test-$F$ es otro método estadístico univariante que evalúa la relación entre cada característica y la variable objetivo mediante la comparación de varianzas.
 
 \begin{wrapfigure}{r}{0.45\textwidth}
     \centering
@@ -275,15 +275,17 @@ En la Figura~\ref{fig:fselection-ReliefF} se observa que, al igual que en los m�
 \end{wraptable}
 En este caso, se ha utilizado el algoritmo de eliminación recursiva de características con un clasificador SVM como modelo base.
 
-Para este caso se observa que el algoritmo ha seleccionado las características de forma diferente a los métodos anteriores. En la Tabla \ref{tab:fselection-RFE-SVM} se observa que las variables \textit{perimeter} y \textit{radius} son las más relevantes, pero también se incluyen otras características asociadas al subgrupo error, como \textit{perimeter error} y \textit{radius error}, que no habían sido destacadas en los métodos univariados.
+Para este caso se observa que este algoritmo ha encontrado unos patrones que difieren considerablemente de los métodos anteriores. En la Tabla \ref{tab:fselection-RFE-SVM} se observa que las variables \textit{perimeter} y \textit{radius} son las más relevantes, pero también se incluyen otras características asociadas al subgrupo error, como \textit{perimeter error} y \textit{radius error}, que no habían sido destacadas en los métodos univariados.
 
-Este algoritmo ha encontrado unos patrones que difieren considerablemente de los métodos anteriores, lo que sugiere que la interacción entre las características es importante para la clasificación. Además, se observa que el algoritmo ha seleccionado características de todos los subgrupos, lo que indica que la combinación de características de diferentes grupos puede ser beneficiosa para el rendimiento del modelo.
+Además, se observa que el algoritmo ha seleccionado características de todos los subgrupos, lo que podría indicar que la combinación de características de diferentes grupos puede ser beneficiosa para el rendimiento del modelo, en contradicción con los métodos anteriores.
 
 \subsubsection{Métodos de árboles de decisión}
 
-Para los dos siguientes métodos que se presentan a continuación de medición de importancia de las características, se han entrenado dos modelos basados en árboles de decisión: un clasificador \textit{Random Forest} y un clasificador \textit{Extra Trees}. Ambos modelos son algoritmos se han entrenado con 100 estimadores, y se han utilizado exclusivamente para calcular la importancia de las características mediante el método de Gini y el método de permutación de variables
+Para los dos siguientes métodos que se presentan a continuación de medición de importancia de las características, se han entrenado dos modelos basados en árboles de decisión: un clasificador \textit{Random Forest} y un clasificador \textit{Extra Trees}. Ambos modelos se han entrenado con 100 estimadores, y se han utilizado exclusivamente para calcular la importancia de las características mediante el método de Gini y el método de permutación de variables.
 
 \paragraph{Importancia Gini \\ \\}
+
+La importancia de Gini es un método que evalúa la importancia de cada característica en función de su contribución a la reducción de la impureza del nodo en el árbol de decisión.
 
 \begin{wrapfigure}{r}{0.45\textwidth}
     \centering
@@ -291,12 +293,12 @@ Para los dos siguientes métodos que se presentan a continuación de medición d
     \caption{Ranking de características mediante la Importancia Gini.}
     \label{fig:fselection-Gini}
 \end{wrapfigure}
-La importancia de Gini es un método que evalúa la importancia de cada característica en función de su contribución a la reducción de la impureza del nodo en el árbol de decisión. Este método se basa en el índice de Gini, que mide la pureza de los nodos en un árbol de decisión.
-
 En este caso se observa cierta consistencia (salvo pequeñas variaciones locales) en el orden aportado por ambos modelos para el cálculo de este método. En la Figura~\ref{fig:fselection-Gini} se han ordenado los registros por la suma de la importancia en ambos modelos, y se observa que el orden es muy similar al de los métodos anteriores, destacando las variables \textit{concave points} y \textit{radius} como las más relevantes. Además, se observa que las variables del subgrupo error tienen una importancia menor en comparación con las variables de los subgrupos worst y mean, ratificando su escasa importancia en el análisis.
 
 
 \paragraph{Importancia de Permutación \\ \\}
+
+La importancia de permutación es un método que mide la disminución del rendimiento del modelo al permutar los valores de cada característica.
 
 \begin{wrapfigure}{r}{0.45\textwidth}
     \centering
@@ -304,16 +306,14 @@ En este caso se observa cierta consistencia (salvo pequeñas variaciones locales
     \caption{Ranking mediante la Importancia por Permutación.}
     \label{fig:fselection-Perm}
 \end{wrapfigure}
-La importancia de permutación es un método que evalúa la importancia de cada característica en función de su impacto en el rendimiento del modelo. Este método mide la disminución del rendimiento del modelo al permutar los valores de una característica específica.
+Al igual que en el caso anterior, el orden mostrado es el asociado a la suma de los resultados obtenidos en ambos modelos. Se observa en la Figura~\ref{fig:fselection-Perm} una variabilidad mucho más alta en cuanto a los resultados obtenidos por los dos modelos. Por ejemplo, destaca que la primera posición la ocupe la variable \textit{worst radius}, cuando para el modelo \textit{Random Forest} ocupaba la posición 10. Otro caso muy visual es el de la variable \textit{mean smoothness}, donde ambos modelos difieren por completo en su impacto en el rendimiento del modelo.
 
-Al igual que en el caso anterior, el orden mostrado es el asociado a la suma de los resultados obtenidos en ambos modelos. Sin embargo, se observa aquí en la Figura~\ref{fig:fselection-Perm} una variabilidad mucho más alta en cuanto a los resultados obtenidos por los dos modelos. Por ejemplo, destaca que la primera posición la ocupe la variable \textit{worst radius}, cuando para el modelo \textit{Random Forest} ocupaba la posición 10. Otro caso muy visual es el de la variable \textit{mean smoothness}, donde ambos modelos difieren por completo en su impacto en el rendimiento del modelo.
-
-Además, esta inconsistencia entre ambos modelos ha producido que el orden obtenido con respecto a los métodos anteriores haya cambiado considerablemente. En este caso, las variables del subgrupo error han obtenido una puntuación más alta que en los métodos anteriores, lo que sugiere que la importancia de estas características puede depender del modelo utilizado.
+Además, esta inconsistencia entre ambos modelos ha producido que el orden obtenido con respecto a los métodos anteriores haya cambiado considerablemente. En este caso, las variables del subgrupo error han obtenido una puntuación más alta que en los métodos anteriores.
 
 
 \subsubsection{Selección de características finales}
 
-Para la selección de características finales, se ha optado por un enfoque combinado que incluye tanto los métodos clásicos como los métodos basados en árboles de decisión. Se han seleccionado las 10 características más relevantes de cada método y se han combinado para formar un conjunto final de características. Esta combinación se ha realizado mediante la media de las puntuaciones obtenidas por cada característica en los diferentes métodos.
+Para la selección de características finales se ha optado por un enfoque combinado, que incluye tanto los métodos clásicos como los métodos basados en árboles de decisión. Se han seleccionado las 10 características más relevantes de cada método y se han combinado para formar un conjunto final de características. Esta combinación se ha realizado mediante la media de las puntuaciones normalizadas obtenidas por cada característica en los diferentes métodos.
 El conjunto final de características seleccionadas incluye las siguientes variables:
 
 \begin{itemize}
@@ -337,7 +337,7 @@ Se realizarán a continuación comparaciones en la fase de modelado entre el ren
 
 \subsection{Resumen de Resultados}
 
-En esta fase, hemos entrenado y evaluado un conjunto diverso de algoritmos de clasificación\footnote{Cabe destacar que los seis algoritmos seleccionados han sido evaluados sobre instancias de clasificadores con los hiperparámetros por defecto proporcionados por la librería \textit{scikit-learn}, los cuales son además valores típicos con los que se suelen entrenar estos clasificadores. El ajuste de estos hiperparámetros se realizará en la sección siguiente.} utilizando validación cruzada para obtener una estimación robusta de su rendimiento predictivo. Se evaluaron dos escenarios: uno utilizando el conjunto completo de 30 características originales y otro utilizando el subconjunto calculado de 10 características. El objetivo es comparar el desempeño inicial de los modelos seleccionados e identificar los tres modelos más adecuados para una optimización de hiperparámetros posterior.
+Se han entrenado y evaluado un conjunto diverso de algoritmos de clasificación utilizando validación cruzada para obtener una estimación robusta de su rendimiento predictivo\footnote{Cabe destacar que los seis algoritmos seleccionados han sido evaluados sobre instancias de clasificadores con los hiperparámetros por defecto proporcionados por la librería \textit{scikit-learn}, los cuales son además valores típicos con los que se suelen entrenar estos clasificadores. El ajuste de estos hiperparámetros se realizará en la sección siguiente.}. Se evaluaron dos escenarios: uno utilizando el conjunto completo de 30 características originales y otro utilizando el subconjunto calculado de 10 características. El objetivo es comparar el desempeño inicial de los modelos seleccionados e identificar los tres modelos más adecuados para una optimización de hiperparámetros posterior.
 
 Los resultados promedio (media $\pm$ desviación estándar) obtenidos mediante validación cruzada para ambos escenarios se presentan a continuación.
 
@@ -379,9 +379,9 @@ Los resultados promedio (media $\pm$ desviación estándar) obtenidos mediante v
     \label{tab:resultados_cv_10}
 \end{table}
 
-Al comparar los resultados de ambos escenarios observamos que, en general, los modelos basados en ensembles obtienen un rendimiento ligeramente superior cuando utilizan el conjunto completo de características. Aunque la reducción de dimensionalidad podría esperarse que simplificara el modelo o redujera el ruido, en este caso parece haber eliminado información relevante para estos algoritmos potentes, que intrínsecamente manejan bien un mayor número de variables debido al modo con el que manejan los datos en el aprendizaje. Para modelos como SVM o k-NN, la diferencia es mínima o inexistente, mientras que MLP muestra resultados mixtos.
+Al comparar los resultados de ambos escenarios observamos que, en general, los modelos basados en ensembles obtienen un rendimiento ligeramente superior cuando utilizan el conjunto completo de características. Aunque la reducción de dimensionalidad podría esperarse que simplificara el modelo o redujera el ruido, en este caso parece haber eliminado información relevante para estos algoritmos potentes, que intrínsecamente manejan bien un mayor número de variables debido al modo con el que manejan los datos en el aprendizaje. Para el resto de modelos, las variaciones no han sido significativas.
 
-Es cierto que la reducción de características ha permitido una reducción en el tiempo de entrenamiento y evaluación, lo que podría ser beneficioso en escenarios con conjuntos de datos más grandes o complejos. Sin embargo, en este caso específico, la reducción de dimensionalidad ha afectado negativamente el rendimiento de los modelos basados en ensembles, que son los más potentes y robustos para este tipo de tareas. Dado que los ensembles son el foco principal y muestran mejor rendimiento con todas las características, continuaremos el análisis y la selección basándonos en los resultados obtenidos con el total del espacio de características.
+Es cierto que la reducción de características ha permitido una reducción en el tiempo de entrenamiento y evaluación, lo que podría ser beneficioso en escenarios con conjuntos de datos más grandes o complejos. Sin embargo, en este caso específico, la reducción de dimensionalidad ha afectado negativamente el rendimiento de los modelos con mejores resultados. Dado que los ensembles son el foco principal y muestran mejor rendimiento con todas las características, continuaremos el análisis y la selección basándonos en los resultados obtenidos con el total del espacio de características.
 
 
 \subsection{Modelos seleccionados}
@@ -389,9 +389,9 @@ Es cierto que la reducción de características ha permitido una reducción en e
 Considerando tanto el rendimiento cuantitativo como la estabilidad de la desviación estándar, los tres modelos seleccionados para pasar a la fase de optimización son:
 
 \begin{enumerate}
-    \item \textbf{Random Forest:} Por obtener el mejor rendimiento general (Accuracy y F1-Score) y mostrar un buen equilibrio entre precisión y exhaustividad, además de una estabilidad razonable. Es el algoritmo central de esta práctica y su rendimiento justifica plenamente su inclusión.
-    \item \textbf{Gradient Boosting:} Por su rendimiento casi idéntico al de Random Forest, su excelente estabilidad (bajas desviaciones estándar) y por ser un representante clave de la familia de algoritmos de Boosting, lo que permite una comparación directa y profunda entre las dos principales estrategias de ensembles basados en árboles.
-    \item \textbf{Bagging Classifier:} Aunque ligeramente inferior a los dos anteriores, su rendimiento sigue siendo muy alto y superior al resto de modelos. Incluirlo permite analizar directamente el impacto de la modificación introducida por Random Forest (selección aleatoria de variables) y evaluar si la optimización de hiperparámetros puede acercar su rendimiento a los de \textit{Random Forest} y \textit{Gradient Boosting}.
+    \item \textbf{Random Forest:} Por obtener el mejor rendimiento general y mostrar un buen equilibrio entre precisión y exhaustividad.
+    \item \textbf{Gradient Boosting:} Por su rendimiento casi idéntico al de Random Forest y por ser un representante clave de la familia de algoritmos de Boosting, lo que permite una comparación directa y profunda entre las dos principales estrategias de ensembles basados en árboles.
+    \item \textbf{Bagging Classifier:} Aunque ligeramente inferior a los dos anteriores, su rendimiento sigue siendo muy alto, con una dispersión del error superior al resto de modelos.
 \end{enumerate}
 
 
@@ -400,11 +400,11 @@ Considerando tanto el rendimiento cuantitativo como la estabilidad de la desviac
 
 Para esta fase se empleó la técnica de Grid Search con validación cruzada de 5 divisiones para realizar la búsqueda óptima de hiperparámetros. Para cada uno de los tres modelos seleccionados, se definió un espacio de búsqueda de hiperparámetros clave asociado a cada modelo, y se utilizó el acierto de los modelos para guiar la búsqueda y seleccionar la mejor combinación de ellos.
 
-Una vez identificados los mejores hiperparámetros para cada modelo según el acierto promedio en la evaluación de la validación cruzada, el modelo final se reentrenó con dichos parámetros utilizando la totalidad de los datos de entrenamiento. Finalmente, este modelo optimizado se evaluó sobre el conjunto de test, que no fue utilizado durante el proceso de selección de modelos ni de optimización, para obtener una estimación final del rendimiento generalizado.
+Una vez identificados los mejores hiperparámetros, el modelo final se reentrenó con dichos parámetros utilizando la totalidad de los datos de entrenamiento. Finalmente, este modelo optimizado se evaluó sobre el conjunto de test, que no fue utilizado durante el proceso de selección de modelos ni de optimización, para obtener una estimación final del rendimiento generalizado.
 
 \subsection{Resultados de la Optimización}
 
-La búsqueda en cuadrícula arrojó los siguientes resultados, identificando la mejor combinación de hiperparámetros y el F1-score ponderado promedio correspondiente obtenido durante la validación cruzada:
+La búsqueda en cuadrícula devolvió los siguientes resultados, identificando la mejor combinación de hiperparámetros y el acierto correspondiente obtenido durante la validación cruzada:
 
 \begin{itemize}
     \item \textbf{Random Forest:}
@@ -486,9 +486,7 @@ Los modelos fueron reentrenados con los mejores hiperparámetros encontrados sob
 
 \subsection{Análisis y Selección del Modelo Final}
 
-La evaluación final en el conjunto de test revela un rendimiento muy similar y alto para los tres modelos optimizados. Tanto \textit{Gradient Boosting} como \textit{Bagging Classifier} obtienen un F1-score idéntico de 0.9392, superando ligeramente a \textit{Random Forest}.
-
-Al examinar los informes de clasificación y las matrices de confusión, observamos que \textit{Gradient Boosting} y \textit{Bagging} no solo alcanzan el mismo F1-score global, sino que también presentan métricas idénticas por clase y la misma matriz de confusión. Ambos clasifican erróneamente 6 instancias benignas como malignas, y solo un falso negativo. Esto se traduce en una precisión muy alta para la clase benignas y un recall muy alto para la clase malignas.
+La evaluación final en el conjunto de test revela un rendimiento muy similar y alto para los tres modelos optimizados. Al examinar los informes de clasificación y las matrices de confusión, observamos que \textit{Gradient Boosting} y \textit{Bagging} presentan métricas idénticas por clase y la misma matriz de confusión. Ambos clasifican erróneamente 6 instancias benignas como malignas, y solo un falso negativo. Esto se traduce en una precisión muy alta para la clase benignas y un recall muy alto para la clase malignas.
 
 Es interesante notar la discrepancia entre los altísimos scores obtenidos durante la validación cruzada y los scores finales en el conjunto de test. Esta diferencia, aunque no drástica, sugiere que los scores de CV o bien sufrieron una leve sobreestimación de los modelos durante la búsqueda GridSearch, o simplemente ha sido el resultado de la elección en la división de los datos y las peculiaridades de los mismos.
 
@@ -498,8 +496,6 @@ Dado el rendimiento idéntico y superior en el conjunto de test, tanto \textit{G
 
 
 \newpage
-\section{Explicabilidad}
-
 \section{Explicabilidad}
 
 El análisis de ambas medidas revela una notable consistencia en la identificación de las características más relevantes para la predicción. Tanto la importancia Gini en la Figura~\ref{fig:explicability-gini} como los valores SHAP en la Figura~\ref{fig:explicability-shap} destacan de manera recurrente variables como \textit{worst concave points}, \textit{mean concave points}, \textit{worst area}, \textit{worst perimeter} y \textit{worst texture} como las de mayor impacto en la clasificación de tumores.
@@ -529,13 +525,13 @@ La alineación entre las distintas métricas de importancia y los resultados de 
 \newpage
 \section{Conclusiones}
 
-La realización de este trabajo ha permitido no solo aplicar y evaluar diversas técnicas de modelado predictivo, sino también reflexionar sobre la dinámica y las particularidades del proceso completo de un proyecto de este tipo. La estructuración en fases bien definidas, aunque necesario en este tipo de proyectos, ha revelado una interconexión entre ellas, que ha requerido en varios casos hacer y deshacer las distintas fases en función de los resultados obtenidos.
+La realización de este trabajo ha permitido no solo aplicar y evaluar diversas técnicas de modelado predictivo, sino también reflexionar sobre la dinámica y las particularidades del proceso completo de un proyecto de este tipo. La estructuración en fases bien definidas, aunque necesario en este tipo de proyectos, ha revelado una interconexión entre ellas, que ha requerido en varios casos hacer y deshacer las distintas fases en función de los resultados.
 
 Una de las observaciones más significativas surgió durante la etapa de tratamiento de datos, específicamente en la evaluación del impacto de la selección de características. A pesar de explorar múltiples enfoques y de construir un conjunto reducido de variables teóricamente más relevantes, la evaluación empírica posterior demostró que los modelos de ensemble más potentes alcanzaban un rendimiento bastante superior al operar sobre el espacio completo de características original. Este hecho entra en conflicto con lo que se esperaba de la reducción de dimensionalidad, con la que se buscaban beneficios en términos de simplificación o generalización. Sin embargo, la experimentación en esta práctica nos ha mostrado cómo algoritmos robustos pueden gestionar eficazmente una mayor dimensionalidad, extrayendo información útil incluso de variables que podrían parecer ruidosas.
 
-Otro aspecto notable del flujo de trabajo se manifestó en la fase de optimización de hiperparámetros. La evaluación final de estos modelos optimizados sobre el conjunto de test nos mostró que la evaluación durante la validación cruzada nos puede anticipar un rendimiento muy distinto al que se podría esperar del modelo. Esta divergencia entre las métricas obtenidas en validación cruzada y el rendimiento real sobre datos nuevos, pone de manifiesto la importancia crítica del conjunto de test como el verdadero indicador de la capacidad de generalización.
+Otro aspecto notable se manifestó en la fase de optimización de hiperparámetros. La evaluación final de estos modelos optimizados sobre el conjunto de test nos mostró que la evaluación durante la validación cruzada nos puede anticipar un rendimiento muy distinto al que se podría esperar del modelo. Esta divergencia entre las métricas obtenidas en validación cruzada y el rendimiento real sobre datos nuevos, pone de manifiesto la importancia crítica del conjunto de test como el verdadero indicador de la capacidad de generalización.
 
-En definitiva, este trabajo práctico ha servido como un recordatorio tangible de que la construcción de modelos de aprendizaje automático es un ejercicio que va más allá de la simple consecución de métricas elevadas. Requiere una comprensión profunda de los datos, una aplicación crítica de la metodología y, sobre todo, una constante evaluación y reevaluación de las decisiones tomadas a lo largo de un proceso que está basado en la experimentación. El flujo completo, por lo tanto, se ha visto como un ejercicio iterativo de hipótesis, experimentación y validación crítica continua.
+Se ah visto que la resolución de este tipo de problemas requiere de una comprensión profunda de los datos, una aplicación crítica de la metodología y, sobre todo, una constante evaluación y reevaluación de las decisiones tomadas a lo largo de un proceso que está basado en la experimentación. El flujo completo, por lo tanto, se ha visto como un ejercicio iterativo de hipótesis, experimentación y validación crítica continua.
 
 
 % La verdadera lección reside en la apreciación de la complejidad del flujo de trabajo y en el desarrollo de un criterio analítico para navegar sus desafíos, asegurando que los modelos resultantes no solo sean precisos, sino también robustos y verdaderamente generalizables.
